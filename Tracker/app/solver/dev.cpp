@@ -1,16 +1,16 @@
 /*
- * dev.cpp
+ * dev
  *
  *  Created on: 28.10.2014
  *      Author: akin
  */
 
-#include "dev"
-#include "../../scene/world"
-#include "../../intersect"
-#include "../../scene/sphere"
-#include "../../colors"
-#include "../../rayinfo"
+#include "solver"
+#include "../scene/world"
+#include "../intersect"
+#include "../scene/sphere"
+#include "../colors"
+#include "../rayinfo"
 
 namespace solver
 {

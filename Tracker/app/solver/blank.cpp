@@ -10,7 +10,7 @@
 
 namespace solver
 {
-	Color black( const Scene& scene , const Ray& ray )
+	Color blank( const Scene& scene , const Ray& ray )
 	{
 		return Colors::black;
 	}

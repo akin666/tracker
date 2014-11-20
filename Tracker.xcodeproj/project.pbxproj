@@ -34,10 +34,11 @@
 		E7C854FA1A19E69100478AC0 /* sphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C854E71A19E69100478AC0 /* sphere.cpp */; };
 		E7C854FB1A19E69100478AC0 /* world.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C854E91A19E69100478AC0 /* world.cpp */; };
 		E7C854FC1A19E69100478AC0 /* sceneloader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C854EB1A19E69100478AC0 /* sceneloader.cpp */; };
-		E7C854FD1A19E69100478AC0 /* solver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C854EE1A19E69100478AC0 /* solver.cpp */; };
 		E7C854FE1A19E69100478AC0 /* tracker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C854F01A19E69100478AC0 /* tracker.cpp */; };
 		E7C855011A1BACCC00478AC0 /* hitinfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C855001A1BACCC00478AC0 /* hitinfo.cpp */; };
-		E7C855091A1D5C6500478AC0 /* dev.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C855081A1D5C6500478AC0 /* dev.cpp */; };
+		E7F0A39D1A1DD933009C2E69 /* dev.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F0A3991A1DD933009C2E69 /* dev.cpp */; };
+		E7F0A39E1A1DD933009C2E69 /* legacy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F0A39A1A1DD933009C2E69 /* legacy.cpp */; };
+		E7F0A39F1A1DD933009C2E69 /* blank.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F0A39C1A1DD933009C2E69 /* blank.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -369,14 +370,14 @@
 		E7C854E91A19E69100478AC0 /* world.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = world.cpp; sourceTree = "<group>"; };
 		E7C854EA1A19E69100478AC0 /* sceneloader */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = sceneloader; sourceTree = "<group>"; };
 		E7C854EB1A19E69100478AC0 /* sceneloader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sceneloader.cpp; sourceTree = "<group>"; };
-		E7C854ED1A19E69100478AC0 /* solver */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = solver; sourceTree = "<group>"; };
-		E7C854EE1A19E69100478AC0 /* solver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = solver.cpp; sourceTree = "<group>"; };
 		E7C854EF1A19E69100478AC0 /* tracker */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = tracker; sourceTree = "<group>"; };
 		E7C854F01A19E69100478AC0 /* tracker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tracker.cpp; sourceTree = "<group>"; };
 		E7C854FF1A1BACCC00478AC0 /* hitinfo */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = hitinfo; sourceTree = "<group>"; };
 		E7C855001A1BACCC00478AC0 /* hitinfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hitinfo.cpp; sourceTree = "<group>"; };
-		E7C855071A1D5C6500478AC0 /* dev */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dev; sourceTree = "<group>"; };
-		E7C855081A1D5C6500478AC0 /* dev.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dev.cpp; sourceTree = "<group>"; };
+		E7F0A3991A1DD933009C2E69 /* dev.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dev.cpp; sourceTree = "<group>"; };
+		E7F0A39A1A1DD933009C2E69 /* legacy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = legacy.cpp; sourceTree = "<group>"; };
+		E7F0A39B1A1DD933009C2E69 /* solver */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = solver; sourceTree = "<group>"; };
+		E7F0A39C1A1DD933009C2E69 /* blank.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = blank.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -784,6 +785,7 @@
 		E7C854CD1A19E69100478AC0 /* app */ = {
 			isa = PBXGroup;
 			children = (
+				E7F0A3981A1DD933009C2E69 /* solver */,
 				E7C854FF1A1BACCC00478AC0 /* hitinfo */,
 				E7C855001A1BACCC00478AC0 /* hitinfo.cpp */,
 				E7C854CE1A19E69100478AC0 /* action */,
@@ -803,7 +805,6 @@
 				E7C854DD1A19E69100478AC0 /* scene */,
 				E7C854EA1A19E69100478AC0 /* sceneloader */,
 				E7C854EB1A19E69100478AC0 /* sceneloader.cpp */,
-				E7C854EC1A19E69100478AC0 /* solver */,
 				E7C854EF1A19E69100478AC0 /* tracker */,
 				E7C854F01A19E69100478AC0 /* tracker.cpp */,
 			);
@@ -829,23 +830,15 @@
 			path = scene;
 			sourceTree = "<group>";
 		};
-		E7C854EC1A19E69100478AC0 /* solver */ = {
+		E7F0A3981A1DD933009C2E69 /* solver */ = {
 			isa = PBXGroup;
 			children = (
-				E7C855061A1D5C6500478AC0 /* dev */,
-				E7C854ED1A19E69100478AC0 /* solver */,
-				E7C854EE1A19E69100478AC0 /* solver.cpp */,
+				E7F0A3991A1DD933009C2E69 /* dev.cpp */,
+				E7F0A39A1A1DD933009C2E69 /* legacy.cpp */,
+				E7F0A39B1A1DD933009C2E69 /* solver */,
+				E7F0A39C1A1DD933009C2E69 /* blank.cpp */,
 			);
 			path = solver;
-			sourceTree = "<group>";
-		};
-		E7C855061A1D5C6500478AC0 /* dev */ = {
-			isa = PBXGroup;
-			children = (
-				E7C855071A1D5C6500478AC0 /* dev */,
-				E7C855081A1D5C6500478AC0 /* dev.cpp */,
-			);
-			path = dev;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -913,13 +906,11 @@
 				E7C852EE1A06463400478AC0 /* log.cpp in Sources */,
 				E7C854051A06F72600478AC0 /* helpers.cpp in Sources */,
 				E7C854FC1A19E69100478AC0 /* sceneloader.cpp in Sources */,
-				E7C854FD1A19E69100478AC0 /* solver.cpp in Sources */,
 				E7C852EF1A06463400478AC0 /* native.cpp in Sources */,
 				E7C852ED1A06463400478AC0 /* init.cpp in Sources */,
 				E7C854F51A19E69100478AC0 /* rayinfo.cpp in Sources */,
 				E7C852F21A06463400478AC0 /* corerandom.cpp in Sources */,
 				E7C854F91A19E69100478AC0 /* scene.cpp in Sources */,
-				E7C855091A1D5C6500478AC0 /* dev.cpp in Sources */,
 				E7C854F71A19E69100478AC0 /* light.cpp in Sources */,
 				E7C854C71A182A3800478AC0 /* TinyJS.cpp in Sources */,
 				E7C854F81A19E69100478AC0 /* node.cpp in Sources */,
@@ -931,8 +922,11 @@
 				E7C854181A0B583700478AC0 /* colortools.cpp in Sources */,
 				E7C854F21A19E69100478AC0 /* colors.cpp in Sources */,
 				E7C852F01A06463400478AC0 /* tgalib.cpp in Sources */,
+				E7F0A39F1A1DD933009C2E69 /* blank.cpp in Sources */,
 				E7C854F31A19E69100478AC0 /* intersect.cpp in Sources */,
+				E7F0A39E1A1DD933009C2E69 /* legacy.cpp in Sources */,
 				E7C854C91A182A3800478AC0 /* TinyJS_MathFunctions.cpp in Sources */,
+				E7F0A39D1A1DD933009C2E69 /* dev.cpp in Sources */,
 				E7C854FB1A19E69100478AC0 /* world.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
