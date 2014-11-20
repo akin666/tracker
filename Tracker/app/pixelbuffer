@@ -1,0 +1,88 @@
+/*
+ * PixelBuffer
+ *
+ *  Created on: 21.10.2014
+ *      Author: akin
+ */
+
+#ifndef APP_PIXELBUFFER_HPP_
+#define APP_PIXELBUFFER_HPP_
+
+#include <stdtypes>
+
+template <class CType>
+class PixelBuffer
+{
+private:
+	uint width;
+	uint height;
+	uint size;
+	
+	CType *data;
+public:
+	PixelBuffer()
+	: data(nullptr)
+	, width(0)
+	, height(0)
+	, size(0)
+	{
+	}
+
+	~PixelBuffer()
+	{
+		delete[] data;
+		data = nullptr;
+	}
+
+	template <class TType>
+	void init( const PixelBuffer<TType>& other )
+	{
+		init( other.getWidth() , other.getHeight() );
+	}
+
+	void init( uint width , uint height )
+	{
+		this->width = width;
+		this->height = height;
+
+		this->size = this->width * this->height;
+
+		this->data = new CType[this->size];
+	}
+
+	uint getWidth() const
+	{
+		return width;
+	}
+
+	uint getHeight() const
+	{
+		return height;
+	}
+
+	uint getSize() const
+	{
+		return size;
+	}
+
+	CType *getBuffer() const
+	{
+		return data;
+	}
+
+	void set( uint width , uint height , const CType& pixel )
+	{
+		width %= this->width;
+		height %= this->height;
+		uint index = ((height*this->width)+width);
+		
+		if( index >= this->size )
+		{
+			throw "NOOO";
+		}
+
+		data[index] = pixel;
+	}
+};
+
+#endif // APP_PIXELBUFFER_HPP_

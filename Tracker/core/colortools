@@ -1,0 +1,33 @@
+/*
+ * COLORTOOLS
+ *
+ *  Created on: 1.7.2012
+ *      Author: akin
+ *
+ *      defines common gfx types.
+ */
+
+#ifndef COLORTOOLS_H_123_
+#define COLORTOOLS_H_123_
+
+#include "stdgfx"
+
+// HSB
+void rgb2hsb( const Color& from , Color& to );
+void hsb2rgb( const Color& from , Color& to );
+
+Color rgb2hsb( Color from );
+Color hsb2rgb( Color from );
+
+void hsbAdd( const Color& a , const Color& b , Color& out );
+void hsbMultiply( const Color& a , float multi , Color& out );
+
+// HSP
+void rgb2hsp( const Color& from , Color& to );
+void hsp2rgb( const Color& from , Color& to );
+
+Color rgb2hsp( Color from );
+Color hsp2rgb( Color from );
+
+
+#endif // COLORTOOLS_H_123_

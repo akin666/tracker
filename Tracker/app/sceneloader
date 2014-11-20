@@ -1,0 +1,27 @@
+/*
+ * sceneloader
+ *
+ *  Created on: 21.10.2014
+ *      Author: akin
+ */
+
+#ifndef APP_SCENELOADER_HPP_
+#define APP_SCENELOADER_HPP_
+
+#include <traccore>
+#include "scene/scene"
+
+class SceneLoader
+{
+private:
+	typedef std::unordered_map<std::string, Material> MaterialMap;
+	MaterialMap materials;
+	
+	void add( std::string name , const Material& material );
+public:
+	bool getMaterial( std::string name , Material& material ) const;
+	
+	bool load( std::string path , Scene& scene );
+};
+
+#endif // APP_SCENELOADER_HPP_

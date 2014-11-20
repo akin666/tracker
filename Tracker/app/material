@@ -1,0 +1,32 @@
+/*
+ * material.hpp
+ *
+ *  Created on: 24.10.2014
+ *      Author: akin
+ */
+
+#ifndef APP_MATERIAL_HPP_
+#define APP_MATERIAL_HPP_
+
+#include <traccore>
+
+class Material
+{
+public:
+	Color reflection;
+	Color emission;
+	Color transparency;
+	
+	Color diffuse;
+	Color specular;
+	
+	Color refraction;
+	
+	std::string name;
+public:
+	Material();
+	Material(const Material& other);
+	~Material();
+};
+
+#endif /* APP_MATERIAL_HPP_ */

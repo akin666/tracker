@@ -1,0 +1,26 @@
+/*
+ * hitinfo
+ *
+ *  Created on: 21.10.2014
+ *      Author: akin
+ */
+
+#ifndef APP_HITINFO_HPP_
+#define APP_HITINFO_HPP_
+
+#include <traccore>
+#include "material"
+
+class HitInfo
+{
+public:
+	float distance;
+	glm::vec3 point;
+	glm::vec3 normal;
+	Material material;
+	int count;
+public:
+	HitInfo();
+};
+
+#endif // APP_HITINFO_HPP_

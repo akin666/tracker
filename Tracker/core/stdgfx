@@ -1,0 +1,24 @@
+/*
+ * STDGFX
+ *
+ *  Created on: 1.7.2012
+ *      Author: akin
+ *
+ *      defines common gfx types.
+ */
+
+#ifndef STDGFX_H_123_
+#define STDGFX_H_123_
+
+#include <glm/glm.hpp>
+
+#include "stdtypes"
+#include "tcolor"
+
+//typedef TColor3<float32> Color;
+typedef glm::vec3 Color;
+
+typedef TColor4<float32> RGBAHigh;
+typedef TColor4<uint8> RGBALow;
+
+#endif // STDGFX_H_123_

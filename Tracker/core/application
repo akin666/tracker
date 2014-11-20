@@ -1,0 +1,45 @@
+/* 
+ * File:   application.hpp
+ * Author: akin
+ *
+ * Created on 20. lokakuuta 2014, 21:10
+ */
+
+#ifndef APPLICATION_HPP
+#define	APPLICATION_HPP
+
+#include <vector>
+#include <string>
+
+namespace core  {
+
+class Application 
+{
+public:
+    virtual ~Application() 
+    {
+    }
+    
+    virtual bool init( const std::vector<std::string>& args ) 
+    {
+    	return true;
+    }
+    
+    virtual void run() 
+    {
+    }
+    
+    virtual bool complete() 
+    {
+    	return true;
+    }
+    
+    virtual std::string getName()
+    {
+    	return "unknown";
+    }
+};
+
+}
+
+#endif	// APPLICATION_HPP 

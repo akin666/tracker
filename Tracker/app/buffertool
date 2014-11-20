@@ -1,0 +1,26 @@
+/*
+ * buffertool.hpp
+ *
+ *  Created on: 23.10.2014
+ *      Author: akin
+ */
+
+#ifndef APP_BUFFERTOOL_HPP_
+#define APP_BUFFERTOOL_HPP_
+
+#include "pixelbuffer"
+#include <traccore>
+
+class BufferTool
+{
+public:
+	BufferTool();
+	~BufferTool();
+	
+	static void convertHSB( const PixelBuffer<Color>& source , PixelBuffer<RGBALow>& target );
+	static void convert( const PixelBuffer<Color>& source , PixelBuffer<RGBALow>& target );
+	
+	static void clear( PixelBuffer<Color>& buffer );
+};
+
+#endif // APP_BUFFERTOOL_HPP_

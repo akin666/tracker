@@ -1,0 +1,45 @@
+/*
+ * COLORS
+ *
+ *  Created on: 24.10.2014
+ *      Author: akin
+ */
+
+#ifndef APP_COLORS_HPP_
+#define APP_COLORS_HPP_
+
+#include <traccore>
+#include <unordered_map>
+
+class Colors
+{
+private:
+	typedef std::unordered_map<std::string, Color> ColorMap;
+	ColorMap colors;
+public:
+	static const Color clear;
+
+	static const Color white;
+	static const Color black;
+	static const Color grey;
+
+	static const Color red;
+	static const Color green;
+	static const Color blue;
+
+	static const Color teal;
+	static const Color yellow;
+	static const Color magenta;
+
+	// Memebers
+	Colors();
+
+	void random( Color& out );
+
+	void set( std::string key , const Color& color );
+	bool get( std::string color , Color& out ) const;
+};
+
+#define COLORS singleton<Colors>()
+
+#endif // APP_COLORS_HPP_

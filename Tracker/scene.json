@@ -1,0 +1,209 @@
+{
+	"settings": {
+		"name": "TestScene",
+		"maximum ray": 100.0,
+		"infinite ray": 101.0,
+		"ambient" : {
+			"intensity": {
+				"r": 0.3,
+				"g": 0.3,
+				"b": 0.3
+			}
+		}
+	},
+	"colors": [
+	{
+		"name": "no refraction",
+		"r": 1.0,
+		"g": 1.0,
+		"b": 1.0
+	},
+	{
+		"name": "water",
+		"r": 1.333,
+		"g": 1.333,
+		"b": 1.333
+	},
+	{
+		"name": "ice",
+		"r": 1.3,
+		"g": 1.3,
+		"b": 1.3
+	},
+	{
+		"name": "diamond",
+		"r": 2.42,
+		"g": 2.42,
+		"b": 2.42
+	},
+	{
+		"name": "plexi",
+		"r": 1.49,
+		"g": 1.49,
+		"b": 1.49
+	},
+	{
+		"name": "glass",
+		"r": 1.62,
+		"g": 1.62,
+		"b": 1.62
+	}
+	],
+	"cameras" : [
+	    {
+		    "name": "test",
+			"position": {
+			    "x": 0.0,
+				"y": 0.0,
+				"z": 0.0
+			},
+			"orientation": {
+				 "x": 0.0,
+				 "y": 0.0,
+				 "z": 0.0
+			},
+			"width": 1920,
+			"height": 1080,
+			"dpi": 512.0,
+			"distance": 0.05
+		}
+	],
+	"materials": [
+		{
+			"name": "mirror",
+			"reflection": {
+			    "r": 0.9,
+				"g": 0.9,
+				"b": 0.9
+			},
+			"emission": "black",
+			"transparency": "black",
+			"diffuse": {
+				"r": 0.2,
+				"g": 0.2,
+				"b": 0.2
+			},
+			"specular": {
+				"r": 0.4,
+				"g": 0.4,
+				"b": 0.4
+			}
+		},
+		{
+			"name": "space",
+			"reflection": "black",
+			"emission": "black",
+			"transparency": "white",
+			"diffuse": "black",
+			"specular": "black",
+			"refraction": "no refraction"
+		},
+		{
+			"name": "air",
+			"reflection": "black",
+			"emission": "black",
+			"transparency": "white",
+			"diffuse": "black",
+			"specular": "black",
+			"refraction": "no refraction"
+		},
+		{
+			"name": "balla",
+			"reflection": {
+				"r": 0.7,
+				"g": 0.7,
+				"b": 0.7
+			},
+			"emission": "black",
+			"transparency": "black",
+			"diffuse": "red",
+			"specular": {
+				"r": 0.2,
+				"g": 0.2,
+				"b": 0.2
+			},
+			"refraction": "no refraction"
+		},
+		{
+			"name": "ballb",
+			"reflection": {
+				"r": 0.3,
+				"g": 0.3,
+				"b": 0.3
+			},
+			"emission": "black",
+			"transparency": {
+				"r": 0.5,
+				"g": 0.5,
+				"b": 0.5
+			},
+			"diffuse": "blue",
+			"specular": {
+				"r": 0.2,
+				"g": 0.2,
+				"b": 0.2
+			},
+			"refraction": "glass"
+		}
+	],
+	"nodes": [
+		{
+			"type": "light",
+			"subtype": "point",
+			"position": {
+				"x": -1.0,
+				"y": 2.0,
+				"z": 1.0
+			},
+			"intensity": {
+				"r": 10.0,
+				"g": 10.0,
+				"b": 10.0
+			}
+		},
+		{
+			"type": "light",
+			"subtype": "point",
+			"position": {
+				"x": 5.0,
+				"y": -1.0,
+				"z": 2.0
+			},
+			"intensity": {
+				"r": 10.0,
+				"g": 10.0,
+				"b": 10.0
+			}
+		},
+		{
+			"type": "sphere",
+			"radius": 1.0,
+			"position": {
+				"x": 2.0,
+				"y": 0.0,
+				"z": 5.0
+			},
+			"material": "balla"
+		},
+		{
+			"type": "sphere",
+			"radius": 1.5,
+			"position": {
+				"x": -2.0,
+				"y": 0.5,
+				"z": 5.0
+			},
+			"material": "ballb"
+		},
+		{
+			"type": "sphere",
+			"radius": 10.0,
+			"position": {
+				"x": 0.0,
+				"y": -1.0,
+				"z": 20.0
+			},
+			"material": "ballb"
+		}
+	]
+}

@@ -1,0 +1,19 @@
+
+#ifndef TRACCORE
+#define TRACCORE
+
+#include "singleton"
+#include "application"
+#include "stdtypes"
+#include "native"
+#include "log"
+#include "corerandom"
+#include "helpers"
+
+#include "stdgfx"
+#include "colortools"
+
+// glm is core tech.
+#include <glm/glm.hpp>
+
+#endif

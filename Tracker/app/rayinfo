@@ -1,0 +1,27 @@
+/*
+ * rayinfo
+ *
+ *  Created on: 21.10.2014
+ *      Author: akin
+ */
+
+#ifndef APP_RAYINFO_HPP_
+#define APP_RAYINFO_HPP_
+
+#include <traccore>
+#include "ray"
+#include "material"
+
+class RayInfo : public Ray
+{
+public:
+	const Material& material;
+	float distance;
+	int bounces;
+public:
+	RayInfo( const Material& material , const Ray& ray , float distance = 0.0f );
+	RayInfo( const Material& material , const Ray& ray , int bounces );
+	RayInfo( const Material& material , const Ray& ray , float distance , int bounces );
+};
+
+#endif // APP_RAYINFO_HPP_

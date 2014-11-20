@@ -1,0 +1,100 @@
+/*
+ * singleton
+ *
+ *  Created on: 9.1.2012
+ *      Author: akin
+ */
+
+#ifndef SINGLETON_
+#define SINGLETON_
+
+#include <iostream>
+#include <stdexcept>
+#include <memory>
+//#include <mutex>
+
+template <class CType>
+class Singleton
+{
+public:
+    typedef typename std::shared_ptr<CType> Shared;
+private:
+	//static std::mutex mutex;
+	static Shared singleton;
+public:
+	static bool isset()
+	{
+		return singleton;
+	}
+
+	static void set( Shared& ct )
+	{
+		//std::lock_guard<std::mutex> lock(mutex);
+		singleton = ct;
+	}
+
+	static void reset( Shared& ct )
+	{
+		//std::lock_guard<std::mutex> lock(mutex);
+		singleton = ct;
+	}
+        
+	static Shared create()
+	{
+		//std::lock_guard<std::mutex> lock(mutex);
+		if( !singleton ) 
+		{
+			singleton = std::make_shared<CType>();
+		}
+		return singleton;
+	}
+};
+
+// Instances
+template <class CType>
+typename Singleton<CType>::Shared Singleton<CType>::singleton;
+
+//template <class CType>
+//std::mutex Singleton<CType>::mutex;
+
+// Syntactical Sugar:
+template <class CType>
+typename Singleton<CType>::Shared singleton() 
+{
+    return Singleton<CType>::create();
+}
+
+template <class CType, class CreateType>
+typename Singleton<CType>::Shared createSingleton() 
+{
+	auto shared = std::make_shared<CreateType>();
+	auto casted = std::dynamic_pointer_cast<CType>(shared);
+	
+	if( !casted )
+	{
+		// THROW!
+	}
+	
+    Singleton<CType>::set( casted );
+    return casted;
+}
+
+template <class CType>
+void setSingleton( typename Singleton<CType>::Shared& ct ) 
+{
+    Singleton<CType>::set( ct );
+}
+
+template <class CType>
+void resetSingleton() 
+{
+    Singleton<CType>::reset();
+}
+
+template <class CType>
+bool issetSingleton() 
+{
+    return Singleton<CType>::isset();
+}
+
+#endif // SINGLETON_ 

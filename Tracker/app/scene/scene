@@ -1,0 +1,52 @@
+/* 
+ * File:   scene.hpp
+ * Author: akin
+ *
+ * Created on 20. lokakuuta 2014, 21:09
+ */
+
+#ifndef SCENE_HPP
+#define	SCENE_HPP
+
+#include <traccore>
+#include "node"
+#include "camera"
+#include "light"
+#include "../material"
+#include "../hitinfo"
+#include <unordered_map>
+
+class Scene
+{
+private:
+	std::vector<Node*> nodes;
+	std::vector<Light*> lights;
+	std::vector<Camera*> cameras;
+	Camera camera;
+	
+	Material base;
+public:
+	float max;
+	float infinite;
+	std::string name;
+	Light ambient;
+private:
+public:
+    Scene();
+    ~Scene();
+	
+	const Material& getMaterialAt( const glm::vec3& position ) const;
+
+	void add( Node *node );
+	void add( Light *light );
+	void add( Camera *camera );
+	
+	void trace( const Ray& ray , HitInfo& info ) const;
+
+	const std::vector<Light*>& getLights() const;
+	const std::vector<Node*>& getNodes() const;
+	const std::vector<Camera*>& getCameras() const;
+};
+
+#endif	// SCENE_HPP
+

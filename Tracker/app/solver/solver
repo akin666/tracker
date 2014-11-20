@@ -1,0 +1,16 @@
+
+#ifndef APP_PATHSOLVER_HPP_
+#define APP_PATHSOLVER_HPP_
+
+#include <traccore>
+#include "../ray"
+#include "../scene/scene"
+
+namespace solver
+{
+	typedef Color (*solver)( const Scene& scene , const Ray& ray );
+	
+	Color black( const Scene& scene , const Ray& ray );
+}
+
+#endif // APP_SOLVER_HPP_

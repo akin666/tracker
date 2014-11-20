@@ -1,0 +1,34 @@
+/* 
+ * File:   initapplication.hpp
+ * Author: akin
+ *
+ * Created on 20. lokakuuta 2014, 21:10
+ */
+
+#ifndef INITAPPLICATION_HPP
+#define	INITAPPLICATION_HPP
+
+#include "../application"
+
+namespace core  {
+
+class Init : public Application
+{
+public:
+	Init();
+
+    virtual ~Init();
+    
+    virtual bool init( const std::vector<std::string>& args );
+    
+    virtual void run();
+    
+    virtual bool complete();
+
+    virtual std::string getName();
+};
+
+}
+
+#endif	// INITAPPLICATION_HPP
+

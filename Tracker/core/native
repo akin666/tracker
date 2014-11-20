@@ -1,0 +1,31 @@
+/*
+ * native
+ *
+ *  Created on: 16.6.2012
+ *      Author: akin
+ *      
+ *   Native platform functions.
+ *      
+ */
+
+#ifndef COMMONNATIVE_H_
+#define COMMONNATIVE_H_
+
+#include "stdtypes"
+
+#ifndef OS_NOT_DETECTED
+# define USE_COMMON_NATIVELIB
+#endif
+
+namespace native 
+{
+	void log( const std::string& hint , std::string message );
+	
+	bool saveImage( std::string location , std::string name , int width , int height , pixelformat::Format inputformat , const void *pixels );
+
+	unsigned int openVideo( std::string location , std::string name , int width , int height , pixelformat::Format inputformat , int dpi , int framerate );
+	bool appendVideo( unsigned int handle , const void *pixels );
+	bool closeVideo( unsigned int handle );
+} // namespace native
+
+#endif // COMMONNATIVE_H_

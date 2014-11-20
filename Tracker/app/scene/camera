@@ -1,0 +1,29 @@
+/*
+ * camera.hpp
+ *
+ *  Created on: 24.10.2014
+ *      Author: akin
+ */
+
+#ifndef APP_CAMERA_HPP_
+#define APP_CAMERA_HPP_
+
+#include <traccore>
+#include "node"
+
+class Camera : public Node
+{
+private:
+public:
+	Camera();
+	virtual ~Camera();
+	
+	float distance;
+	float width;
+	float height;
+	float dpmm;
+	
+	virtual const glm::mat4& getMatrix() const;
+};
+
+#endif // APP_CAMERA_HPP_

@@ -1,0 +1,35 @@
+/*
+ * tracer.hpp
+ *
+ *  Created on: 21.10.2014
+ *      Author: akin
+ */
+
+#ifndef APP_TRACKER_HPP_
+#define APP_TRACKER_HPP_
+
+#include <traccore>
+#include "scene/scene"
+#include "pixelbuffer"
+
+class Tracker : public core::Application
+{
+private:
+	int times;
+	Scene scene;
+	PixelBuffer<Color> buffer;
+public:
+	Tracker();
+
+	virtual ~Tracker();
+
+    virtual bool init( const std::vector<std::string>& args );
+
+    virtual void run();
+
+    virtual bool complete();
+
+    virtual std::string getName();
+};
+
+#endif /* APP_TRACKER_HPP_ */

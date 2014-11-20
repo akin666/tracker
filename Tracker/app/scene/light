@@ -1,0 +1,24 @@
+/*
+ * light.hpp
+ *
+ *  Created on: 24.10.2014
+ *      Author: akin
+ */
+
+#ifndef APP_LIGHT_HPP_
+#define APP_LIGHT_HPP_
+
+#include <traccore>
+#include "node"
+
+class Light : public Node
+{
+public:
+	Color intensity;
+public:
+	Light();
+	virtual ~Light();
+};
+
+#endif // APP_LIGHT_HPP_
+ 

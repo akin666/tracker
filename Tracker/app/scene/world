@@ -1,0 +1,24 @@
+/*
+ * world.hpp
+ *
+ *  Created on: 24.10.2014
+ *      Author: akin
+ */
+
+#ifndef APP_WORLD_HPP_
+#define APP_WORLD_HPP_
+
+#include <traccore>
+
+class World
+{
+public:
+	static const glm::vec3 up;
+	static const glm::vec3 down;
+	static const glm::vec3 right;
+	static const glm::vec3 left;
+	static const glm::vec3 forward;
+	static const glm::vec3 backward;
+};
+
+#endif // APP_WORLD_HPP_
