@@ -14,6 +14,7 @@
 #include "light"
 #include "../material"
 #include "../hitinfo"
+#include "lightray"
 #include <unordered_map>
 
 class Scene
@@ -43,8 +44,6 @@ public:
 	
 	void trace( const Ray& ray , HitInfo& info ) const;
 
-	const std::vector<Light*>& getLights() const;
-	const std::vector<Node*>& getNodes() const;
 	const std::vector<Camera*>& getCameras() const;
 };
 

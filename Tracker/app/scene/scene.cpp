@@ -71,16 +71,6 @@ void Scene::trace( const Ray& ray , HitInfo& info ) const
 	}
 }
 
-const std::vector<Node*>& Scene::getNodes() const
-{
-	return nodes;
-}
-
-const std::vector<Light*>& Scene::getLights() const
-{
-	return lights;
-}
-
 const std::vector<Camera*>& Scene::getCameras() const
 {
 	return cameras;

@@ -53,7 +53,7 @@ Color solve( const Scene& scene , const RayInfo& ray , const HitInfo& hit )
 	glm::vec3 hitpointOut = hit.point + normalEpsilon;
 	glm::vec3 hitpointIn = hit.point - normalEpsilon;
 	const Material& material = hit.material;
-	
+	/*
 	for( const auto *light : scene.getLights() )
 	{
 		const glm::vec3& lightPos = light->getPosition();
@@ -64,7 +64,7 @@ Color solve( const Scene& scene , const RayInfo& ray , const HitInfo& hit )
 		{
 			continue;
 		}
-		*/
+		* /
 		
 		glm::vec3 diff = lightPos - hit.point;
 		
@@ -90,7 +90,7 @@ Color solve( const Scene& scene , const RayInfo& ray , const HitInfo& hit )
 				result += glm::pow( dotspec , 20.0f ) * material.specular * lighting;
 			}
 		}
-	}
+	}*/
 	
 	// Reflection
 	if( (material.reflection.r + material.reflection.g + material.reflection.b) > 0.0f )
