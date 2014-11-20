@@ -74,7 +74,7 @@ Color solve( const Scene& scene , const RayInfo& ray )
 	
 } // namespace reflectionns
 	
-Color dev( const Scene& scene , const Ray& ray )
+Color reflection( const Scene& scene , const Ray& ray )
 {
 	// we need more "Rich" ray.. add material & length..
 	RayInfo rayinfo( scene.getMaterialAt( ray.position ) , ray );
