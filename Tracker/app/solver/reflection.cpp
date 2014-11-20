@@ -1,5 +1,5 @@
 /*
- * dev
+ * reflection
  *
  *  Created on: 28.10.2014
  *      Author: akin
@@ -14,7 +14,7 @@
 
 namespace solver
 {
-namespace devns
+namespace reflectionns
 {
 
 Color normalToColor( const glm::vec3& normal )
@@ -72,14 +72,14 @@ Color solve( const Scene& scene , const RayInfo& ray )
 	return infinite(ray);
 }
 	
-} // namespace devns
+} // namespace reflectionns
 	
 Color dev( const Scene& scene , const Ray& ray )
 {
 	// we need more "Rich" ray.. add material & length..
 	RayInfo rayinfo( scene.getMaterialAt( ray.position ) , ray );
 	
-	return devns::solve( scene , rayinfo );
+	return reflectionns::solve( scene , rayinfo );
 }
 
 } // namespace solver
