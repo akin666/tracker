@@ -29,5 +29,11 @@ void hsp2rgb( const Color& from , Color& to );
 Color rgb2hsp( Color from );
 Color hsp2rgb( Color from );
 
+inline void lightAttenuation( float distance , Color& intensity )
+{
+	// distance in real world can be 0.0f, but by adding extremely small number,
+	// by introducing some distortion, eliminate this pesky oddity, known as 0.0f
+	intensity /= ((distance * distance) + std::numeric_limits<float>::epsilon() );
+}
 
 #endif // COLORTOOLS_H_123_

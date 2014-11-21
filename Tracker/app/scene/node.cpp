@@ -41,6 +41,17 @@ glm::vec3 Node::getPosition() const
 	return glm::vec3( pos.x , pos.y , pos.z );
 }
 
+void Node::transform( glm::vec3& point ) const
+{
+	glm::vec4 pos(point, 1.0f);
+	
+	pos = matrix * pos;
+	
+	point.x = pos.x;
+	point.y = pos.y;
+	point.z = pos.z;
+}
+
 const glm::mat4& Node::getMatrix() const
 {
 	return matrix;

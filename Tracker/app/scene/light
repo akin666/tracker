@@ -18,6 +18,8 @@ public:
 public:
 	Light();
 	virtual ~Light();
+	
+	void at( const glm::vec3& point , Color& intensity ) const;
 };
 
 #endif // APP_LIGHT_HPP_

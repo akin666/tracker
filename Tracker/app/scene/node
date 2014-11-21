@@ -26,6 +26,7 @@ public:
 	void setPosition( float x , float y , float z );
 	void setPosition( glm::vec3 position );
 	glm::vec3 getPosition() const;
+	void transform( glm::vec3& point ) const;
 	virtual const glm::mat4& getMatrix() const;
 };
 
