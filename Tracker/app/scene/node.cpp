@@ -15,6 +15,11 @@ Node::~Node()
 {
 }
 
+float Node::getEmissionRadius() const
+{
+	return 0.0f;
+}
+
 bool Node::intersects( const Ray& ray , HitInfo& info ) const
 {
 	return false;

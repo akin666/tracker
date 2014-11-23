@@ -21,6 +21,7 @@ public:
 	Node();
 	virtual ~Node();
 	
+	virtual float getEmissionRadius() const;
 	virtual bool intersects( const Ray& ray , HitInfo& info ) const;
 
 	void setPosition( float x , float y , float z );
