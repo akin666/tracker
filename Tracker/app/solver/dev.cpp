@@ -77,13 +77,6 @@ Color solve( const Scene& scene , const RayInfo& ray , const HitInfo& hit )
 			if( dot > 0.0f && (lighting.r > 0.0f || lighting.g > 0.0f || lighting.b > 0.0f ) )
 			{
 				result += dot * material.diffuse * lighting;
-				
-				glm::vec3 arr = directionoflight - 2.0f * dot * hit.normal;
-				float dotspec = glm::dot( ray.direction , arr );
-				if( dotspec > 0.0f )
-				{
-					result += glm::pow( dotspec , 20.0f ) * material.specular * lighting;
-				}
 			}
 		}
 	

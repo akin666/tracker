@@ -165,7 +165,6 @@ bool read( const Json::Value& value , Material& val )
 	readColor( value["emission"] , val.emission );
 	readColor( value["transparency"] , val.transparency );
 	readColor( value["diffuse"] , val.diffuse );
-	readColor( value["specular"] , val.specular );
 	readColor( value["refraction"] , val.refraction );
 	read( value["name"] , val.name );
 	

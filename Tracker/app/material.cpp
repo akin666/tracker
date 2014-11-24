@@ -16,7 +16,6 @@ Material::Material(const Material& other)
 , emission(other.emission)
 , transparency(other.transparency)
 , diffuse(other.diffuse)
-, specular(other.specular)
 , refraction(other.refraction)
 , name(other.name)
 {
