@@ -11,7 +11,6 @@
 #include <traccore>
 #include "node"
 #include "camera"
-#include "light"
 #include "../material"
 #include "../hitinfo"
 #include "lightray"

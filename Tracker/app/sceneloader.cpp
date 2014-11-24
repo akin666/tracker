@@ -171,25 +171,6 @@ bool read( const Json::Value& value , Material& val )
 	return true;
 }
 
-bool read( const Json::Value& value , Light& val )
-{
-	if( value.isNull() || (!value.isObject()) )
-	{
-		return false;
-	}
-	
-	std::string subtype;
-	if( !read( value["subtype"] , subtype ) )
-	{
-		subtype = "point";
-	}
-	
-	readColor( value["intensity"] , val.intensity );
-	read( value , (Node&)val );
-	
-	return true;
-}
-
 bool read( const Json::Value& value ,  Sphere& val )
 {
 	if( value.isNull() || (!value.isObject()) )

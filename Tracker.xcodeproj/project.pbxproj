@@ -29,7 +29,6 @@
 		E7C854F41A19E69100478AC0 /* material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C854D81A19E69100478AC0 /* material.cpp */; };
 		E7C854F51A19E69100478AC0 /* rayinfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C854DC1A19E69100478AC0 /* rayinfo.cpp */; };
 		E7C854F61A19E69100478AC0 /* camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C854DF1A19E69100478AC0 /* camera.cpp */; };
-		E7C854F71A19E69100478AC0 /* light.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C854E11A19E69100478AC0 /* light.cpp */; };
 		E7C854F81A19E69100478AC0 /* node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C854E31A19E69100478AC0 /* node.cpp */; };
 		E7C854F91A19E69100478AC0 /* scene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C854E51A19E69100478AC0 /* scene.cpp */; };
 		E7C854FA1A19E69100478AC0 /* sphere.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C854E71A19E69100478AC0 /* sphere.cpp */; };
@@ -362,8 +361,6 @@
 		E7C854DC1A19E69100478AC0 /* rayinfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rayinfo.cpp; sourceTree = "<group>"; };
 		E7C854DE1A19E69100478AC0 /* camera */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = camera; sourceTree = "<group>"; };
 		E7C854DF1A19E69100478AC0 /* camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = camera.cpp; sourceTree = "<group>"; };
-		E7C854E01A19E69100478AC0 /* light */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = light; sourceTree = "<group>"; };
-		E7C854E11A19E69100478AC0 /* light.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = light.cpp; sourceTree = "<group>"; };
 		E7C854E21A19E69100478AC0 /* node */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = node; sourceTree = "<group>"; };
 		E7C854E31A19E69100478AC0 /* node.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = node.cpp; sourceTree = "<group>"; };
 		E7C854E41A19E69100478AC0 /* scene */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = scene; sourceTree = "<group>"; };
@@ -825,8 +822,6 @@
 			children = (
 				E7C854DE1A19E69100478AC0 /* camera */,
 				E7C854DF1A19E69100478AC0 /* camera.cpp */,
-				E7C854E01A19E69100478AC0 /* light */,
-				E7C854E11A19E69100478AC0 /* light.cpp */,
 				E7C854E21A19E69100478AC0 /* node */,
 				E7C854E31A19E69100478AC0 /* node.cpp */,
 				E7C854E41A19E69100478AC0 /* scene */,
@@ -923,7 +918,6 @@
 				E7C854F51A19E69100478AC0 /* rayinfo.cpp in Sources */,
 				E7C852F21A06463400478AC0 /* corerandom.cpp in Sources */,
 				E7C854F91A19E69100478AC0 /* scene.cpp in Sources */,
-				E7C854F71A19E69100478AC0 /* light.cpp in Sources */,
 				E7C854C71A182A3800478AC0 /* TinyJS.cpp in Sources */,
 				E7C854F81A19E69100478AC0 /* node.cpp in Sources */,
 				E7C854021A0649C100478AC0 /* glm.cpp in Sources */,
