@@ -11,6 +11,7 @@
 #include <traccore>
 #include "material"
 
+class Node;
 class HitInfo
 {
 public:
@@ -18,6 +19,9 @@ public:
 	glm::vec3 point;
 	glm::vec3 normal;
 	Material material;
+	
+	std::vector<Node*> lights;
+	
 	int count;
 public:
 	HitInfo();

@@ -4,11 +4,9 @@
 		"maximum ray": 100.0,
 		"infinite ray": 101.0,
 		"ambient" : {
-			"intensity": {
-				"r": 0.3,
-				"g": 0.3,
-				"b": 0.3
-			}
+			"r": 0.3,
+			"g": 0.3,
+			"b": 0.3
 		}
 	},
 	"colors": [
@@ -55,7 +53,7 @@
 			"position": {
 			    "x": 0.0,
 				"y": 0.0,
-				"z": 0.0
+				"z": -5.0
 			},
 			"orientation": {
 				 "x": 0.0,
@@ -158,12 +156,8 @@
 				"g": 0.5,
 				"b": 0.5
 			},
-			"diffuse": "blue",
-			"specular": {
-				"r": 0.2,
-				"g": 0.2,
-				"b": 0.2
-			},
+			"diffuse": "black",
+			"specular": "black",
 			"refraction": "glass"
 		}
 	],
@@ -204,7 +198,7 @@
 			"type": "sphere",
 			"radius": 1.5,
 			"position": {
-				"x": -2.0,
+				"x": -4.0,
 				"y": 0.5,
 				"z": 5.0
 			},

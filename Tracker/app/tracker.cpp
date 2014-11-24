@@ -12,6 +12,7 @@
 #include "solver/solver"
 #include "scene/sphere"
 #include "colors"
+#include "materials"
 
 #include "sceneloader"
 
@@ -29,13 +30,9 @@ bool Tracker::init( const std::vector<std::string>& args )
 	SceneLoader loader;
 	
 	loader.load("scene.json", scene );
-	
 	/*
 	Material mirror;
-	mirror.color = Colors::white;
-	mirror.diffuse = 0.0f;
-	mirror.specular = 0.2f;
-	mirror.reflection = 0.9f;
+	MATERIALS->get("mirror" , mirror );
 	
 	int count = 4;
 	float jump = 1.0f;
@@ -55,8 +52,8 @@ bool Tracker::init( const std::vector<std::string>& args )
 				scene.add( sphere );
 			}
 		}
-	}*/
-
+	}
+	/**/
     return true;
 }
 

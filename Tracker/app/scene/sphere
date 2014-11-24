@@ -19,6 +19,7 @@ public:
 	virtual ~Sphere();
 	
 	virtual float getEmissionRadius() const;
+	virtual const Material& getMaterial() const;
 	
 	virtual bool intersects( const Ray& ray , HitInfo& info ) const;
 

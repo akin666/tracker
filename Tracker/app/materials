@@ -1,0 +1,34 @@
+/*
+ * MATERIALS
+ *
+ *  Created on: 24.10.2014
+ *      Author: akin
+ */
+
+#ifndef APP_MATERIALS_HPP_
+#define APP_MATERIALS_HPP_
+
+#include <traccore>
+#include <unordered_map>
+#include "material"
+
+class Materials
+{
+private:
+	typedef std::unordered_map<std::string, Material> MaterialMap;
+	MaterialMap materials;
+public:
+	static const Material clear;
+
+	// Memebers
+	Materials();
+
+	void random( Material& out );
+
+	void set( std::string key , const Material& in );
+	bool get( std::string key , Material& out ) const;
+};
+
+#define MATERIALS singleton<Materials>()
+
+#endif // APP_MATERIALS_HPP_

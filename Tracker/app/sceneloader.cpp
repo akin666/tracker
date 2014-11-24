@@ -9,7 +9,7 @@
 #include <json/json.h>
 #include <fstream>
 #include "colors"
-#include "material"
+#include "materials"
 
 #include "scene/sphere"
 
@@ -144,7 +144,7 @@ bool read( const Json::Value& value , Camera& val )
 	return true;
 }
 
-bool read( const Json::Value& value , const SceneLoader& loader , Material& val )
+bool read( const Json::Value& value , Material& val )
 {
 	if( value.isNull() )
 	{
@@ -153,7 +153,7 @@ bool read( const Json::Value& value , const SceneLoader& loader , Material& val 
 	
 	if( value.isString() )
 	{
-		return loader.getMaterial( value.asString() , val );
+		return MATERIALS->get( value.asString() , val );
 	}
 	
 	if(!value.isObject())
@@ -191,7 +191,7 @@ bool read( const Json::Value& value , Light& val )
 	return true;
 }
 
-bool read( const Json::Value& value , const SceneLoader& loader ,  Sphere& val )
+bool read( const Json::Value& value ,  Sphere& val )
 {
 	if( value.isNull() || (!value.isObject()) )
 	{
@@ -200,25 +200,9 @@ bool read( const Json::Value& value , const SceneLoader& loader ,  Sphere& val )
 	
 	read( value , (Node&)val );
 	read( value["radius"] , val.radius );
-	read( value["material"] , loader , val.material );
+	read( value["material"] , val.material );
 
 	return true;
-}
-
-void SceneLoader::add( std::string name , const Material& material )
-{
-	materials[name] = material;
-}
-
-bool SceneLoader::getMaterial( std::string name , Material& material ) const
-{
-	auto iter = materials.find(name);
-	if( iter == materials.end() )
-	{
-		return false;
-	}
-	material = iter->second;
-	return  true;
 }
 
 bool SceneLoader::load( std::string path , Scene& scene )
@@ -247,7 +231,7 @@ bool SceneLoader::load( std::string path , Scene& scene )
 		read( settings["name"] , scene.name );
 		read( settings["maximum ray"] , scene.max );
 		read( settings["infinite ray"] , scene.infinite );
-		read( settings["ambient"] , scene.ambient );
+		readColor( settings["ambient"] , scene.ambient );
 	}
 	
 	const Json::Value& colors = root["colors"];
@@ -280,9 +264,9 @@ bool SceneLoader::load( std::string path , Scene& scene )
 			const auto& jsmaterial = materials[i];
 			
 			read( jsmaterial["name"] , name );
-			read( jsmaterial , *this , material );
+			read( jsmaterial , material );
 			
-			add( name , material );
+			MATERIALS->set( name , material );
 		}
 	}
 	
@@ -332,7 +316,7 @@ bool SceneLoader::load( std::string path , Scene& scene )
 			{
 				Sphere *sphere = new Sphere;
 				
-				if( !read(jsnode , *this , *sphere ) )
+				if( !read(jsnode , *sphere ) )
 				{
 					// failed to read light..
 					LOG->error("%s:%d failed to parse sphere data!" , __FILE__ , __LINE__ );

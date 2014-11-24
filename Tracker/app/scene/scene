@@ -22,9 +22,8 @@ class Scene
 private:
 	std::vector<Node*> nodes;
 	std::vector<Node*> lights;
-	
-	// std::vector<Light*> lights;
 	std::vector<Camera*> cameras;
+	
 	Camera camera;
 	
 	Material base;
@@ -32,7 +31,7 @@ public:
 	float max;
 	float infinite;
 	std::string name;
-	Light ambient;
+	Color ambient;
 private:
 public:
     Scene();

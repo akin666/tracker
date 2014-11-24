@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E760EC0E1A23460B00737A89 /* materials.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E760EC0D1A23460B00737A89 /* materials.cpp */; };
 		E7C852A71A0645CD00478AC0 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C852A61A0645CD00478AC0 /* main.cpp */; };
 		E7C852ED1A06463400478AC0 /* init.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C852CF1A06463400478AC0 /* init.cpp */; };
 		E7C852EE1A06463400478AC0 /* log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C852D21A06463400478AC0 /* log.cpp */; };
@@ -56,6 +57,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E760EC0C1A23460B00737A89 /* materials */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = materials; sourceTree = "<group>"; };
+		E760EC0D1A23460B00737A89 /* materials.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = materials.cpp; sourceTree = "<group>"; };
 		E7C852A31A0645CD00478AC0 /* Tracker */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Tracker; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7C852A61A0645CD00478AC0 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		E7C852CD1A06463400478AC0 /* application */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = application; sourceTree = "<group>"; };
@@ -788,6 +791,8 @@
 		E7C854CD1A19E69100478AC0 /* app */ = {
 			isa = PBXGroup;
 			children = (
+				E760EC0C1A23460B00737A89 /* materials */,
+				E760EC0D1A23460B00737A89 /* materials.cpp */,
 				E7F0A3A51A1EAABB009C2E69 /* lightray */,
 				E7F0A3981A1DD933009C2E69 /* solver */,
 				E7C854FF1A1BACCC00478AC0 /* hitinfo */,
@@ -906,6 +911,7 @@
 				E7C854B21A13626600478AC0 /* jsoncpp.cpp in Sources */,
 				E7C854F11A19E69100478AC0 /* buffertool.cpp in Sources */,
 				E7C852A71A0645CD00478AC0 /* main.cpp in Sources */,
+				E760EC0E1A23460B00737A89 /* materials.cpp in Sources */,
 				E7C854FE1A19E69100478AC0 /* tracker.cpp in Sources */,
 				E7C854F61A19E69100478AC0 /* camera.cpp in Sources */,
 				E7C852EE1A06463400478AC0 /* log.cpp in Sources */,

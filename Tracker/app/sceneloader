@@ -13,14 +13,7 @@
 
 class SceneLoader
 {
-private:
-	typedef std::unordered_map<std::string, Material> MaterialMap;
-	MaterialMap materials;
-	
-	void add( std::string name , const Material& material );
 public:
-	bool getMaterial( std::string name , Material& material ) const;
-	
 	bool load( std::string path , Scene& scene );
 };
 

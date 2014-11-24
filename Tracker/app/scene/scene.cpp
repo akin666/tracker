@@ -67,6 +67,8 @@ void Scene::trace( const Ray& ray , HitInfo& info ) const
 			}
 		}
 	}
+	
+	info.lights = lights;
 }
 
 const std::vector<Camera*>& Scene::getCameras() const

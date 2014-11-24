@@ -10,8 +10,9 @@
 
 #include <traccore>
 #include "../ray"
-#include "../hitinfo"
+#include "../material"
 
+class HitInfo;
 class Node
 {
 public:
@@ -23,7 +24,8 @@ public:
 	
 	virtual float getEmissionRadius() const;
 	virtual bool intersects( const Ray& ray , HitInfo& info ) const;
-
+	virtual const Material& getMaterial() const;
+	
 	void setPosition( float x , float y , float z );
 	void setPosition( glm::vec3 position );
 	glm::vec3 getPosition() const;

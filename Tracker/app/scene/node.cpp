@@ -6,6 +6,8 @@
  */
 
 #include "node"
+#include "../hitinfo"
+#include "../materials"
 
 Node::Node()
 {
@@ -23,6 +25,11 @@ float Node::getEmissionRadius() const
 bool Node::intersects( const Ray& ray , HitInfo& info ) const
 {
 	return false;
+}
+
+const Material& Node::getMaterial() const
+{
+	return Materials::clear;
 }
 
 void Node::setPosition( float x , float y , float z )

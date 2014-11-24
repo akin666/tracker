@@ -6,6 +6,7 @@
  */
 
 #include "hitinfo"
+#include "scene/node"
 
 HitInfo::HitInfo()
 : count(0)

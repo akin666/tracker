@@ -27,6 +27,7 @@ Color normalToColor( const glm::vec3& normal )
 
 Color infinite( const Ray& ray )
 {
+	//return Colors::black;
 	return normalToColor(ray.direction);
 }
 
@@ -37,6 +38,56 @@ Color solve( const Scene& scene , const RayInfo& ray , const HitInfo& hit )
 	Color result = Colors::black;
 	
 	const Material& material = hit.material;
+	
+	{
+		glm::vec3 normalEpsilon = hit.normal * (std::numeric_limits<float>::epsilon());
+		glm::vec3 hitpointOut = hit.point + normalEpsilon;
+		glm::vec3 hitpointIn = hit.point - normalEpsilon;
+		
+		const auto& lights = hit.lights;
+		
+		for( const auto *light : lights )
+		{
+			const glm::vec3& lightPos = light->getPosition();
+			
+			// line between hitpoint and light collides with something -> no light contibution
+			/*
+			if( lineCollides( scene , hitpointOut , lightPos ) )
+			{
+				continue;
+			}
+			*/
+			
+			const Material& lightMaterial = light->getMaterial();
+			
+			glm::vec3 diff = lightPos - hit.point;
+			float distance = glm::distance( glm::vec3() , diff );
+			
+			Color lighting = lightMaterial.emission;
+			
+			lightAttenuation( distance , lighting );
+			
+			auto directionoflight = glm::normalize( diff );
+			float dot = glm::dot( hit.normal , directionoflight );
+			
+			if ( lighting.r < 0.0f ) lighting.r = 0.0f;
+			if ( lighting.g < 0.0f ) lighting.g = 0.0f;
+			if ( lighting.b < 0.0f ) lighting.b = 0.0f;
+			
+			if( dot > 0.0f && (lighting.r > 0.0f || lighting.g > 0.0f || lighting.b > 0.0f ) )
+			{
+				result += dot * material.diffuse * lighting;
+				
+				glm::vec3 arr = directionoflight - 2.0f * dot * hit.normal;
+				float dotspec = glm::dot( ray.direction , arr );
+				if( dotspec > 0.0f )
+				{
+					result += glm::pow( dotspec , 20.0f ) * material.specular * lighting;
+				}
+			}
+		}
+	
+	}
 	
 	// Reflection
 	if( (material.reflection.r + material.reflection.g + material.reflection.b) > 0.0f )
@@ -53,7 +104,7 @@ Color solve( const Scene& scene , const RayInfo& ray , const HitInfo& hit )
 	result += material.emission;
 	
 	// Ambient
-	result += material.diffuse;
+	result += material.diffuse * scene.ambient;
 	
 	return result;
 }

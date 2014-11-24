@@ -107,7 +107,7 @@ Color solve( const Scene& scene , const RayInfo& ray , const HitInfo& hit )
 	result += material.emission;
 	
 	// Ambient
-	result += material.diffuse * scene.ambient.intensity;
+	result += material.diffuse * scene.ambient;
 	
 	// Transparency
 	if( material.transparency != Colors::black )
