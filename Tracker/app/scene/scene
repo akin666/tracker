@@ -3,6 +3,24 @@
  * Author: akin
  *
  * Created on 20. lokakuuta 2014, 21:09
+ 
+ Refraction
+  - Screws with ray calculations, in theory, they can only screw with 90 degree angles..
+    but if there be 2-n objects with refraction, the light contribution to the pixel, will
+    be affected by any sorts of lights.. thus?? we need to trace ALL lights for the pixel..
+    this.. just doesnt work well.. too heavy..
+	optimize with light volumes? light volumes to be distorted by lenses/refraction.
+  
+  - definition of light volume?
+ 
+ 
+ simple function that handles single channel refraction indexes?
+ 
+ implement the channel independent raytracing? implement some functionality
+ to read each refraction indexes for separate channels..
+ 
+ -> 3+ more times rays..
+ 
  */
 
 #ifndef SCENE_HPP
