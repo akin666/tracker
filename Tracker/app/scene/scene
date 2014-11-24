@@ -60,6 +60,7 @@ public:
 	void add( Camera *camera );
 	
 	void trace( const Ray& ray , HitInfo& info ) const;
+	void traceTo( const glm::vec3& origin , const Node *target , HitInfo& info ) const;
 
 	const std::vector<Camera*>& getCameras() const;
 };

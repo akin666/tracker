@@ -19,6 +19,7 @@ public:
 	glm::vec3 point;
 	glm::vec3 normal;
 	Material material;
+	float inside;
 	
 	std::vector<Node*> lights;
 	

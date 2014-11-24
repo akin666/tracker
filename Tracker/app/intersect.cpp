@@ -27,7 +27,13 @@ bool intersects( const Ray& ray , const glm::vec3& position , float radius )
 }
 
 // additions from http://sci.tuomastonteri.fi/programming/sse/example3
-bool intersects( const Ray& ray , const glm::vec3& position , float radius , glm::vec3& hitpoint , float& distance , glm::vec3& normal )
+bool intersects(
+				const Ray& ray ,
+				const glm::vec3& position ,
+				float radius ,
+				glm::vec3& hitpoint ,
+				float& distance ,
+				glm::vec3& normal )
 {
 	glm::vec3 diff = ray.position - position;
 	

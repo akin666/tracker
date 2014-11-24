@@ -27,7 +27,7 @@ Color normalToColor( const glm::vec3& normal )
 
 Color infinite( const Ray& ray )
 {
-	//return Colors::black;
+	return Colors::black;
 	return normalToColor(ray.direction);
 }
 
@@ -46,17 +46,18 @@ Color solve( const Scene& scene , const RayInfo& ray , const HitInfo& hit )
 		
 		const auto& lights = hit.lights;
 		
+		HitInfo tmpInfo;
+		
 		for( const auto *light : lights )
 		{
 			const glm::vec3& lightPos = light->getPosition();
 			
 			// line between hitpoint and light collides with something -> no light contibution
-			/*
-			if( lineCollides( scene , hitpointOut , lightPos ) )
+			scene.traceTo( hit.point , light , tmpInfo );
+			if( tmpInfo.count > 0 )
 			{
 				continue;
 			}
-			*/
 			
 			const Material& lightMaterial = light->getMaterial();
 			
@@ -79,7 +80,6 @@ Color solve( const Scene& scene , const RayInfo& ray , const HitInfo& hit )
 				result += dot * material.diffuse * lighting;
 			}
 		}
-	
 	}
 	
 	// Reflection

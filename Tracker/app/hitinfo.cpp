@@ -10,5 +10,6 @@
 
 HitInfo::HitInfo()
 : count(0)
+, inside(0)
 {
 }

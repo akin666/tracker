@@ -30,12 +30,12 @@ bool Tracker::init( const std::vector<std::string>& args )
 	SceneLoader loader;
 	
 	loader.load("scene.json", scene );
-	/*
+	/**
 	Material mirror;
 	MATERIALS->get("mirror" , mirror );
 	
 	int count = 4;
-	float jump = 1.0f;
+	float jump = 7.5f;
 	int half = count / 2;
 	for( int z = -half ; z < half ; ++z )
 	{
@@ -46,7 +46,7 @@ bool Tracker::init( const std::vector<std::string>& args )
 				///mirror.color = World::randomColor();
 				
 				Sphere *sphere = new Sphere();
-				sphere->radius = 0.25f;
+				sphere->radius = 0.5f;
 				sphere->setPosition( x * jump , y * jump , z * jump );
 				sphere->material = mirror;
 				scene.add( sphere );

@@ -58,7 +58,7 @@
 			"orientation": {
 				 "x": 0.0,
 				 "y": 0.0,
-				 "z": 0.0
+				 "z": 45.0
 			},
 			"width": 1920,
 			"height": 1080,
@@ -70,21 +70,16 @@
 		{
 			"name": "mirror",
 			"reflection": {
-			    "r": 0.9,
-				"g": 0.9,
-				"b": 0.9
+			    "r": 0.99,
+				"g": 0.99,
+				"b": 0.99
 			},
 			"emission": "black",
 			"transparency": "black",
 			"diffuse": {
-				"r": 0.2,
-				"g": 0.2,
-				"b": 0.2
-			},
-			"specular": {
-				"r": 0.4,
-				"g": 0.4,
-				"b": 0.4
+				"r": 0.01,
+				"g": 0.01,
+				"b": 0.01
 			}
 		},
 		{
@@ -93,7 +88,6 @@
 			"emission": "black",
 			"transparency": "white",
 			"diffuse": "black",
-			"specular": "black",
 			"refraction": "no refraction"
 		},
 		{
@@ -102,7 +96,6 @@
 			"emission": "black",
 			"transparency": "white",
 			"diffuse": "black",
-			"specular": "black",
 			"refraction": "no refraction"
 		},
 		{
@@ -115,11 +108,6 @@
 			"emission": "black",
 			"transparency": "black",
 			"diffuse": "red",
-			"specular": {
-				"r": 0.2,
-				"g": 0.2,
-				"b": 0.2
-			},
 			"refraction": "no refraction"
 		},
 		{
@@ -136,11 +124,22 @@
 				"b": 0.5
 			},
 			"diffuse": "blue",
-			"specular": {
-				"r": 0.2,
-				"g": 0.2,
-				"b": 0.2
+			"refraction": "glass"
+		},
+		{
+			"name": "ballc",
+			"reflection": {
+				"r": 0.3,
+				"g": 0.3,
+				"b": 0.3
 			},
+			"emission": "black",
+			"transparency": {
+				"r": 0.5,
+				"g": 0.5,
+				"b": 0.5
+			},
+			"diffuse": "green",
 			"refraction": "glass"
 		},
 		{
@@ -157,7 +156,6 @@
 				"b": 0.5
 			},
 			"diffuse": "black",
-			"specular": "black",
 			"refraction": "glass"
 		}
 	],
@@ -167,7 +165,7 @@
 			"type": "sphere",
 			"radius": 0.5,
 			"position": {
-				"x": 5.0,
+				"x": 3.0,
 				"y": -1.0,
 				"z": 2.0
 			},
@@ -198,7 +196,7 @@
 			"type": "sphere",
 			"radius": 1.5,
 			"position": {
-				"x": -4.0,
+				"x": -3.0,
 				"y": 0.5,
 				"z": 5.0
 			},
@@ -206,13 +204,23 @@
 		},
 		{
 			"type": "sphere",
-			"radius": 10.0,
+			"radius": 1.2,
+			"position": {
+				"x": 0.1,
+				"y": -2.0,
+				"z": 3.0
+			},
+			"material": "ballc"
+		},
+		{
+			"type": "sphere",
+			"radius": 1.5,
 			"position": {
 				"x": 0.0,
-				"y": -1.0,
-				"z": 20.0
+				"y": 0.0,
+				"z": 4.5
 			},
-			"material": "ballb"
+			"material": "mirror"
 		}
 	]
 }
