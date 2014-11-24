@@ -7,6 +7,7 @@
 
 #include "sphere"
 #include "../intersect"
+#include <colortools>
 
 Sphere::Sphere()
 : radius( 0.0f )
@@ -15,6 +16,11 @@ Sphere::Sphere()
 
 Sphere::~Sphere()
 {
+}
+
+float Sphere::getEmissionRadius() const
+{
+	return ::lightMaxDistance(material.emission);
 }
 
 bool Sphere::intersects( const Ray& ray , HitInfo& info ) const

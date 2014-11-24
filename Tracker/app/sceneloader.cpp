@@ -198,9 +198,9 @@ bool read( const Json::Value& value , const SceneLoader& loader ,  Sphere& val )
 		return false;
 	}
 	
+	read( value , (Node&)val );
 	read( value["radius"] , val.radius );
 	read( value["material"] , loader , val.material );
-	read( value , (Node&)val );
 
 	return true;
 }
@@ -325,22 +325,6 @@ bool SceneLoader::load( std::string path , Scene& scene )
 			{
 				// no type specified, skip.
 				LOG->error("%s:%d no type specified for node!" , __FILE__ , __LINE__ );
-				continue;
-			}
-			
-			if( type == "light" )
-			{
-				Light *light = new Light;
-				
-				if( !read(jsnode , *light ) )
-				{
-					// failed to read light..
-					LOG->error("%s:%d failed to parse light data!" , __FILE__ , __LINE__ );
-					delete light; // do not leak it..
-					continue;
-				}
-				
-				scene.add(light);
 				continue;
 			}
 			

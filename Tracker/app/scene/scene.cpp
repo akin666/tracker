@@ -18,8 +18,6 @@ Scene::~Scene()
 {
 	for( auto *node : nodes )
 		delete node;
-	for( auto *light : lights )
-		delete light;
 	for( auto *camera : cameras )
 		delete camera;
 	
@@ -36,11 +34,11 @@ const Material& Scene::getMaterialAt( const glm::vec3& position ) const
 void Scene::add( Node *node )
 {
 	nodes.push_back( node );
-}
-
-void Scene::add( Light *light )
-{
-	lights.push_back( light );
+	
+	if( node->getEmissionRadius() > 0.0f )
+	{
+		lights.push_back(node);
+	}
 }
 
 void Scene::add( Camera *camera )

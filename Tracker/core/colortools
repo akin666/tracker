@@ -11,6 +11,7 @@
 #define COLORTOOLS_H_123_
 
 #include "stdgfx"
+#include <glm/gtx/extented_min_max.hpp>
 
 // HSB
 void rgb2hsb( const Color& from , Color& to );
@@ -34,6 +35,19 @@ inline void lightAttenuation( float distance , Color& intensity )
 	// distance in real world can be 0.0f, but by adding extremely small number,
 	// by introducing some distortion, eliminate this pesky oddity, known as 0.0f
 	intensity /= ((distance * distance) + std::numeric_limits<float>::epsilon() );
+}
+
+inline float lightMaxDistance( const Color& intensity )
+{
+	if( intensity.r == 0.0f && intensity.g == 0.0f &&  intensity.b == 0.0f )
+	{
+		return 0.0f;
+	}
+	
+	return 10.0f;
+	auto distance = glm::sqrt((intensity / -std::numeric_limits<float>::epsilon()) / intensity );
+	
+	return glm::max( distance.r , distance.g , distance.b );
 }
 
 #endif // COLORTOOLS_H_123_

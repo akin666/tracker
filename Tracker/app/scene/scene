@@ -21,7 +21,9 @@ class Scene
 {
 private:
 	std::vector<Node*> nodes;
-	std::vector<Light*> lights;
+	std::vector<Node*> lights;
+	
+	// std::vector<Light*> lights;
 	std::vector<Camera*> cameras;
 	Camera camera;
 	
@@ -39,7 +41,6 @@ public:
 	const Material& getMaterialAt( const glm::vec3& position ) const;
 
 	void add( Node *node );
-	void add( Light *light );
 	void add( Camera *camera );
 	
 	void trace( const Ray& ray , HitInfo& info ) const;
