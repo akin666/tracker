@@ -94,7 +94,11 @@
 			"name": "air",
 			"reflection": "black",
 			"emission": "black",
-			"transparency": "black",
+			"transparency":  {
+				"r": 0.0,
+				"g": 0.0,
+				"b": 0.01
+			},
 			"diffuse": "black",
 			"refraction": "no refraction"
 		},
