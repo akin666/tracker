@@ -31,14 +31,26 @@ Color infinite( const Ray& ray )
 	return normalToColor(ray.direction);
 }
 
-Color solve( const Scene& scene , const RayInfo& ray );
-
-Color solve( const Scene& scene , const RayInfo& ray , const HitInfo& hit )
+Color solve( const Scene& scene , const RayInfo& ray , const Material& medium )
 {
-	Color result = ray.material.transparency * hit.distance;
+	// Hit solving..
+	HitInfo hit;
+	scene.trace( ray , hit );
+	if( (ray.distance + hit.distance) > scene.max )
+	{
+		return infinite(ray);
+	}
+	
+	if( hit.count <= 0 )
+	{
+		// No hit..
+		return infinite(ray);
+	}
+	
+	// It hit something..
+	Color result = medium.transparency * hit.distance;
 	
 	const Material& material = hit.material;
-	
 	{
 		glm::vec3 normalEpsilon = hit.normal * (std::numeric_limits<float>::epsilon());
 		glm::vec3 hitpointOut = hit.point + normalEpsilon;
@@ -92,18 +104,18 @@ Color solve( const Scene& scene , const RayInfo& ray , const HitInfo& hit )
 	if( material.transparency != Colors::white )
 	{
 		// Refraction?!? TODO
-		RayInfo itmp( material , Ray( hit.point + ( ray.direction * 0.001f ) , ray.direction ) , ray.distance + hit.distance );
+		RayInfo itmp( Ray( hit.point + ( ray.direction * 0.001f ) , ray.direction ) , ray.distance + hit.distance );
 		
-		result += solve( scene , itmp );
+		result += solve( scene , itmp , material );
 	}
 	
 	// Reflection
 	if( (material.reflection.r + material.reflection.g + material.reflection.b) > 0.0f )
 	{
 		glm::vec3 direction = ray.direction - 2.0f * glm::dot( ray.direction , hit.normal ) * hit.normal;
-		RayInfo itmp( ray.material , Ray( hit.point , direction ) , ray.distance + hit.distance );
+		RayInfo itmp( Ray( hit.point , direction ) , ray.distance + hit.distance );
 		
-		Color reflection = solve( scene , itmp );
+		Color reflection = solve( scene , itmp , medium );
 		
 		result += reflection * material.reflection;
 	}
@@ -117,28 +129,14 @@ Color solve( const Scene& scene , const RayInfo& ray , const HitInfo& hit )
 	return result;
 }
 
-Color solve( const Scene& scene , const RayInfo& ray )
-{
-	if( ray.distance < scene.max )
-	{
-		HitInfo hit;
-		scene.trace( ray , hit );
-		if( hit.count > 0 )
-		{
-			return solve( scene, ray, hit );
-		}
-	}
-	return infinite(ray);
-}
-	
 } // namespace devns
 	
 Color dev( const Scene& scene , const Ray& ray )
 {
 	// we need more "Rich" ray.. add material & length..
-	RayInfo rayinfo( scene.getMaterialAt( ray.position ) , ray );
+	RayInfo rayinfo( ray );
 	
-	return devns::solve( scene , rayinfo );
+	return devns::solve( scene , rayinfo , scene.getMaterialAt( ray.position ) );
 }
 
 } // namespace solver

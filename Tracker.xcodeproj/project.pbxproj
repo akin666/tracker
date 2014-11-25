@@ -39,7 +39,6 @@
 		E7F0A39D1A1DD933009C2E69 /* dev.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F0A3991A1DD933009C2E69 /* dev.cpp */; };
 		E7F0A39E1A1DD933009C2E69 /* legacy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F0A39A1A1DD933009C2E69 /* legacy.cpp */; };
 		E7F0A39F1A1DD933009C2E69 /* blank.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F0A39C1A1DD933009C2E69 /* blank.cpp */; };
-		E7F0A3A11A1DDBF8009C2E69 /* reflection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7F0A3A01A1DDBF8009C2E69 /* reflection.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -379,7 +378,6 @@
 		E7F0A39A1A1DD933009C2E69 /* legacy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = legacy.cpp; sourceTree = "<group>"; };
 		E7F0A39B1A1DD933009C2E69 /* solver */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = solver; sourceTree = "<group>"; };
 		E7F0A39C1A1DD933009C2E69 /* blank.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = blank.cpp; sourceTree = "<group>"; };
-		E7F0A3A01A1DDBF8009C2E69 /* reflection.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = reflection.cpp; sourceTree = "<group>"; };
 		E7F0A3A51A1EAABB009C2E69 /* lightray */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = lightray; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -837,7 +835,6 @@
 		E7F0A3981A1DD933009C2E69 /* solver */ = {
 			isa = PBXGroup;
 			children = (
-				E7F0A3A01A1DDBF8009C2E69 /* reflection.cpp */,
 				E7F0A3991A1DD933009C2E69 /* dev.cpp */,
 				E7F0A39A1A1DD933009C2E69 /* legacy.cpp */,
 				E7F0A39B1A1DD933009C2E69 /* solver */,
@@ -913,7 +910,6 @@
 				E7C854051A06F72600478AC0 /* helpers.cpp in Sources */,
 				E7C854FC1A19E69100478AC0 /* sceneloader.cpp in Sources */,
 				E7C852EF1A06463400478AC0 /* native.cpp in Sources */,
-				E7F0A3A11A1DDBF8009C2E69 /* reflection.cpp in Sources */,
 				E7C852ED1A06463400478AC0 /* init.cpp in Sources */,
 				E7C854F51A19E69100478AC0 /* rayinfo.cpp in Sources */,
 				E7C852F21A06463400478AC0 /* corerandom.cpp in Sources */,

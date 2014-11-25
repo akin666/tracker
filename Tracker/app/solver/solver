@@ -11,8 +11,6 @@ namespace solver
 	typedef Color (*solver)( const Scene& scene , const Ray& ray );
 	
 	Color blank( const Scene& scene , const Ray& ray );
-	Color legacy( const Scene& scene , const Ray& ray );
-	Color reflection( const Scene& scene , const Ray& ray );
 	Color dev( const Scene& scene , const Ray& ray );
 }
 

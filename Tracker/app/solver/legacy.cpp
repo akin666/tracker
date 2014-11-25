@@ -4,7 +4,7 @@
  *  Created on: 28.10.2014
  *      Author: akin
  */
-
+/*
 #include "solver"
 #include "../scene/world"
 #include "../intersect"
@@ -29,20 +29,6 @@ Color infinite( const Ray& ray )
 {
 	return normalToColor(ray.direction);
 }
-
-/*
-bool lineCollides( const Scene& scene , const glm::vec3& a1 , const glm::vec3& a2 )
-{
-	for( auto *node : scene.getNodes() )
-	{
-		if( intersects( a1 , a2 , *node ) )
-		{
-			return true;
-		}
-	}
-	return false;
-}
-*/
 	
 Color solve( const Scene& scene , const RayInfo& ray );
 
@@ -53,7 +39,7 @@ Color solve( const Scene& scene , const RayInfo& ray , const HitInfo& hit )
 	glm::vec3 hitpointOut = hit.point + normalEpsilon;
 	glm::vec3 hitpointIn = hit.point - normalEpsilon;
 	const Material& material = hit.material;
-	/*
+	
 	for( const auto *light : scene.getLights() )
 	{
 		const glm::vec3& lightPos = light->getPosition();
@@ -90,7 +76,7 @@ Color solve( const Scene& scene , const RayInfo& ray , const HitInfo& hit )
 				result += glm::pow( dotspec , 20.0f ) * material.specular * lighting;
 			}
 		}
-	}*/
+	}
 	
 	// Reflection
 	if( (material.reflection.r + material.reflection.g + material.reflection.b) > 0.0f )
@@ -177,3 +163,4 @@ Color legacy( const Scene& scene , const Ray& ray )
 }
 
 } // namespace solver
+*/
