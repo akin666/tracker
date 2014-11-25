@@ -59,6 +59,8 @@ public:
 	void add( Node *node );
 	void add( Camera *camera );
 	
+	void getLights( const HitInfo& info , std::vector<Node*>& lights ) const;
+	
 	void trace( const Ray& ray , HitInfo& info ) const;
 	void traceTo( const glm::vec3& origin , const Node *target , HitInfo& info ) const;
 

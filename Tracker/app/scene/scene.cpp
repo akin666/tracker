@@ -6,6 +6,7 @@
  */
 
 #include "scene"
+#include "../materials"
 
 Scene::Scene()
 {
@@ -28,7 +29,7 @@ Scene::~Scene()
 
 const Material& Scene::getMaterialAt( const glm::vec3& position ) const
 {
-	return base;
+	return MATERIALS->get( "air" );
 }
 
 void Scene::add( Node *node )
@@ -44,6 +45,12 @@ void Scene::add( Node *node )
 void Scene::add( Camera *camera )
 {
 	cameras.push_back( camera );
+}
+
+
+void Scene::getLights( const HitInfo& info , std::vector<Node*>& lights ) const
+{
+	lights = this->lights;
 }
 
 void Scene::trace( const Ray& ray , HitInfo& info ) const
@@ -64,11 +71,10 @@ void Scene::trace( const Ray& ray , HitInfo& info ) const
 				info.normal = tmp.normal;
 				info.material = tmp.material;
 				info.inside = tmp.inside;
+				info.node = node;
 			}
 		}
 	}
-	
-	info.lights = lights;
 }
 
 void Scene::traceTo( const glm::vec3& position , const Node *target , HitInfo& info ) const
@@ -96,6 +102,7 @@ void Scene::traceTo( const glm::vec3& position , const Node *target , HitInfo& i
 				info.normal = tmp.normal;
 				info.material = tmp.material;
 				info.inside = tmp.inside;
+				info.node = node;
 			}
 		}
 	}

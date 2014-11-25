@@ -27,6 +27,8 @@ public:
 
 	void set( std::string key , const Material& in );
 	bool get( std::string key , Material& out ) const;
+	
+	const Material& get( std::string key ) const;
 };
 
 #define MATERIALS singleton<Materials>()

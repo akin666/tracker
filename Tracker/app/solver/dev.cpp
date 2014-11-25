@@ -44,7 +44,9 @@ Color solve( const Scene& scene , const RayInfo& ray , const HitInfo& hit )
 		glm::vec3 hitpointOut = hit.point + normalEpsilon;
 		glm::vec3 hitpointIn = hit.point - normalEpsilon;
 		
-		const auto& lights = hit.lights;
+		std::vector<Node*> lights;
+		
+		scene.getLights( hit , lights );
 		
 		HitInfo tmpInfo;
 		

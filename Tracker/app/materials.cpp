@@ -33,3 +33,13 @@ bool Materials::get( std::string key , Material& out ) const
 	out = iter->second;
 	return true;
 }
+
+const Material& Materials::get( std::string key ) const
+{
+	auto iter = materials.find(key);
+	if( iter == materials.end() )
+	{
+		return clear;
+	}
+	return iter->second;
+}
