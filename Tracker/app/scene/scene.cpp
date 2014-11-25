@@ -9,9 +9,9 @@
 
 Scene::Scene()
 {
-	base.transparency.x = 1.0f;
-	base.transparency.y = 1.0f;
-	base.transparency.z = 1.0f;
+	base.transparency.x = 0.0f;
+	base.transparency.y = 0.0f;
+	base.transparency.z = 0.0f;
 }
 
 Scene::~Scene()

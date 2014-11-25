@@ -27,7 +27,7 @@ Color normalToColor( const glm::vec3& normal )
 
 Color infinite( const Ray& ray )
 {
-	return Colors::black;
+	//return Colors::black;
 	return normalToColor(ray.direction);
 }
 
@@ -35,7 +35,7 @@ Color solve( const Scene& scene , const RayInfo& ray );
 
 Color solve( const Scene& scene , const RayInfo& ray , const HitInfo& hit )
 {
-	Color result = Colors::black;
+	Color result = ray.material.transparency * hit.distance;
 	
 	const Material& material = hit.material;
 	
@@ -53,8 +53,12 @@ Color solve( const Scene& scene , const RayInfo& ray , const HitInfo& hit )
 			const glm::vec3& lightPos = light->getPosition();
 			
 			// line between hitpoint and light collides with something -> no light contibution
+			
+			// we  need to trace in do while loop, or in for loop..
+			// and calculate the light contribution on the go..
+			// the ray might go through several refractions and surfaces
 			scene.traceTo( hit.point , light , tmpInfo );
-			if( tmpInfo.count > 0 )
+			if( tmpInfo.count > 0 && tmpInfo.material.transparency != Colors::black )
 			{
 				continue;
 			}
@@ -80,6 +84,15 @@ Color solve( const Scene& scene , const RayInfo& ray , const HitInfo& hit )
 				result += dot * material.diffuse * lighting;
 			}
 		}
+	}
+	
+	// Transparency
+	if( material.transparency != Colors::white )
+	{
+		// Refraction?!? TODO
+		RayInfo itmp( material , Ray( hit.point + ( ray.direction * 0.001f ) , ray.direction ) , ray.distance + hit.distance );
+		
+		result += solve( scene , itmp );
 	}
 	
 	// Reflection

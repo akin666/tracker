@@ -75,7 +75,7 @@
 				"b": 0.99
 			},
 			"emission": "black",
-			"transparency": "black",
+			"transparency": "white",
 			"diffuse": {
 				"r": 0.01,
 				"g": 0.01,
@@ -119,9 +119,9 @@
 			},
 			"emission": "black",
 			"transparency": {
-				"r": 0.5,
-				"g": 0.5,
-				"b": 0.5
+				"r": 0.01,
+				"g": 0.01,
+				"b": 0.01
 			},
 			"diffuse": "blue",
 			"refraction": "glass"
@@ -135,11 +135,15 @@
 			},
 			"emission": "black",
 			"transparency": {
-				"r": 0.5,
-				"g": 0.5,
-				"b": 0.5
+				"r": 0.001,
+				"g": 0.001,
+				"b": 0.001
 			},
-			"diffuse": "green",
+			"diffuse": {
+				"r": 0.0,
+				"g": 0.2,
+				"b": 0.0
+			},
 			"refraction": "glass"
 		},
 		{
@@ -150,11 +154,7 @@
 				"g": 10.0,
 				"b": 10.0
 			},
-			"transparency": {
-				"r": 0.5,
-				"g": 0.5,
-				"b": 0.5
-			},
+			"transparency": "white",
 			"diffuse": "black",
 			"refraction": "glass"
 		}
