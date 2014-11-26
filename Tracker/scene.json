@@ -92,7 +92,11 @@
 		},
 		{
 			"name": "air",
-			"reflection": "black",
+			"reflection": {
+				"r": 0.01,
+				"g": 0.01,
+				"b": 0.01
+			},
 			"emission": "black",
 			"transparency":  {
 				"r": 0.0,
@@ -123,9 +127,9 @@
 			},
 			"emission": "black",
 			"transparency": {
-				"r": 0.01,
-				"g": 0.01,
-				"b": 0.01
+				"r": 0.1,
+				"g": 0.1,
+				"b": 1.0
 			},
 			"diffuse": "blue",
 			"refraction": "glass"

@@ -29,7 +29,7 @@ Scene::~Scene()
 
 const Material& Scene::getMaterialAt( const glm::vec3& position ) const
 {
-	return MATERIALS->get( "air" );
+	return base;
 }
 
 void Scene::add( Node *node )
@@ -47,6 +47,10 @@ void Scene::add( Camera *camera )
 	cameras.push_back( camera );
 }
 
+void Scene::setMaterial( const Material& material )
+{
+	base = material;
+}
 
 void Scene::getLights( const HitInfo& info , std::vector<Node*>& lights ) const
 {
@@ -70,6 +74,7 @@ void Scene::trace( const Ray& ray , HitInfo& info ) const
 				info.point = tmp.point;
 				info.normal = tmp.normal;
 				info.material = tmp.material;
+				info.medium = base;
 				info.inside = tmp.inside;
 				info.node = node;
 			}
@@ -101,6 +106,7 @@ void Scene::traceTo( const glm::vec3& position , const Node *target , HitInfo& i
 				info.point = tmp.point;
 				info.normal = tmp.normal;
 				info.material = tmp.material;
+				info.medium = base;
 				info.inside = tmp.inside;
 				info.node = node;
 			}

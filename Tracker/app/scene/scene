@@ -59,6 +59,8 @@ public:
 	void add( Node *node );
 	void add( Camera *camera );
 	
+	void setMaterial( const Material& material );
+	
 	void getLights( const HitInfo& info , std::vector<Node*>& lights ) const;
 	
 	void trace( const Ray& ray , HitInfo& info ) const;

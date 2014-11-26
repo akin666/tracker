@@ -310,5 +310,7 @@ bool SceneLoader::load( std::string path , Scene& scene )
 		}
 	}
 	
+	scene.setMaterial( MATERIALS->get( "air" ) );
+	
 	return true;
 }

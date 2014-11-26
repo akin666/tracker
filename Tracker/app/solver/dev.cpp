@@ -31,7 +31,7 @@ Color infinite( const Ray& ray )
 	return normalToColor(ray.direction);
 }
 
-Color solve( const Scene& scene , const RayInfo& ray , const Material& medium )
+Color solve( const Scene& scene , const RayInfo& ray )
 {
 	// Hit solving..
 	HitInfo hit;
@@ -47,10 +47,18 @@ Color solve( const Scene& scene , const RayInfo& ray , const Material& medium )
 		return infinite(ray);
 	}
 	
-	// It hit something..
-	Color result = medium.transparency * hit.distance;
+	// If hit.inside < 0, then we are hitting the object from inside
+	const Material& medium = hit.inside < 0 ? hit.material : hit.medium;
+	const Material& material = hit.inside < 0 ? hit.medium : hit.material;
+	const glm::vec3 surfaceNormal = hit.inside < 0 ? -hit.normal : hit.normal;
 	
-	const Material& material = hit.material;
+	// It hit something..
+	Color result = Colors::black;
+	
+	// Add the moving in material to the result..
+	// IS IT ADDITIVE? NO! jeez.. TODO
+	result += medium.transparency * hit.distance;
+	
 	{
 		glm::vec3 normalEpsilon = hit.normal * (std::numeric_limits<float>::epsilon());
 		glm::vec3 hitpointOut = hit.point + normalEpsilon;
@@ -106,7 +114,7 @@ Color solve( const Scene& scene , const RayInfo& ray , const Material& medium )
 		// Refraction?!? TODO
 		RayInfo itmp( Ray( hit.point + ( ray.direction * 0.001f ) , ray.direction ) , ray.distance + hit.distance );
 		
-		result += solve( scene , itmp , material );
+		result += solve( scene , itmp );
 	}
 	
 	// Reflection
@@ -115,7 +123,7 @@ Color solve( const Scene& scene , const RayInfo& ray , const Material& medium )
 		glm::vec3 direction = ray.direction - 2.0f * glm::dot( ray.direction , hit.normal ) * hit.normal;
 		RayInfo itmp( Ray( hit.point , direction ) , ray.distance + hit.distance );
 		
-		Color reflection = solve( scene , itmp , medium );
+		Color reflection = solve( scene , itmp );
 		
 		result += reflection * material.reflection;
 	}
@@ -136,7 +144,7 @@ Color dev( const Scene& scene , const Ray& ray )
 	// we need more "Rich" ray.. add material & length..
 	RayInfo rayinfo( ray );
 	
-	return devns::solve( scene , rayinfo , scene.getMaterialAt( ray.position ) );
+	return devns::solve( scene , rayinfo );
 }
 
 } // namespace solver
