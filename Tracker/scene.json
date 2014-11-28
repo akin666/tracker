@@ -63,7 +63,8 @@
 			"width": 1920,
 			"height": 1080,
 			"dpi": 512.0,
-			"distance": 0.05
+			"distance": 0.05,
+			"scale": 0.5
 		}
 	],
 	"materials": [

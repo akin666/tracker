@@ -72,14 +72,17 @@ void Tracker::run()
 	
 	for( const auto* camera : scene.getCameras() )
 	{
+		const float camwidth = camera->width * camera->scale;
+		const float camheight = camera->height * camera->scale;
+		const float distance = camera->distance * camera->scale;
+		
 		// init buffer..
-		buffer.init((uint)camera->width , (uint)camera->height );
+		buffer.init((uint)camwidth , (uint)camheight );
 		BufferTool::clear( buffer );
 		
-		const float halfw = camera->width * 0.5f;
-		const float halfh = camera->height * 0.5f;
+		const float halfw = camwidth * 0.5f;
+		const float halfh = camheight * 0.5f;
 		const float dscale = 1.0f / (camera->dpmm * M2MM); // all things in world are in meters.. mm->m
-		const float distance = camera->distance;
 		
 		glm::vec4 corigo( 0.0f , 0.0f , 0.0f , 1.0f );
 		corigo = camera->getMatrix() * corigo;

@@ -134,6 +134,7 @@ bool read( const Json::Value& value , Camera& val )
 	
 	float dpi;
 	
+	read( value["scale"] , val.scale );
 	read( value["distance"] , val.distance );
 	read( value["width"] , val.width );
 	read( value["height"] , val.height );
