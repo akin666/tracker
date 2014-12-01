@@ -60,44 +60,6 @@ bool saveImage(
 	}
 	return false;
 }
-	
-bool open(
-    std::string location ,
-	std::string name ,
-	int width ,
-	int height ,
-	pixelformat::Format inputformat ,
-	int dpi ,
-	int framerate ,
-	output::Video& output )
-{
-	const char* pixelformat = pixelformat::getName(inputformat);
-	
-	if( pixelformat == nullptr )
-	{
-		return false;
-	}
-	
-	// filename to contain
-	// [NAME]_ENC_[WIDTH]x[HEIGHT]_[DPI]_[PIXELFORMAT]_fr[FRAMERATE].video
-	const int maxbuffer = 512;
-	char buffer[ maxbuffer ];
-	snprintf( buffer, (maxbuffer - 1), "%s_ENC_%dx%d_%d_%s_fr%d.video" , name.c_str() , width , height , dpi , pixelformat , framerate );
-	
-	std::string path = getPath( location ) + std::string(buffer);
-	
-	return false;
-}
-	
-bool append( output::Video& output , const void *pixels )
-{
-	return true;
-}
-	
-bool close( output::Video& output )
-{
-	return true;
-}
 
 } // native
 

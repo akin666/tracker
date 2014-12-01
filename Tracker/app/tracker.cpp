@@ -16,6 +16,8 @@
 
 #include "sceneloader"
 
+#include <outputvideo>
+
 Tracker::Tracker()
 : times(0)
 {
@@ -122,7 +124,15 @@ void Tracker::run()
 		PixelBuffer<RGBALow> lowbuffer;
 		BufferTool::convert( buffer , lowbuffer );
 		
+		int dpi = (int)dpmm2dpi(camera->dpmm);
+		
 		native::saveImage( "" , camera->name , lowbuffer.getWidth() , lowbuffer.getHeight() , pixelformat::RGBA8 , lowbuffer.getBuffer() );
+		
+		output::Video video;
+		
+		video.init( "" , camera->name , lowbuffer.getWidth() , lowbuffer.getHeight() , pixelformat::RGBA8 , dpi , 1 );
+		video.append(lowbuffer.getBuffer());
+		video.close();
 	}
 	
 }

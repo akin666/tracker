@@ -22,11 +22,9 @@ namespace native
 {
 	void log( const std::string& hint , std::string message );
 	
+	std::string getPath( std::string location );
+	
 	bool saveImage( std::string location , std::string name , int width , int height , pixelformat::Format inputformat , const void *pixels );
-
-	bool open( std::string location , std::string name , int width , int height , pixelformat::Format inputformat , int dpi , int framerate , output::Video& output );
-	bool append( output::Video& output , const void *pixels );
-	bool close( output::Video& output );
 } // namespace native
 
 #endif // COMMONNATIVE_H_
