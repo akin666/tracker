@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E760EC0E1A23460B00737A89 /* materials.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E760EC0D1A23460B00737A89 /* materials.cpp */; };
+		E760EC111A2C57BC00737A89 /* outputvideo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E760EC101A2C57BC00737A89 /* outputvideo.cpp */; };
 		E7C852A71A0645CD00478AC0 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C852A61A0645CD00478AC0 /* main.cpp */; };
 		E7C852ED1A06463400478AC0 /* init.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C852CF1A06463400478AC0 /* init.cpp */; };
 		E7C852EE1A06463400478AC0 /* log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C852D21A06463400478AC0 /* log.cpp */; };
@@ -57,6 +58,8 @@
 /* Begin PBXFileReference section */
 		E760EC0C1A23460B00737A89 /* materials */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = materials; sourceTree = "<group>"; };
 		E760EC0D1A23460B00737A89 /* materials.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = materials.cpp; sourceTree = "<group>"; };
+		E760EC0F1A2C57BC00737A89 /* outputvideo */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = outputvideo; sourceTree = "<group>"; };
+		E760EC101A2C57BC00737A89 /* outputvideo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = outputvideo.cpp; sourceTree = "<group>"; };
 		E7C852A31A0645CD00478AC0 /* Tracker */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Tracker; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7C852A61A0645CD00478AC0 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		E7C852CD1A06463400478AC0 /* application */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = application; sourceTree = "<group>"; };
@@ -425,6 +428,8 @@
 		E7C852CC1A06463400478AC0 /* core */ = {
 			isa = PBXGroup;
 			children = (
+				E760EC0F1A2C57BC00737A89 /* outputvideo */,
+				E760EC101A2C57BC00737A89 /* outputvideo.cpp */,
 				E7C854161A0B583700478AC0 /* colortools */,
 				E7C854171A0B583700478AC0 /* colortools.cpp */,
 				E7C8540F1A09943400478AC0 /* tcolor */,
@@ -916,6 +921,7 @@
 				E7C854F91A19E69100478AC0 /* scene.cpp in Sources */,
 				E7C854C71A182A3800478AC0 /* TinyJS.cpp in Sources */,
 				E7C854F81A19E69100478AC0 /* node.cpp in Sources */,
+				E760EC111A2C57BC00737A89 /* outputvideo.cpp in Sources */,
 				E7C854021A0649C100478AC0 /* glm.cpp in Sources */,
 				E7C855011A1BACCC00478AC0 /* hitinfo.cpp in Sources */,
 				E7C852F11A06463400478AC0 /* pixelformat.cpp in Sources */,

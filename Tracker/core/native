@@ -12,6 +12,7 @@
 #define COMMONNATIVE_H_
 
 #include "stdtypes"
+#include "outputvideo"
 
 #ifndef OS_NOT_DETECTED
 # define USE_COMMON_NATIVELIB
@@ -23,9 +24,9 @@ namespace native
 	
 	bool saveImage( std::string location , std::string name , int width , int height , pixelformat::Format inputformat , const void *pixels );
 
-	unsigned int openVideo( std::string location , std::string name , int width , int height , pixelformat::Format inputformat , int dpi , int framerate );
-	bool appendVideo( unsigned int handle , const void *pixels );
-	bool closeVideo( unsigned int handle );
+	bool open( std::string location , std::string name , int width , int height , pixelformat::Format inputformat , int dpi , int framerate , output::Video& output );
+	bool append( output::Video& output , const void *pixels );
+	bool close( output::Video& output );
 } // namespace native
 
 #endif // COMMONNATIVE_H_

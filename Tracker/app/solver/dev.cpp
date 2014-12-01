@@ -52,15 +52,33 @@ Color solve( const Scene& scene , const RayInfo& ray )
 	const Material& material = hit.inside < 0 ? hit.medium : hit.material;
 	const glm::vec3 surfaceNormal = hit.inside < 0 ? -hit.normal : hit.normal;
 	
-	// It hit something..
 	Color result = Colors::black;
 	
-	// Add the moving in material to the result..
+	//// Solving the ray traversal till the hit point
+	// Transparency
+	// Some visibility is taken out, by the ray..
+	// transparency is: "How much light gets through the object"
+	// This actually can reach opaque levels, and then we dont need to solve
+	// about what happens at the surface.
 	// IS IT ADDITIVE? NO! jeez.. TODO
-	result += medium.transparency * hit.distance;
 	
+	// WE are responsible from ray.position to hit.point, all that happens there, is our responsibility
+	// First we need to solve the ray material and whether the ray even gets to the surface hitpoint
+	// Then we need to solve the surface on the hitpoint
+	Color transparency = medium.transparency * hit.distance;
+	if( material.transparency != Colors::white )
 	{
-		glm::vec3 normalEpsilon = hit.normal * (std::numeric_limits<float>::epsilon());
+		// Refraction?!? TODO
+		RayInfo itmp( Ray( hit.point + ( ray.direction * 0.001f ) , ray.direction ) , ray.distance + hit.distance );
+		
+		result += solve( scene , itmp );
+	}
+	
+	//// Solving the hit surface
+	// how does this material react on the surface..
+	// It hit something..
+	{
+		glm::vec3 normalEpsilon = surfaceNormal * (std::numeric_limits<float>::epsilon());
 		glm::vec3 hitpointOut = hit.point + normalEpsilon;
 		glm::vec3 hitpointIn = hit.point - normalEpsilon;
 		
@@ -106,15 +124,6 @@ Color solve( const Scene& scene , const RayInfo& ray )
 				result += dot * material.diffuse * lighting;
 			}
 		}
-	}
-	
-	// Transparency
-	if( material.transparency != Colors::white )
-	{
-		// Refraction?!? TODO
-		RayInfo itmp( Ray( hit.point + ( ray.direction * 0.001f ) , ray.direction ) , ray.distance + hit.distance );
-		
-		result += solve( scene , itmp );
 	}
 	
 	// Reflection

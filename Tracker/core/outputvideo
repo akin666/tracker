@@ -1,0 +1,23 @@
+//
+//  outputvideo
+//  Tracker
+//
+//  Created by mikael korpela on 03/11/14.
+//  Copyright (c) 2014 mikael korpela. All rights reserved.
+//
+
+#ifndef Tracker_outputvideo_hpp
+#define Tracker_outputvideo_hpp
+
+namespace output
+{
+
+class Video
+{
+private:
+public:
+};
+
+}
+
+#endif

@@ -46,5 +46,32 @@ size_t getByteSize( Format format )
 	}
 	return 0;
 }
+	
+const char *getName( Format format )
+{
+	switch( format )
+	{
+		case RGB8 		: return "RGB8";
+		case RGBA8 		: return "RGBA8";
+		case ARGB8 		: return "ARGB8";
+		case ALPHA8 	: return "ALPHA8";
+		case LUMINANCE8 : return "LUMINANCE8";
+		case INTENSITY8 : return "INTENSITY8";
+		case RGBA12 	: return "RGBA12";
+		case RGBA16 	: return "RGBA16";
+		case RGBA32 	: return "RGBA32";
+		case RGBA32F 	: return "RGBA32F";
+		case RGBA64F 	: return "RGBA64F";
+		case DEPTH8 	: return "DEPTH8";
+		case DEPTH16 	: return "DEPTH16";
+		case DEPTH24 	: return "DEPTH24";
+		case DEPTH32 	: return "DEPTH32";
+		case RGB565		: return "RGB565";
+		case RGBA4		: return "RGBA4";
+		case RGBA5551	: return "RGBA5551";
+		default			: return nullptr;
+	}
+	return nullptr;
+}
 
 }

@@ -79,6 +79,7 @@ enum Format
 
 size_t getElementSize( Channels channels );
 size_t getByteSize( Format format );
+const char *getName( Format format );
 
 }
 

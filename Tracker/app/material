@@ -13,12 +13,15 @@
 class Material
 {
 public:
+	// Surface:
 	Color reflection;
 	Color emission;
 	Color transparency;
 	
 	Color diffuse;
 	Color refraction;
+	
+	// Medium:
 	
 	std::string name;
 public:
