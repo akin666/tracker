@@ -36,6 +36,19 @@ std::string getPath( std::string location )
 	
 bool readFile( std::string location , std::string name , std::string& content )
 {
+	std::string filename = getPath( location ) + name;
+	
+	std::ifstream file(filename, std::ios::in | std::ios::binary);
+	if( file )
+	{
+		file.seekg(0, std::ios::end);
+		size_t size = file.tellg();
+		content.resize(size);
+		file.seekg(0, std::ios::beg);
+		file.read(&content[0], size);
+	
+		return true;
+	}
 	return false;
 }
 

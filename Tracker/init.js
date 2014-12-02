@@ -1,0 +1,2 @@
+
+Config.getString("hai");

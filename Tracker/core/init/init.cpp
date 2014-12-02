@@ -14,9 +14,28 @@
 
 
 namespace core  {
+namespace scrpting {
+	
+void configGetString(CScriptVar *c, void *userdata)
+{
+	LOG->message("getstr js scripting");
+}
+
+void configSetString(CScriptVar *c, void *userdata)
+{
+	LOG->message("setstr js scripting");
+}
+
+void logError(CScriptVar *c, void *userdata)
+{
+	LOG->message("logerr js scripting");
+}
+	
+}
 
 Init::Init()
 : js( new CTinyJS )
+, initialized(false)
 {
 }
 
@@ -28,18 +47,30 @@ Init::~Init()
 
 bool Init::init()
 {
-	std::string initcontent;
+	if( initialized )
+	{
+		return true;
+	}
 	
 	// init systems..
-	native::readFile( "" , CONFIG->get<std::string>("-initfile" , "init.js") , initcontent );
+	if( !native::readFile( "" , CONFIG->get<std::string>("initfile" , "init.js") , script ) )
+	{
+		LOG->error("%s:%d Failed to read init file." , __FILE__ , __LINE__ );
+		return false;
+	}
 	
-	// init the next app..
-    createSingleton<core::Application , ::Tracker>();
+	js->addNative("function Config.getString(key)", scrpting::configGetString, 0);
+	js->addNative("function Log.error(msg)", scrpting::logError, 0);
+	
+	initialized = true;
     return true;
 }
 
 void Init::run()
 {
+	// init the next app..
+	createSingleton<core::Application , ::Tracker>();
+	js->execute( script );
 }
 
 bool Init::complete()

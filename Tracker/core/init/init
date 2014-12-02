@@ -17,6 +17,8 @@ class Init : public Application
 {
 private:
 	CTinyJS *js;
+	std::string script;
+	bool initialized;
 public:
 	Init();
 

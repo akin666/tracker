@@ -92,9 +92,10 @@ void Tracker::run()
 		const uint height = buffer.getHeight();
 		const uint width = buffer.getWidth();
 		
+		LOG->message("Rendering image %dx%d." , width , height );
 		for( uint y = 0 ; y < height ; ++y )
 		{
-			LOG->message("Starting line %d of %d." , y + 1 , height );
+			//LOG->message("Starting line %d of %d." , y + 1 , height );
 			for( uint x = 0 ; x < width ; ++x )
 			{
 				// center the film, and scale..
@@ -118,8 +119,9 @@ void Tracker::run()
 				// cast ray solving.
 				buffer.set(x, y, solve(scene , ray));
 			}
-			LOG->message("Done line %d." , y + 1 );
+			//LOG->message("Done line %d." , y + 1 );
 		}
+		LOG->message("Complete.");
 		
 		PixelBuffer<RGBALow> lowbuffer;
 		BufferTool::convert( buffer , lowbuffer );

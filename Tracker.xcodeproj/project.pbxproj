@@ -34,6 +34,7 @@
 		E760EC741A2E546200737A89 /* outputvideo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E760EC541A2E546200737A89 /* outputvideo.cpp */; };
 		E760EC751A2E546200737A89 /* pixelformat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E760EC561A2E546200737A89 /* pixelformat.cpp */; };
 		E7B4E07D1A2E7E0D00A7C565 /* config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7B4E07C1A2E7E0D00A7C565 /* config.cpp */; };
+		E7B4E07E1A2E84A800A7C565 /* init.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = E760EC121A2DA7BC00737A89 /* init.js */; };
 		E7C852A71A0645CD00478AC0 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C852A61A0645CD00478AC0 /* main.cpp */; };
 		E7C854021A0649C100478AC0 /* glm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C853201A0649C000478AC0 /* glm.cpp */; };
 		E7C854B21A13626600478AC0 /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C854B11A13626600478AC0 /* jsoncpp.cpp */; };
@@ -50,6 +51,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				E7B4E07E1A2E84A800A7C565 /* init.js in CopyFiles */,
 				E7C854BD1A15806600478AC0 /* scene.json in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
