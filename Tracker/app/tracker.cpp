@@ -27,7 +27,7 @@ Tracker::~Tracker()
 {
 }
 
-bool Tracker::init( const std::vector<std::string>& args )
+bool Tracker::init()
 {
 	SceneLoader loader;
 	
@@ -142,7 +142,7 @@ bool Tracker::complete()
     return true; //(++times) > 10;
 }
 
-std::string Tracker::getName()
+std::string Tracker::getName() const
 {
 	return "Tracker";
 }

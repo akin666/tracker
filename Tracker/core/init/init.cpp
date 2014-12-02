@@ -8,23 +8,31 @@
 #include "init"
 
 #include "../../app/tracker"
-#include "../traccore"
+#include <traccore>
+#include <tiny-js/TinyJS.h>
+#include <config>
 
 
 namespace core  {
 
 Init::Init()
+: js( new CTinyJS )
 {
 }
 
 Init::~Init()
 {
+	delete js;
+	js = nullptr;
 }
 
-bool Init::init( const std::vector<std::string>& args )
+bool Init::init()
 {
+	std::string initcontent;
+	
 	// init systems..
-
+	native::readFile( "" , CONFIG->get<std::string>("-initfile" , "init.js") , initcontent );
+	
 	// init the next app..
     createSingleton<core::Application , ::Tracker>();
     return true;
@@ -39,7 +47,7 @@ bool Init::complete()
     return false;
 }
 
-std::string Init::getName()
+std::string Init::getName() const
 {
 	return "Init";
 }

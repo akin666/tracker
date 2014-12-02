@@ -8,24 +8,27 @@
 #ifndef INITAPPLICATION_HPP
 #define	INITAPPLICATION_HPP
 
-#include "../application"
+#include <application>
 
+class CTinyJS;
 namespace core  {
 
 class Init : public Application
 {
+private:
+	CTinyJS *js;
 public:
 	Init();
 
     virtual ~Init();
     
-    virtual bool init( const std::vector<std::string>& args );
+    virtual bool init();
     
     virtual void run();
     
     virtual bool complete();
 
-    virtual std::string getName();
+    virtual std::string getName() const;
 };
 
 }

@@ -2,16 +2,36 @@
 #include <iostream>
 #include <vector>
 
-#include "core/init/init"
-#include "core/traccore"
+#include <init/init>
+#include <traccore>
+#include <config>
 
 // package the args into string vector..
 int main(int argc, char**argv) 
 {
-    std::vector<std::string> strvec(argc);
-    for( int i = 0 ; i < argc ; ++i )
+	// skip 1st argument, it is the executable name..
+    std::vector<std::string> args(argc);
+    for( int i = 1 ; i < argc ; ++i )
     {
-        strvec.push_back( std::string(argv[i]) );
+		std::string str( argv[i] );
+		
+		if( str.size() < 2 || i >= argc - 1 )
+		{
+			continue;
+		}
+		
+		if( str.at( 0 ) == '-' )
+		{
+			++i;
+			
+			// skip '-'
+			auto key = str.substr( 1 );
+			std::string value( argv[i] );
+			if( value.size() > 1 )
+			{
+				CONFIG->set( key , value );
+			}
+		}
     }
 	
     // first thing to run, is init application
@@ -22,7 +42,7 @@ int main(int argc, char**argv)
     {
         app = singleton<core::Application>();
         // init
-        if( !app->init( strvec ) )
+        if( !app->init() )
         {
         	LOG->error( "%s Application init failed!" , app->getName().c_str());
 

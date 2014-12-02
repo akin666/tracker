@@ -23,13 +23,13 @@ public:
 
 	virtual ~Tracker();
 
-    virtual bool init( const std::vector<std::string>& args );
+    virtual bool init();
 
     virtual void run();
 
     virtual bool complete();
 
-    virtual std::string getName();
+    virtual std::string getName() const;
 };
 
 #endif /* APP_TRACKER_HPP_ */

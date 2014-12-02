@@ -24,6 +24,8 @@ namespace native
 	
 	std::string getPath( std::string location );
 	
+	bool readFile( std::string location , std::string name , std::string& content );
+	
 	bool saveImage( std::string location , std::string name , int width , int height , pixelformat::Format inputformat , const void *pixels );
 } // namespace native
 

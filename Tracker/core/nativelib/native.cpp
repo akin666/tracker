@@ -33,6 +33,11 @@ std::string getPath( std::string location )
 	}
 	return "unknown/";
 }
+	
+bool readFile( std::string location , std::string name , std::string& content )
+{
+	return false;
+}
 
 bool saveImage(
     std::string location ,

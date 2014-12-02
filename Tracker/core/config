@@ -1,0 +1,101 @@
+/*
+ * config
+ *
+ *  Created on: 16.6.2012
+ *      Author: akin
+ */
+
+#ifndef CONFIG_ABC_HPP_
+#define CONFIG_ABC_HPP_
+
+#include <unordered_map>
+#include <string>
+#include <singleton>
+
+class Config
+{
+private:
+	std::unordered_map<std::string,size_t> keys;
+	std::vector<std::string> strings;
+	std::vector<float> floats;
+	std::vector<int> ints;
+public:
+	Config()
+	{
+	}
+
+	template <class TC>
+	void set( std::string key , const TC& value )
+	{
+	}
+
+	template <class TC>
+	bool get( std::string key , TC def , TC& target )
+	{
+		target = def;
+		return false;
+	}
+
+	template <class TC>
+	TC get( std::string key , TC def )
+	{
+		TC ret;
+		get<TC>(key, def , ret);
+		return ret;
+	}
+};
+
+
+template <>
+void Config::set<std::string>( std::string key , const std::string& value)
+{
+	auto iter = keys.find( key );
+	if( iter == keys.end() )
+	{
+		strings.push_back( value );
+		keys[key] = strings.size();
+	}
+	strings[ iter->second ] = value;
+}
+
+template <>
+void Config::set<float>( std::string key , const float& value)
+{
+	auto iter = keys.find( key );
+	if( iter == keys.end() )
+	{
+		floats.push_back( value );
+		keys[key] = floats.size();
+	}
+	floats[ iter->second ] = value;
+}
+
+template <>
+bool Config::get<float>( std::string key , float def , float& target )
+{
+	auto iter = keys.find( key );
+	if( iter == keys.end() )
+	{
+		target = def;
+		return false;
+	}
+	target = floats[ iter->second ];
+	return true;
+}
+
+template <>
+bool Config::get<std::string>( std::string key , std::string def , std::string& target )
+{
+	auto iter = keys.find( key );
+	if( iter == keys.end() )
+	{
+		target = def;
+		return false;
+	}
+	target = strings[ iter->second ];
+	return true;
+}
+
+#define CONFIG singleton<Config>()
+
+#endif // CONFIG_ABC_HPP_

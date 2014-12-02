@@ -8,7 +8,6 @@
 #ifndef APPLICATION_HPP
 #define	APPLICATION_HPP
 
-#include <vector>
 #include <string>
 
 namespace core  {
@@ -20,7 +19,7 @@ public:
     {
     }
     
-    virtual bool init( const std::vector<std::string>& args ) 
+    virtual bool init()
     {
     	return true;
     }
@@ -34,7 +33,7 @@ public:
     	return true;
     }
     
-    virtual std::string getName()
+    virtual std::string getName() const
     {
     	return "unknown";
     }
