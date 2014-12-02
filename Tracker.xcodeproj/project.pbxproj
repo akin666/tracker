@@ -33,6 +33,7 @@
 		E760EC731A2E546200737A89 /* tgalib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E760EC501A2E546200737A89 /* tgalib.cpp */; };
 		E760EC741A2E546200737A89 /* outputvideo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E760EC541A2E546200737A89 /* outputvideo.cpp */; };
 		E760EC751A2E546200737A89 /* pixelformat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E760EC561A2E546200737A89 /* pixelformat.cpp */; };
+		E7B4E07D1A2E7E0D00A7C565 /* config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7B4E07C1A2E7E0D00A7C565 /* config.cpp */; };
 		E7C852A71A0645CD00478AC0 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C852A61A0645CD00478AC0 /* main.cpp */; };
 		E7C854021A0649C100478AC0 /* glm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C853201A0649C000478AC0 /* glm.cpp */; };
 		E7C854B21A13626600478AC0 /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C854B11A13626600478AC0 /* jsoncpp.cpp */; };
@@ -120,6 +121,7 @@
 		E760EC591A2E546200737A89 /* stdtypes */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = stdtypes; sourceTree = "<group>"; };
 		E760EC5A1A2E546200737A89 /* tcolor */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = tcolor; sourceTree = "<group>"; };
 		E760EC5B1A2E546200737A89 /* traccore */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = traccore; sourceTree = "<group>"; };
+		E7B4E07C1A2E7E0D00A7C565 /* config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = config.cpp; sourceTree = "<group>"; };
 		E7C852A31A0645CD00478AC0 /* Tracker */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Tracker; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7C852A61A0645CD00478AC0 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		E7C852E01A06463400478AC0 /* defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = defines.h; sourceTree = "<group>"; };
@@ -460,6 +462,7 @@
 		E760EC3F1A2E546200737A89 /* core */ = {
 			isa = PBXGroup;
 			children = (
+				E7B4E07C1A2E7E0D00A7C565 /* config.cpp */,
 				E760EC401A2E546200737A89 /* application */,
 				E760EC411A2E546200737A89 /* colortools */,
 				E760EC421A2E546200737A89 /* colortools.cpp */,
@@ -910,6 +913,7 @@
 			files = (
 				E760EC631A2E546200737A89 /* camera.cpp in Sources */,
 				E7C854C81A182A3800478AC0 /* TinyJS_Functions.cpp in Sources */,
+				E7B4E07D1A2E7E0D00A7C565 /* config.cpp in Sources */,
 				E760EC731A2E546200737A89 /* tgalib.cpp in Sources */,
 				E760EC711A2E546200737A89 /* log.cpp in Sources */,
 				E760EC701A2E546200737A89 /* init.cpp in Sources */,
