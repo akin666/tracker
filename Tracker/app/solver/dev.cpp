@@ -106,7 +106,7 @@ Color solve( const Scene& scene , const RayInfo& ray )
 			const Material& lightMaterial = light->getMaterial();
 			
 			glm::vec3 diff = lightPos - hit.point;
-			float distance = glm::distance( glm::vec3() , diff );
+			float distance = glm::length( diff );
 			
 			Color lighting = lightMaterial.emission;
 			

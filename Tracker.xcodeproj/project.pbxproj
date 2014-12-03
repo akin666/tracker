@@ -35,13 +35,13 @@
 		E760EC751A2E546200737A89 /* pixelformat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E760EC561A2E546200737A89 /* pixelformat.cpp */; };
 		E7B4E07D1A2E7E0D00A7C565 /* config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7B4E07C1A2E7E0D00A7C565 /* config.cpp */; };
 		E7B4E07E1A2E84A800A7C565 /* init.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = E760EC121A2DA7BC00737A89 /* init.js */; };
+		E7B4E09D1A2F7D2000A7C565 /* TinyJS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7B4E0971A2F7D2000A7C565 /* TinyJS.cpp */; };
+		E7B4E09E1A2F7D2000A7C565 /* TinyJS_Functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7B4E0991A2F7D2000A7C565 /* TinyJS_Functions.cpp */; };
+		E7B4E09F1A2F7D2000A7C565 /* TinyJS_MathFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7B4E09B1A2F7D2000A7C565 /* TinyJS_MathFunctions.cpp */; };
 		E7C852A71A0645CD00478AC0 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C852A61A0645CD00478AC0 /* main.cpp */; };
 		E7C854021A0649C100478AC0 /* glm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C853201A0649C000478AC0 /* glm.cpp */; };
 		E7C854B21A13626600478AC0 /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C854B11A13626600478AC0 /* jsoncpp.cpp */; };
 		E7C854BD1A15806600478AC0 /* scene.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = E7C854B61A14271F00478AC0 /* scene.json */; };
-		E7C854C71A182A3800478AC0 /* TinyJS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C854C01A182A3800478AC0 /* TinyJS.cpp */; };
-		E7C854C81A182A3800478AC0 /* TinyJS_Functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C854C21A182A3800478AC0 /* TinyJS_Functions.cpp */; };
-		E7C854C91A182A3800478AC0 /* TinyJS_MathFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C854C41A182A3800478AC0 /* TinyJS_MathFunctions.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -124,6 +124,12 @@
 		E760EC5A1A2E546200737A89 /* tcolor */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = tcolor; sourceTree = "<group>"; };
 		E760EC5B1A2E546200737A89 /* traccore */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = traccore; sourceTree = "<group>"; };
 		E7B4E07C1A2E7E0D00A7C565 /* config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = config.cpp; sourceTree = "<group>"; };
+		E7B4E0971A2F7D2000A7C565 /* TinyJS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TinyJS.cpp; sourceTree = "<group>"; };
+		E7B4E0981A2F7D2000A7C565 /* TinyJS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TinyJS.h; sourceTree = "<group>"; };
+		E7B4E0991A2F7D2000A7C565 /* TinyJS_Functions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TinyJS_Functions.cpp; sourceTree = "<group>"; };
+		E7B4E09A1A2F7D2000A7C565 /* TinyJS_Functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TinyJS_Functions.h; sourceTree = "<group>"; };
+		E7B4E09B1A2F7D2000A7C565 /* TinyJS_MathFunctions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TinyJS_MathFunctions.cpp; sourceTree = "<group>"; };
+		E7B4E09C1A2F7D2000A7C565 /* TinyJS_MathFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TinyJS_MathFunctions.h; sourceTree = "<group>"; };
 		E7C852A31A0645CD00478AC0 /* Tracker */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Tracker; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7C852A61A0645CD00478AC0 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		E7C852E01A06463400478AC0 /* defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = defines.h; sourceTree = "<group>"; };
@@ -382,12 +388,6 @@
 		E7C854B01A13626600478AC0 /* json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json.h; sourceTree = "<group>"; };
 		E7C854B11A13626600478AC0 /* jsoncpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jsoncpp.cpp; sourceTree = "<group>"; };
 		E7C854B61A14271F00478AC0 /* scene.json */ = {isa = PBXFileReference; explicitFileType = text; fileEncoding = 4; path = scene.json; sourceTree = "<group>"; };
-		E7C854C01A182A3800478AC0 /* TinyJS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TinyJS.cpp; sourceTree = "<group>"; };
-		E7C854C11A182A3800478AC0 /* TinyJS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TinyJS.h; sourceTree = "<group>"; };
-		E7C854C21A182A3800478AC0 /* TinyJS_Functions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TinyJS_Functions.cpp; sourceTree = "<group>"; };
-		E7C854C31A182A3800478AC0 /* TinyJS_Functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TinyJS_Functions.h; sourceTree = "<group>"; };
-		E7C854C41A182A3800478AC0 /* TinyJS_MathFunctions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TinyJS_MathFunctions.cpp; sourceTree = "<group>"; };
-		E7C854C51A182A3800478AC0 /* TinyJS_MathFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TinyJS_MathFunctions.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -511,6 +511,19 @@
 			path = nativelib;
 			sourceTree = "<group>";
 		};
+		E7B4E0961A2F7D2000A7C565 /* tiny-js */ = {
+			isa = PBXGroup;
+			children = (
+				E7B4E0971A2F7D2000A7C565 /* TinyJS.cpp */,
+				E7B4E0981A2F7D2000A7C565 /* TinyJS.h */,
+				E7B4E0991A2F7D2000A7C565 /* TinyJS_Functions.cpp */,
+				E7B4E09A1A2F7D2000A7C565 /* TinyJS_Functions.h */,
+				E7B4E09B1A2F7D2000A7C565 /* TinyJS_MathFunctions.cpp */,
+				E7B4E09C1A2F7D2000A7C565 /* TinyJS_MathFunctions.h */,
+			);
+			path = "tiny-js";
+			sourceTree = "<group>";
+		};
 		E7C8529A1A0645CD00478AC0 = {
 			isa = PBXGroup;
 			children = (
@@ -545,7 +558,7 @@
 		E7C852E11A06463400478AC0 /* ext */ = {
 			isa = PBXGroup;
 			children = (
-				E7C854BE1A182A3800478AC0 /* tiny-js */,
+				E7B4E0961A2F7D2000A7C565 /* tiny-js */,
 				E7C854AE1A13626600478AC0 /* json */,
 				E7C853031A0649C000478AC0 /* glm */,
 			);
@@ -844,19 +857,6 @@
 			path = json;
 			sourceTree = "<group>";
 		};
-		E7C854BE1A182A3800478AC0 /* tiny-js */ = {
-			isa = PBXGroup;
-			children = (
-				E7C854C01A182A3800478AC0 /* TinyJS.cpp */,
-				E7C854C11A182A3800478AC0 /* TinyJS.h */,
-				E7C854C21A182A3800478AC0 /* TinyJS_Functions.cpp */,
-				E7C854C31A182A3800478AC0 /* TinyJS_Functions.h */,
-				E7C854C41A182A3800478AC0 /* TinyJS_MathFunctions.cpp */,
-				E7C854C51A182A3800478AC0 /* TinyJS_MathFunctions.h */,
-			);
-			path = "tiny-js";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -914,11 +914,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E760EC631A2E546200737A89 /* camera.cpp in Sources */,
-				E7C854C81A182A3800478AC0 /* TinyJS_Functions.cpp in Sources */,
 				E7B4E07D1A2E7E0D00A7C565 /* config.cpp in Sources */,
 				E760EC731A2E546200737A89 /* tgalib.cpp in Sources */,
 				E760EC711A2E546200737A89 /* log.cpp in Sources */,
 				E760EC701A2E546200737A89 /* init.cpp in Sources */,
+				E7B4E09F1A2F7D2000A7C565 /* TinyJS_MathFunctions.cpp in Sources */,
 				E760EC691A2E546200737A89 /* blank.cpp in Sources */,
 				E7C854B21A13626600478AC0 /* jsoncpp.cpp in Sources */,
 				E760EC6E1A2E546200737A89 /* corerandom.cpp in Sources */,
@@ -929,6 +929,7 @@
 				E760EC6A1A2E546200737A89 /* dev.cpp in Sources */,
 				E760EC6D1A2E546200737A89 /* colortools.cpp in Sources */,
 				E760EC661A2E546200737A89 /* sphere.cpp in Sources */,
+				E7B4E09D1A2F7D2000A7C565 /* TinyJS.cpp in Sources */,
 				E760EC621A2E546200737A89 /* rayinfo.cpp in Sources */,
 				E760EC601A2E546200737A89 /* material.cpp in Sources */,
 				E760EC611A2E546200737A89 /* materials.cpp in Sources */,
@@ -939,12 +940,11 @@
 				E760EC651A2E546200737A89 /* scene.cpp in Sources */,
 				E760EC641A2E546200737A89 /* node.cpp in Sources */,
 				E760EC5C1A2E546200737A89 /* buffertool.cpp in Sources */,
-				E7C854C71A182A3800478AC0 /* TinyJS.cpp in Sources */,
 				E760EC5E1A2E546200737A89 /* hitinfo.cpp in Sources */,
 				E760EC6C1A2E546200737A89 /* tracker.cpp in Sources */,
 				E760EC5D1A2E546200737A89 /* colors.cpp in Sources */,
 				E7C854021A0649C100478AC0 /* glm.cpp in Sources */,
-				E7C854C91A182A3800478AC0 /* TinyJS_MathFunctions.cpp in Sources */,
+				E7B4E09E1A2F7D2000A7C565 /* TinyJS_Functions.cpp in Sources */,
 				E760EC681A2E546200737A89 /* sceneloader.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

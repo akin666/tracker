@@ -37,7 +37,7 @@ bool Sphere::intersects( const Ray& ray , HitInfo& info ) const
 	if(hit)
 	{
 		info.material = material;
-		info.inside = radius < glm::distance( ray.position, pos) ? 1.0f : -1.0f;
+		info.inside = radius < glm::distance( ray.position , pos ) ? 1.0f : -1.0f;
 	}
 	return hit;
 }

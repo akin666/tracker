@@ -15,10 +15,25 @@
 
 namespace core  {
 namespace scrpting {
-	
+
+void log( std::string what , CScriptVar* c )
+{
+	/*
+	LOG->message("%s: %s" , what.c_str() , c->getFlagsAsString().c_str() );
+	for( auto *child = c->f ; child != nullptr ; child = child->nextSibling )
+	{
+		auto *data = child->var;
+		LOG->message("%s type: %s" , child->name.c_str() , data->getFlagsAsString().c_str() );
+	}
+	*/
+}
+
+
 void configGetString(CScriptVar *c, void *userdata)
 {
-	LOG->message("getstr js scripting");
+	if( c->isString() )
+	{
+	}
 }
 
 void configSetString(CScriptVar *c, void *userdata)
@@ -28,7 +43,22 @@ void configSetString(CScriptVar *c, void *userdata)
 
 void logError(CScriptVar *c, void *userdata)
 {
-	LOG->message("logerr js scripting");
+	/*
+	auto *child = c->firstChild;
+	if( child == nullptr )
+	{
+		return;
+	}
+	child = child->nextSibling;
+	
+	// this should be the error message
+	auto *data = child->var;
+	
+	if( data->isString() )
+	{
+		LOG->message("Script error: %s", c->getString().c_str() );
+	}
+	*/
 }
 	
 }
@@ -59,8 +89,8 @@ bool Init::init()
 		return false;
 	}
 	
-	js->addNative("function Config.getString(key)", scrpting::configGetString, 0);
-	js->addNative("function Log.error(msg)", scrpting::logError, 0);
+	js->addNative("function Config.getString(key)", scrpting::configGetString, nullptr);
+	js->addNative("function Log.error(msg)", scrpting::logError, nullptr);
 	
 	initialized = true;
     return true;
