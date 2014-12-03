@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tracker/app/tracker.cpp"
-            timestampString = "439331891.338134"
+            timestampString = "439339250.582321"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
             landmarkName = "Tracker::run()"
             landmarkType = "5">
          </BreakpointContent>
@@ -57,29 +57,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Tracker/core/init/init.cpp"
-            timestampString = "439318651.284479"
+            filePath = "Tracker/ext/tiny-js/TinyJS.cpp"
+            timestampString = "439340050.500941"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "logError(CScriptVar *c, void *userdata)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tracker/app/tracker.cpp"
-            timestampString = "439331916.195296"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "Tracker::init()"
+            startingLineNumber = "1322"
+            endingLineNumber = "1322"
+            landmarkName = "CTinyJS::execute(const string &amp;code)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

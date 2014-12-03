@@ -18,14 +18,12 @@ namespace scrpting {
 
 void log( std::string what , CScriptVar* c )
 {
-	/*
 	LOG->message("%s: %s" , what.c_str() , c->getFlagsAsString().c_str() );
-	for( auto *child = c->f ; child != nullptr ; child = child->nextSibling )
+	for( auto *child = c->firstChild ; child != nullptr ; child = child->nextSibling )
 	{
 		auto *data = child->var;
 		LOG->message("%s type: %s" , child->name.c_str() , data->getFlagsAsString().c_str() );
 	}
-	*/
 }
 
 
@@ -43,7 +41,6 @@ void configSetString(CScriptVar *c, void *userdata)
 
 void logError(CScriptVar *c, void *userdata)
 {
-	/*
 	auto *child = c->firstChild;
 	if( child == nullptr )
 	{
@@ -53,12 +50,10 @@ void logError(CScriptVar *c, void *userdata)
 	
 	// this should be the error message
 	auto *data = child->var;
-	
 	if( data->isString() )
 	{
-		LOG->message("Script error: %s", c->getString().c_str() );
+		LOG->message("Script error: %s", data->getString().c_str() );
 	}
-	*/
 }
 	
 }

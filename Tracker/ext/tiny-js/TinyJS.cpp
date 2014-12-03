@@ -1462,6 +1462,7 @@ CScriptVarLink *CTinyJS::functionCall(bool &execute, CScriptVarLink *function, C
     // grab in all parameters
     CScriptVarLink *v = function->var->firstChild;
     while (v) {
+		//// TODO if value not found, add NULL or UNDEFINED as the attribute..
         CScriptVarLink *value = base(execute);
         if (execute) {
             if (value->var->isBasic()) {
@@ -1476,6 +1477,7 @@ CScriptVarLink *CTinyJS::functionCall(bool &execute, CScriptVarLink *function, C
         if (l->tk!=')') l->match(',');
         v = v->nextSibling;
     }
+	//// TODO wind forward, till ')' is encountered.. ignore those things..
     l->match(')');
     // setup a return variable
     CScriptVarLink *returnVar = NULL;
