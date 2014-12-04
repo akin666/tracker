@@ -13,6 +13,7 @@
 #include "scene/sphere"
 #include "colors"
 #include "materials"
+#include <config>
 
 #include "sceneloader"
 
@@ -31,7 +32,7 @@ bool Tracker::init()
 {
 	SceneLoader loader;
 	
-	loader.load("scene.json", scene );
+	loader.load( CONFIG->get<std::string>("scene" ,"scene.json") , scene );
 	/**
 	Material mirror;
 	MATERIALS->get("mirror" , mirror );

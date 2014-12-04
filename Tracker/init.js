@@ -1,3 +1,3 @@
 
-Config.getString("hai");
-Log.error("NOOO");
+//Config.getString("hai","NoValue");
+//Log.error("NOOO");
