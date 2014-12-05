@@ -16,12 +16,10 @@ public:
 	// Surface:
 	Color reflection;
 	Color emission;
-	Color transparency;
+	Color transparency; // 0.0 opaque, 1.0 transparent
 	
 	Color diffuse;
 	Color refraction;
-	
-	// Medium:
 	
 	std::string name;
 public:

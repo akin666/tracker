@@ -120,7 +120,7 @@ void Tracker::run()
 				// cast ray solving.
 				buffer.set(x, y, solve(scene , ray));
 			}
-			//LOG->message("Done line %d." , y + 1 );
+			LOG->message("Done line %d." , y + 1 );
 		}
 		LOG->message("Complete.");
 		

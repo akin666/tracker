@@ -36,7 +36,7 @@ Color solve( const Scene& scene , const RayInfo& ray )
 	// Hit solving..
 	HitInfo hit;
 	scene.trace( ray , hit );
-	if( (ray.distance + hit.distance) > scene.max )
+	if( (ray.distance + hit.distance) > scene.max || ray.bounces > 5 )
 	{
 		return infinite(ray);
 	}
@@ -65,13 +65,13 @@ Color solve( const Scene& scene , const RayInfo& ray )
 	// WE are responsible from ray.position to hit.point, all that happens there, is our responsibility
 	// First we need to solve the ray material and whether the ray even gets to the surface hitpoint
 	// Then we need to solve the surface on the hitpoint
-	Color transparency = medium.transparency * hit.distance;
-	if( material.transparency != Colors::white )
+	Color transparency = Color(1.0f) - glm::min( (Color(1.0f) - medium.transparency ) * hit.distance , Color(1.0f) );
+	if( transparency != Colors::black )
 	{
 		// Refraction?!? TODO
-		RayInfo itmp( Ray( hit.point + ( ray.direction * 0.001f ) , ray.direction ) , ray.distance + hit.distance );
+		RayInfo itmp( Ray( hit.point + ( ray.direction * 0.0001f ) , ray.direction ) , ray.distance + hit.distance , ray.bounces + 1 );
 		
-		result += solve( scene , itmp );
+		result += solve( scene , itmp ) * transparency;
 	}
 	
 	//// Solving the hit surface
@@ -130,7 +130,7 @@ Color solve( const Scene& scene , const RayInfo& ray )
 	if( (material.reflection.r + material.reflection.g + material.reflection.b) > 0.0f )
 	{
 		glm::vec3 direction = ray.direction - 2.0f * glm::dot( ray.direction , hit.normal ) * hit.normal;
-		RayInfo itmp( Ray( hit.point , direction ) , ray.distance + hit.distance );
+		RayInfo itmp( Ray( hit.point , direction ) , ray.distance + hit.distance , ray.bounces + 1 );
 		
 		Color reflection = solve( scene , itmp );
 		
