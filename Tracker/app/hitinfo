@@ -19,7 +19,6 @@ public:
 	glm::vec3 point;
 	glm::vec3 normal;
 	Material material;
-	Material medium;
 	float inside;
 	Node *node;
 	int count;

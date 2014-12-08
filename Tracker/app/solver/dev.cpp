@@ -31,14 +31,19 @@ Color infinite( const Ray& ray )
 	return normalToColor(ray.direction);
 }
 
-Color solve( const Scene& scene , const RayInfo& ray )
+Color solve( const Scene& scene , const RayInfo& ray , const Material& medium )
 {
+	const float smallstep = 0.001f;
+	
 	// Hit solving..
 	HitInfo hit;
 	scene.trace( ray , hit );
-	if( (ray.distance + hit.distance) > scene.max || ray.bounces > 5 )
+	float distance = ray.distance + hit.distance;
+	
+	Color transparency = Color(1.0f) - glm::min( (Color(1.0f) - medium.transparency ) * distance , Color(1.0f) );
+	if( distance > scene.max || ray.bounces > 5 )
 	{
-		return infinite(ray);
+		return infinite(ray) * transparency;
 	}
 	
 	if( hit.count <= 0 )
@@ -48,34 +53,27 @@ Color solve( const Scene& scene , const RayInfo& ray )
 	}
 	
 	// If hit.inside < 0, then we are hitting the object from inside
-	const Material& medium = hit.medium;
 	const Material& material = hit.material;
 	
 	Color result = Colors::black;
 	
+	if( material.name == "mirror" )
+	{
+		int nn = 0;
+		//return Colors::green;
+	}
+	
 	//// Solving the ray traversal till the hit point
 	// Transparency
-	// Some visibility is taken out, by the ray..
-	// transparency is: "How much light gets through the object"
-	// This actually can reach opaque levels, and then we dont need to solve
-	// about what happens at the surface.
-	// IS IT ADDITIVE? NO! jeez.. TODO
+	if( transparency == Colors::black )
+	{
+		return Colors::black;
+	}
 	
-	// WE are responsible from ray.position to hit.point, all that happens there, is our responsibility
-	// First we need to solve the ray material and whether the ray even gets to the surface hitpoint
-	// Then we need to solve the surface on the hitpoint
-	if( material.name == "green" )
-	{
-		int i = 0;
-	}
-	Color transparency = Color(1.0f) - glm::min( (Color(1.0f) - medium.transparency ) * hit.distance , Color(1.0f) );
-	if( transparency != Colors::black )
-	{
-		// Refraction?!? TODO
-		RayInfo itmp( Ray( hit.point + ( ray.direction * 0.001f ) , ray.direction ) , ray.distance + hit.distance , ray.bounces + 1 );
-		
-		result += solve( scene , itmp ) * transparency;
-	}
+	// see through?
+	// Refraction?!? TODO
+	RayInfo itmp( Ray( hit.point + ( ray.direction * smallstep ) , ray.direction ) , distance , ray.bounces + 1 );
+	result += solve( scene , itmp , material );
 	
 	//// Solving the hit surface
 	// how does this material react on the surface..
@@ -133,9 +131,9 @@ Color solve( const Scene& scene , const RayInfo& ray )
 	if( (material.reflection.r + material.reflection.g + material.reflection.b) > 0.0f )
 	{
 		glm::vec3 direction = ray.direction - 2.0f * glm::dot( ray.direction , hit.normal ) * hit.normal;
-		RayInfo itmp( Ray( hit.point , direction ) , ray.distance + hit.distance , ray.bounces + 1 );
+		RayInfo itmp( Ray( hit.point + ( direction * smallstep ) , direction ) , distance , ray.bounces + 1 );
 		
-		Color reflection = solve( scene , itmp );
+		Color reflection = solve( scene , itmp , medium );
 		
 		result += reflection * material.reflection;
 	}
@@ -146,7 +144,7 @@ Color solve( const Scene& scene , const RayInfo& ray )
 	// Ambient
 	result += material.diffuse * scene.ambient;
 	
-	return result;
+	return result * transparency;
 }
 
 } // namespace devns
@@ -156,7 +154,9 @@ Color dev( const Scene& scene , const Ray& ray )
 	// we need more "Rich" ray.. add material & length..
 	RayInfo rayinfo( ray );
 	
-	return devns::solve( scene , rayinfo );
+	const Material& medium = scene.getMaterialAt( ray.position );
+	
+	return devns::solve( scene , rayinfo , medium );
 }
 
 } // namespace solver

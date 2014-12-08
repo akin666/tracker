@@ -10,44 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tracker/app/solver/dev.cpp"
-            timestampString = "439692173.161377"
+            timestampString = "439748986.975509"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
-            landmarkName = "solve( const Scene&amp; scene , const RayInfo&amp; ray )"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tracker/app/solver/dev.cpp"
-            timestampString = "439692173.161377"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
-            landmarkName = "solve( const Scene&amp; scene , const RayInfo&amp; ray )"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tracker/app/solver/dev.cpp"
-            timestampString = "439692170.179605"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
-            landmarkName = "solve( const Scene&amp; scene , const RayInfo&amp; ray )"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "solve( const Scene&amp; scene , const RayInfo&amp; ray , const Material&amp; medium )"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
