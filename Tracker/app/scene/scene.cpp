@@ -62,6 +62,9 @@ void Scene::trace( const Ray& ray , HitInfo& info ) const
 	info.count = 0;
 	info.distance = infinite;
 	
+	info.material = base;
+	info.medium = base;
+	
 	HitInfo tmp;
 	for( auto *node : nodes )
 	{
@@ -73,11 +76,22 @@ void Scene::trace( const Ray& ray , HitInfo& info ) const
 				info.distance = tmp.distance;
 				info.point = tmp.point;
 				info.normal = tmp.normal;
-				info.material = tmp.material;
-				info.medium = base;
 				info.inside = tmp.inside;
+				
 				info.node = node;
 			}
+		}
+	}
+	
+	if( info.count > 0 )
+	{
+		if( info.inside >= 0.0f )
+		{
+			info.material = info.node->getMaterial();
+		}
+		else
+		{
+			info.medium = info.node->getMaterial();
 		}
 	}
 }
@@ -86,6 +100,9 @@ void Scene::traceTo( const glm::vec3& position , const Node *target , HitInfo& i
 {
 	info.count = 0;
 	info.distance = infinite;
+	
+	info.material = base;
+	info.medium = base;
 	
 	Ray ray( position , glm::normalize( target->getPosition() - position ) );
 	
@@ -105,11 +122,22 @@ void Scene::traceTo( const glm::vec3& position , const Node *target , HitInfo& i
 				info.distance = tmp.distance;
 				info.point = tmp.point;
 				info.normal = tmp.normal;
-				info.material = tmp.material;
-				info.medium = base;
 				info.inside = tmp.inside;
+				
 				info.node = node;
 			}
+		}
+	}
+	
+	if( info.count > 0 )
+	{
+		if( info.inside >= 0.0f )
+		{
+			info.material = info.node->getMaterial();
+		}
+		else
+		{
+			info.medium = info.node->getMaterial();
 		}
 	}
 }

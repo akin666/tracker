@@ -48,9 +48,8 @@ Color solve( const Scene& scene , const RayInfo& ray )
 	}
 	
 	// If hit.inside < 0, then we are hitting the object from inside
-	const Material& medium = hit.inside < 0 ? hit.material : hit.medium;
-	const Material& material = hit.inside < 0 ? hit.medium : hit.material;
-	const glm::vec3 surfaceNormal = hit.inside < 0 ? -hit.normal : hit.normal;
+	const Material& medium = hit.medium;
+	const Material& material = hit.material;
 	
 	Color result = Colors::black;
 	
@@ -65,11 +64,15 @@ Color solve( const Scene& scene , const RayInfo& ray )
 	// WE are responsible from ray.position to hit.point, all that happens there, is our responsibility
 	// First we need to solve the ray material and whether the ray even gets to the surface hitpoint
 	// Then we need to solve the surface on the hitpoint
+	if( material.name == "green" )
+	{
+		int i = 0;
+	}
 	Color transparency = Color(1.0f) - glm::min( (Color(1.0f) - medium.transparency ) * hit.distance , Color(1.0f) );
 	if( transparency != Colors::black )
 	{
 		// Refraction?!? TODO
-		RayInfo itmp( Ray( hit.point + ( ray.direction * 0.0001f ) , ray.direction ) , ray.distance + hit.distance , ray.bounces + 1 );
+		RayInfo itmp( Ray( hit.point + ( ray.direction * 0.001f ) , ray.direction ) , ray.distance + hit.distance , ray.bounces + 1 );
 		
 		result += solve( scene , itmp ) * transparency;
 	}
@@ -78,7 +81,7 @@ Color solve( const Scene& scene , const RayInfo& ray )
 	// how does this material react on the surface..
 	// It hit something..
 	{
-		glm::vec3 normalEpsilon = surfaceNormal * (std::numeric_limits<float>::epsilon());
+		glm::vec3 normalEpsilon = hit.normal * (std::numeric_limits<float>::epsilon());
 		glm::vec3 hitpointOut = hit.point + normalEpsilon;
 		glm::vec3 hitpointIn = hit.point - normalEpsilon;
 		

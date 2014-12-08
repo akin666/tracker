@@ -48,12 +48,12 @@ bool intersects(
 	}
 	d = glm::sqrt(d);
 	float t = (-0.5f)*(b+d)/a;
-	/*
+	
 	if( t < 0.0f )
 	{
 		return false;
 	}
-	 */
+	 
 	
 	// calculate hit
 	distance = glm::sqrt(a) * t;

@@ -36,20 +36,10 @@ bool Sphere::intersects( const Ray& ray , HitInfo& info ) const
 	
 	bool hit = ::intersects( ray , pos , radius , info.point , info.distance , info.normal );
 	
-	bool in = radius > distance;
-	
-	if( !hit && in )
-	{
-		int hh = 1;
-	}
-	
-	bool hit2 = ::intersects( ray , pos , radius , info.point , info.distance , info.normal );
-	
-	
 	if(hit)
 	{
 		info.material = material;
-		info.inside = in ? 1.0f : -1.0f;
+		info.inside = radius < distance ? 1.0f : -1.0f;
 	}
 	return hit;
 }

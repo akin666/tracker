@@ -49,7 +49,7 @@
 	],
 	"cameras" : [
 	    {
-		    "name": "test",
+		    "name": "reddi",
 			"position": {
 			    "x": 0.0,
 				"y": 0.0,
@@ -94,9 +94,9 @@
 		{
 			"name": "air",
 			"reflection": {
-				"r": 0.01,
-				"g": 0.01,
-				"b": 0.01
+				"r": 0.0,
+				"g": 0.0,
+				"b": 0.0
 			},
 			"emission": "black",
 			"transparency":  {
@@ -108,7 +108,7 @@
 			"refraction": "no refraction"
 		},
 		{
-			"name": "red",
+			"name": "balla",
 			"reflection": {
 				"r": 0.1,
 				"g": 0.1,
@@ -120,11 +120,11 @@
 			"refraction": "no refraction"
 		},
 		{
-			"name": "blue",
+			"name": "ballb",
 			"reflection": {
-				"r": 0.1,
-				"g": 0.1,
-				"b": 0.1
+				"r": 0.3,
+				"g": 0.3,
+				"b": 0.3
 			},
 			"emission": "black",
 			"transparency": {
@@ -136,17 +136,17 @@
 			"refraction": "glass"
 		},
 		{
-			"name": "green",
+			"name": "ballc",
 			"reflection": {
-				"r": 0.0,
-				"g": 0.0,
-				"b": 0.0
+				"r": 0.3,
+				"g": 0.3,
+				"b": 0.3
 			},
 			"emission": "black",
 			"transparency": {
-				"r": 0.05,
-				"g": 0.05,
-				"b": 0.05
+				"r": 0.8,
+				"g": 0.8,
+				"b": 0.8
 			},
 			"diffuse": {
 				"r": 0.0,
@@ -175,19 +175,8 @@
 			"radius": 0.5,
 			"position": {
 				"x": 3.0,
-				"y": -1.0,
-				"z": 2.0
-			},
-			"material": "light"
-		},
-		{
-			"name": "light2",
-			"type": "sphere",
-			"radius": 0.5,
-			"position": {
-				"x": -1.0,
 				"y": 2.0,
-				"z": 1.0
+				"z": 2.0
 			},
 			"material": "light"
 		},
@@ -199,37 +188,7 @@
 				"y": 0.0,
 				"z": 5.0
 			},
-			"material": "red"
-		},
-		{
-			"type": "sphere",
-			"radius": 1.5,
-			"position": {
-				"x": -3.0,
-				"y": 0.5,
-				"z": 5.0
-			},
-			"material": "blue"
-		},
-		{
-			"type": "sphere",
-			"radius": 1.2,
-			"position": {
-				"x": 0.1,
-				"y": -2.0,
-				"z": 3.0
-			},
-			"material": "green"
-		},
-		{
-			"type": "sphere",
-			"radius": 1.5,
-			"position": {
-				"x": 0.0,
-				"y": 0.0,
-				"z": 4.5
-			},
-			"material": "mirror"
+			"material": "balla"
 		}
 	]
 }
