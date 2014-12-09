@@ -26,34 +26,50 @@ bool intersects( const Ray& ray , const glm::vec3& position , float radius )
 	return t >= 0.0f;
 }
 
-// additions from http://sci.tuomastonteri.fi/programming/sse/example3
 bool intersects(
 				const Ray& ray ,
 				const glm::vec3& position ,
 				float radius ,
 				glm::vec3& hitpoint ,
 				float& distance ,
-				glm::vec3& normal )
+				glm::vec3& normal ,
+				float& inside )
 {
 	glm::vec3 diff = ray.position - position;
+	float length = glm::length( diff );
 	
-	float a = glm::dot(ray.direction , ray.direction);
-	float b = 2.0f * glm::dot(ray.direction , diff);
-	float c = glm::dot(diff , diff) - (radius * radius);
-	float d = b * b - 4.0f * a * c;
+	inside = length - radius;
 	
-	if(d < 0.0f)
+	double a = glm::dot(ray.direction , ray.direction);
+	double b = 2.0f * glm::dot(ray.direction , diff);
+	double c = glm::dot(diff , diff) - (radius * radius);
+	double d = b * b - 4.0f * a * c;
+	
+	if(d < 0.0)
 	{
 		return false;
 	}
-	d = glm::sqrt(d);
-	float t = (-0.5f)*(b+d)/a;
 	
-	if( t < 0.0f )
+	if( d == 0.0 )
+	{
+		// ONLY 1 hitpoint!
+	}
+	
+	d = glm::sqrt( d );
+	
+	double t1 = (-b + d)/(a * 2.0);
+	double t2 = (-b - d)/(a * 2.0);
+	
+	float t = (float)t1;
+	if( t1 > t2 || t1 <= 0.0 )
+	{
+		t = (float)t2;
+	}
+	
+	if( t <= 0.0 )
 	{
 		return false;
 	}
-	 
 	
 	// calculate hit
 	distance = glm::sqrt(a) * t;
@@ -63,18 +79,3 @@ bool intersects(
 	return true;
 }
 
-/*
-bool intersects( const glm::vec3& p1 , const glm::vec3& p2 , const Node& node )
-{
-	// 3 points, p1,p2,p3
-	const glm::vec3& p3 = node.getPosition();
-	
-	glm::vec3 d = p2 - p1;
-	
-	float a = glm::dot( d , d );
-	float b = 2.0f * glm::dot( d , p1 - p3 );
-	float c = glm::dot( p3 , p3 ) + glm::dot( p1 , p1 ) - 2.0f * glm::dot( p3 , p1 ) - node.radius * node.radius;
-	
-	return b*b - 4.0f * a * c >= 0.0f;
-}
-*/

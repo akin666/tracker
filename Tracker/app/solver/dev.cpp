@@ -41,7 +41,7 @@ Color solve( const Scene& scene , const RayInfo& ray , const Material& medium )
 	float distance = ray.distance + hit.distance;
 	
 	Color transparency = Color(1.0f) - glm::min( (Color(1.0f) - medium.transparency ) * distance , Color(1.0f) );
-	if( distance > scene.max || ray.bounces > 5 )
+	if( distance > scene.max || ray.bounces > 10 )
 	{
 		return infinite(ray) * transparency;
 	}
@@ -52,17 +52,6 @@ Color solve( const Scene& scene , const RayInfo& ray , const Material& medium )
 		return infinite(ray);
 	}
 	
-	// If hit.inside < 0, then we are hitting the object from inside
-	const Material& material = hit.material;
-	
-	Color result = Colors::black;
-	
-	if( material.name == "mirror" )
-	{
-		int nn = 0;
-		//return Colors::green;
-	}
-	
 	//// Solving the ray traversal till the hit point
 	// Transparency
 	if( transparency == Colors::black )
@@ -70,9 +59,20 @@ Color solve( const Scene& scene , const RayInfo& ray , const Material& medium )
 		return Colors::black;
 	}
 	
+	// If hit.inside < 0, then we are hitting the object from inside
+	const Material& material = hit.material;
+	
+	Color result = Colors::black;
+	
 	// see through?
 	// Refraction?!? TODO
-	RayInfo itmp( Ray( hit.point + ( ray.direction * smallstep ) , ray.direction ) , distance , ray.bounces + 1 );
+	// calculate refraction
+	float n = medium.refraction.r / material.refraction.r;
+	float cosI = glm::dot( hit.normal, ray.direction );
+	float cosT2 = 1.0f - n * n * (1.0f - cosI * cosI);
+	glm::vec3 T = (n * ray.direction) + (n * cosI - sqrtf( cosT2 )) * hit.normal;
+	
+	RayInfo itmp( Ray( hit.point + ( T * smallstep ) , T ) , distance , ray.bounces + 1 );
 	result += solve( scene , itmp , material );
 	
 	//// Solving the hit surface
