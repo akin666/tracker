@@ -102,26 +102,19 @@ bool read( const Json::Value& value , Node& val )
 	
 	read( value["name"] , val.name );
 	
-	// to identity matrix..
-	val.matrix = glm::mat4x4();
+	// to origo
+	val.reset();
 	
 	glm::vec3 position;
 	glm::vec3 orientation;
 	
 	if( read( value["orientation"] , orientation ) )
 	{
-		//auto q = glm::quat( glm::radians( orientation ) );
-		auto arad = glm::radians( orientation );
-		auto rotmat = glm::eulerAngleYXZ(arad.y, arad.x, arad.z);
-		
-		val.matrix = rotmat * val.matrix;
+		val.rotate(orientation);
 	}
 	if( read( value["position"] , position ) )
 	{
-		// set position
-		auto transmat = glm::translate( glm::mat4x4() , position );
-		
-		val.matrix = transmat * val.matrix;
+		val.move(position);
 	}
 	
 	return true;
