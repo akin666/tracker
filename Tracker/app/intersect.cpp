@@ -22,8 +22,11 @@ bool intersects( const Ray& ray , const glm::vec3& position , float radius )
 		return false;
 	}
 	d = glm::sqrt(d);
-	float t = (-0.5f)*(b+d)/a;
-	return t >= 0.0f;
+	
+	double t1 = (-b + d)/(a * 2.0);
+	double t2 = (-b - d)/(a * 2.0);
+	
+	return t1 >= 0.0f || t2 >= 0.0f;
 }
 
 bool intersects(
@@ -79,3 +82,25 @@ bool intersects(
 	return true;
 }
 
+bool intersects( const Ray& ray , const glm::vec3& position , const glm::vec3& normal , glm::vec3& hitpoint , float& distance )
+{
+	float dotn = glm::dot( ray.direction , normal );
+	glm::vec3 diff = position - ray.position;
+	
+	// never happens.
+	if( dotn == 0.0f )
+	{
+		return false;
+	}
+	
+	float dist = glm::dot( diff , normal ) / dotn;
+	if( dist < 0.0f )
+	{
+		return false;
+	}
+	
+	distance = dist;
+	hitpoint = ray.position + ( ray.direction * distance );
+	
+	return true;
+}

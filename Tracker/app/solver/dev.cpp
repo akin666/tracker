@@ -27,7 +27,7 @@ Color normalToColor( const glm::vec3& normal )
 
 Color infinite( const Ray& ray )
 {
-	//return Colors::black;
+	return Colors::black;
 	return normalToColor(ray.direction);
 }
 
@@ -39,9 +39,10 @@ Color solve( const Scene& scene , const RayInfo& ray , const Material& medium )
 	HitInfo hit;
 	scene.trace( ray , hit );
 	float distance = ray.distance + hit.distance;
+	int bounces = ray.bounces + 1;
 	
 	Color transparency = Color(1.0f) - glm::min( (Color(1.0f) - medium.transparency ) * distance , Color(1.0f) );
-	if( distance > scene.max || ray.bounces > 10 )
+	if( distance > scene.max || bounces > 10 )
 	{
 		return infinite(ray) * transparency;
 	}
@@ -65,14 +66,23 @@ Color solve( const Scene& scene , const RayInfo& ray , const Material& medium )
 	Color result = Colors::black;
 	
 	// see through?
-	// Refraction?!? TODO
-	// calculate refraction
-	float n = medium.refraction.r / material.refraction.r;
-	float cosI = glm::dot( hit.normal, ray.direction );
-	float cosT2 = 1.0f - n * n * (1.0f - cosI * cosI);
-	glm::vec3 T = (n * ray.direction) + (n * cosI - sqrtf( cosT2 )) * hit.normal;
+	// Refraction?
+	glm::vec3 direction = ray.direction;
+	if( material.refraction.r > 0.0f )
+	{
+		float refraction = medium.refraction.r / material.refraction.r;
+		float cosI = glm::dot( hit.normal, ray.direction );
+		float cosT2 = 1.0f - refraction * refraction * (1.0f - cosI * cosI);
+		
+		float sqf = glm::sqrt( cosT2 );
+		
+		if( !isnan(sqf) )
+		{
+			direction = (refraction * ray.direction) + (refraction * cosI - sqf) * hit.normal;
+		}
+	}
 	
-	RayInfo itmp( Ray( hit.point + ( T * smallstep ) , T ) , distance , ray.bounces + 1 );
+	RayInfo itmp( Ray( hit.point + ( direction * smallstep ) , direction ) , distance , bounces );
 	result += solve( scene , itmp , material );
 	
 	//// Solving the hit surface
@@ -88,13 +98,11 @@ Color solve( const Scene& scene , const RayInfo& ray , const Material& medium )
 		scene.getLights( hit , lights );
 		
 		HitInfo tmpInfo;
-		
 		for( const auto *light : lights )
 		{
 			const glm::vec3& lightPos = light->getPosition();
 			
 			// line between hitpoint and light collides with something -> no light contibution
-			
 			// we  need to trace in do while loop, or in for loop..
 			// and calculate the light contribution on the go..
 			// the ray might go through several refractions and surfaces
@@ -131,7 +139,7 @@ Color solve( const Scene& scene , const RayInfo& ray , const Material& medium )
 	if( (material.reflection.r + material.reflection.g + material.reflection.b) > 0.0f )
 	{
 		glm::vec3 direction = ray.direction - 2.0f * glm::dot( ray.direction , hit.normal ) * hit.normal;
-		RayInfo itmp( Ray( hit.point + ( direction * smallstep ) , direction ) , distance , ray.bounces + 1 );
+		RayInfo itmp( Ray( hit.point + ( direction * smallstep ) , direction ) , distance , bounces );
 		
 		Color reflection = solve( scene , itmp , medium );
 		

@@ -53,12 +53,12 @@
 			"position": {
 			    "x": 0.0,
 				"y": 0.0,
-				"z": -5.0
+				"z": -10.0
 			},
 			"orientation": {
 				 "x": 0.0,
 				 "y": 0.0,
-				 "z": 45.0
+				 "z": 0.0
 			},
 			"width": 1920,
 			"height": 1080,
@@ -108,6 +108,22 @@
 			"refraction": "no refraction"
 		},
 		{
+			"name": "glass",
+			"reflection": {
+				"r": 0.0,
+				"g": 0.0,
+				"b": 0.0
+			},
+			"emission": "black",
+			"transparency":  {
+				"r": 1.0,
+				"g": 1.0,
+				"b": 1.0
+			},
+			"diffuse": "black",
+			"refraction": "glass"
+		},
+		{
 			"name": "red",
 			"reflection": {
 				"r": 0.1,
@@ -148,14 +164,14 @@
 				"b": 0.0
 			},
 			"transparency": {
-				"r": 0.95,
+				"r": 0.1,
 				"g": 0.95,
-				"b": 0.95
+				"b": 0.1
 			},
 			"diffuse": {
-				"r": 0.0,
-				"g": 0.2,
-				"b": 0.0
+				"r": 0.2,
+				"g": 0.6,
+				"b": 0.2
 			},
 			"refraction": "glass"
 		},
@@ -223,7 +239,7 @@
 				"y": 0.0,
 				"z": 2.0
 			},
-			"material": "green"
+			"material": "glass"
 		},
 		{
 			"type": "sphere",
@@ -234,6 +250,21 @@
 				"z": 4.5
 			},
 			"material": "mirror"
+		},
+		{
+			"type": "disc",
+			"radius": 10,
+			"position": {
+				"x": -10.0,
+				"y": 0.0,
+				"z": 0.0
+			},
+			"orientation": {
+				"x": 0.0,
+				"y": 90.0,
+				"z": 0.0
+			},
+			"material": "blue"
 		}
 	]
 }

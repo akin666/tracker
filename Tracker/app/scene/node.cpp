@@ -8,6 +8,7 @@
 #include "node"
 #include "../hitinfo"
 #include "../materials"
+#include "world"
 
 Node::Node()
 {
@@ -46,10 +47,19 @@ void Node::setPosition( glm::vec3 position )
 
 glm::vec3 Node::getPosition() const
 {
-	glm::vec4 pos(0.0f, 0.0f, 0.0f, 1.0f);
-	
-	pos = matrix * pos;
-	
+	glm::vec4 pos = matrix * World::center;
+	return glm::vec3( pos.x , pos.y , pos.z );
+}
+
+glm::vec3 Node::getUp() const
+{
+	glm::vec4 pos = matrix * World::up;
+	return glm::vec3( pos.x , pos.y , pos.z );
+}
+
+glm::vec3 Node::getForward() const
+{
+	glm::vec4 pos = matrix * World::forward;
 	return glm::vec3( pos.x , pos.y , pos.z );
 }
 

@@ -12,6 +12,7 @@
 #include "materials"
 
 #include "scene/sphere"
+#include "scene/disc"
 
 // glm::translate
 #include <glm/gtc/matrix_transform.hpp>
@@ -106,6 +107,7 @@ bool read( const Json::Value& value , Node& val )
 	
 	glm::vec3 position;
 	glm::vec3 orientation;
+	
 	if( read( value["position"] , position ) )
 	{
 		// set position
@@ -186,6 +188,20 @@ bool read( const Json::Value& value ,  Sphere& val )
 	return true;
 }
 
+bool read( const Json::Value& value ,  Disc& val )
+{
+	if( value.isNull() || (!value.isObject()) )
+	{
+		return false;
+	}
+	
+	read( value , (Node&)val );
+	read( value["radius"] , val.radius );
+	read( value["material"] , val.material );
+	
+	return true;
+}
+
 bool SceneLoader::load( std::string path , Scene& scene )
 {
 	Json::Value root;
@@ -257,12 +273,11 @@ bool SceneLoader::load( std::string path , Scene& scene )
 		Material material;
 		std::string name;
 		
-		// extract materials
 		for( int i = 0 ; i < cameras.size() ; ++i )
 		{
 			const auto& jsmcamera = cameras[i];
 			
-			Camera *camera = new Camera;
+			auto *camera = new Camera;
 			
 			if( !read( jsmcamera , *camera ) )
 			{
@@ -281,7 +296,6 @@ bool SceneLoader::load( std::string path , Scene& scene )
 		// extract nodes
 		std::string type;
 		
-		// extract materials
 		for( int i = 0 ; i < nodes.size() ; ++i )
 		{
 			const auto& jsnode = nodes[i];
@@ -295,7 +309,7 @@ bool SceneLoader::load( std::string path , Scene& scene )
 			
 			if( type == "sphere" )
 			{
-				Sphere *sphere = new Sphere;
+				auto *sphere = new Sphere;
 				
 				if( !read(jsnode , *sphere ) )
 				{
@@ -306,6 +320,22 @@ bool SceneLoader::load( std::string path , Scene& scene )
 				}
 				
 				scene.add(sphere);
+				continue;
+			}
+			
+			if( type == "disc" )
+			{
+				auto *disc = new Disc;
+				
+				if( !read(jsnode , *disc ) )
+				{
+					// failed to read light..
+					LOG->error("%s:%d failed to parse disc data!" , __FILE__ , __LINE__ );
+					delete disc; // do not leak it..
+					continue;
+				}
+				
+				scene.add(disc);
 				continue;
 			}
 		}
