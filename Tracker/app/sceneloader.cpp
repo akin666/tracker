@@ -13,6 +13,7 @@
 
 #include "scene/sphere"
 #include "scene/disc"
+#include "scene/camera"
 
 // glm::translate
 #include <glm/gtc/matrix_transform.hpp>

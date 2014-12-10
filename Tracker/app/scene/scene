@@ -27,21 +27,19 @@
 #define	SCENE_HPP
 
 #include <traccore>
-#include "node"
-#include "camera"
 #include "../material"
-#include "../hitinfo"
-#include "lightray"
 #include <unordered_map>
 
+class Ray;
+class HitInfo;
+class Node;
+class Camera;
 class Scene
 {
 private:
 	std::vector<Node*> nodes;
 	std::vector<Node*> lights;
 	std::vector<Camera*> cameras;
-	
-	Camera camera;
 	
 	Material base;
 public:

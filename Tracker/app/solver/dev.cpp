@@ -11,6 +11,7 @@
 #include "../scene/sphere"
 #include "../colors"
 #include "../rayinfo"
+#include "../hitinfo"
 
 namespace solver
 {

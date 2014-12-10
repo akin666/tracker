@@ -7,6 +7,9 @@
 
 #include "scene"
 #include "../materials"
+#include "../hitinfo"
+#include "node"
+#include "camera"
 
 Scene::Scene()
 {

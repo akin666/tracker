@@ -14,6 +14,7 @@
 #include "colors"
 #include "materials"
 #include <config>
+#include "scene/camera"
 
 #include "sceneloader"
 
@@ -122,7 +123,6 @@ void Tracker::run()
 		video.append(lowbuffer.getBuffer());
 		video.close();
 	}
-	
 }
 
 bool Tracker::complete()

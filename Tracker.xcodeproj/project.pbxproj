@@ -72,7 +72,6 @@
 		E760EC1E1A2E546200737A89 /* hitinfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hitinfo.cpp; sourceTree = "<group>"; };
 		E760EC1F1A2E546200737A89 /* intersect */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = intersect; sourceTree = "<group>"; };
 		E760EC201A2E546200737A89 /* intersect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = intersect.cpp; sourceTree = "<group>"; };
-		E760EC211A2E546200737A89 /* lightray */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = lightray; sourceTree = "<group>"; };
 		E760EC221A2E546200737A89 /* line */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = line; sourceTree = "<group>"; };
 		E760EC231A2E546200737A89 /* material */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = material; sourceTree = "<group>"; };
 		E760EC241A2E546200737A89 /* material.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = material.cpp; sourceTree = "<group>"; };
@@ -419,7 +418,6 @@
 				E760EC1E1A2E546200737A89 /* hitinfo.cpp */,
 				E760EC1F1A2E546200737A89 /* intersect */,
 				E760EC201A2E546200737A89 /* intersect.cpp */,
-				E760EC211A2E546200737A89 /* lightray */,
 				E760EC221A2E546200737A89 /* line */,
 				E760EC231A2E546200737A89 /* material */,
 				E760EC241A2E546200737A89 /* material.cpp */,
