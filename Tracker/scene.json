@@ -255,9 +255,9 @@
 			"type": "disc",
 			"radius": 10,
 			"position": {
-				"x": -10.0,
+				"x": 0.0,
 				"y": 0.0,
-				"z": 0.0
+				"z": 10.0
 			},
 			"orientation": {
 				"x": 0.0,

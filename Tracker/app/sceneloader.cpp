@@ -108,11 +108,6 @@ bool read( const Json::Value& value , Node& val )
 	glm::vec3 position;
 	glm::vec3 orientation;
 	
-	if( read( value["position"] , position ) )
-	{
-		// set position
-		val.matrix = glm::translate( val.matrix , position );
-	}
 	if( read( value["orientation"] , orientation ) )
 	{
 		//auto q = glm::quat( glm::radians( orientation ) );
@@ -120,6 +115,13 @@ bool read( const Json::Value& value , Node& val )
 		auto rotmat = glm::eulerAngleYXZ(arad.y, arad.x, arad.z);
 		
 		val.matrix = rotmat * val.matrix;
+	}
+	if( read( value["position"] , position ) )
+	{
+		// set position
+		auto transmat = glm::translate( glm::mat4x4() , position );
+		
+		val.matrix = transmat * val.matrix;
 	}
 	
 	return true;
