@@ -15,3 +15,23 @@ Camera::Camera()
 Camera::~Camera()
 {
 }
+
+float Camera::getWidth() const
+{
+	return width * scale;
+}
+
+float Camera::getHeight() const
+{
+	return height * scale;
+}
+
+float Camera::getDistance() const
+{
+	return distance * scale;
+}
+
+float Camera::getDpmm() const
+{
+	return dpmm;
+}

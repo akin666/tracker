@@ -24,6 +24,11 @@ public:
 	float dpmm;
 	
 	float scale;
+	
+	float getWidth() const;
+	float getHeight() const;
+	float getDistance() const;
+	float getDpmm() const;
 };
 
 #endif // APP_CAMERA_HPP_
