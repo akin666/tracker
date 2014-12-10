@@ -15,8 +15,13 @@
 class HitInfo;
 class Node
 {
+private:
+	std::vector<Node*> childs;
 protected:
+	glm::mat4 delta;
 	glm::mat4 matrix;
+	
+	void traverseChilds();
 public:
 	std::string name;
 public:
@@ -26,6 +31,9 @@ public:
 	virtual float getEmissionRadius() const;
 	virtual bool intersects( const Ray& ray , HitInfo& info ) const;
 	virtual const Material& getMaterial() const;
+	
+	void add( Node *child );
+	void traverse(const glm::mat4& parent);
 	
 	void setPosition( float x , float y , float z );
 	void setPosition( glm::vec3 position );
@@ -43,7 +51,7 @@ public:
 	void reset();
 	
 	void transform( glm::vec3& point ) const;
-	virtual const glm::mat4& getMatrix() const;
+	virtual void get( glm::mat4& out ) const;
 };
 
 #endif // APP_NODE_HPP_

@@ -15,8 +15,3 @@ Camera::Camera()
 Camera::~Camera()
 {
 }
-
-const glm::mat4& Camera::getMatrix() const
-{
-	return matrix; //glm::inverse(matrix);
-}

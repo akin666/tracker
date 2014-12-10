@@ -66,12 +66,7 @@ void Tracker::run()
 	
 	solver::solver solve = &solver::dev;
 	
-	glm::vec4 filmpixel;
-	glm::vec4 temp;
-	
 	Ray ray;
-	glm::vec3 position;
-	glm::vec3 direction;
 	
 	for( const auto* camera : scene.getCameras() )
 	{
@@ -87,11 +82,10 @@ void Tracker::run()
 		const float halfh = camheight * 0.5f;
 		const float dscale = 1.0f / (camera->dpmm * M2MM); // all things in world are in meters.. mm->m
 		
-		glm::vec4 corigo( 0.0f , 0.0f , 0.0f , 1.0f );
-		corigo = camera->getMatrix() * corigo;
+		glm::vec3 corigo = camera->getPosition();
 		
-		const uint height = buffer.getHeight();
 		const uint width = buffer.getWidth();
+		const uint height = buffer.getHeight();
 		
 		LOG->message("Rendering image %dx%d." , width , height );
 		for( uint y = 0 ; y < height ; ++y )
@@ -100,22 +94,13 @@ void Tracker::run()
 			for( uint x = 0 ; x < width ; ++x )
 			{
 				// center the film, and scale..
-				filmpixel.x = (x - halfw) * dscale;
-				filmpixel.y = (y - halfh) * dscale;
-				filmpixel.z = distance;
-				filmpixel.w = 1.0f;
+				ray.position.x = (x - halfw) * dscale;
+				ray.position.y = (y - halfh) * dscale;
+				ray.position.z = distance;
 				
-				filmpixel = camera->getMatrix() * filmpixel;
+				camera->transform(ray.position);
 				
-				ray.position.x = filmpixel.x;
-				ray.position.y = filmpixel.y;
-				ray.position.z = filmpixel.z;
-				
-				temp = glm::normalize(filmpixel - corigo);
-				
-				ray.direction.x = temp.x;
-				ray.direction.y = temp.y;
-				ray.direction.z = temp.z;
+				ray.direction = glm::normalize(ray.position - corigo);
 				
 				// cast ray solving.
 				buffer.set(x, y, solve(scene , ray));

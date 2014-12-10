@@ -24,8 +24,6 @@ public:
 	float dpmm;
 	
 	float scale;
-	
-	virtual const glm::mat4& getMatrix() const;
 };
 
 #endif // APP_CAMERA_HPP_
