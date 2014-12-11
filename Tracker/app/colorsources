@@ -1,0 +1,31 @@
+/*
+ * COLORSOURCES
+ *
+ *  Created on: 24.10.2014
+ *      Author: akin
+ */
+
+#ifndef APP_COLORSOURCES_HPP_
+#define APP_COLORSOURCES_HPP_
+
+#include <traccore>
+#include <unordered_map>
+#include "material"
+
+class ColorSources
+{
+private:
+	typedef std::unordered_map<std::string, ColorSource*> SourceMap;
+	SourceMap sources;
+public:
+	ColorSources();
+
+	void set( std::string key , ColorSource *in );
+	bool get( std::string key , ColorSource& out ) const;
+	
+	const ColorSource& get( std::string key ) const;
+};
+
+#define COLORSOURCES singleton<ColorSources>()
+
+#endif // APP_COLORSOURCES_HPP_

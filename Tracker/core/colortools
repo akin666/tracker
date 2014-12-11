@@ -30,6 +30,24 @@ void hsp2rgb( const Color& from , Color& to );
 Color rgb2hsp( Color from );
 Color hsp2rgb( Color from );
 
+// Low <=> conversions..
+inline void convert( RGBALow& to , const Color& from )
+{
+	to.r = glm::min( from.r , 1.0f ) * 255.0f;
+	to.g = glm::min( from.g , 1.0f ) * 255.0f;
+	to.b = glm::min( from.b , 1.0f ) * 255.0f;
+}
+inline void convert( Color& to , const RGBALow& from )
+{
+	to.r = from.r / 255.0f;
+	to.g = from.g / 255.0f;
+	to.b = from.b / 255.0f;
+}
+inline template <class TC> void convert( TC& to , const TC& from )
+{
+	to = from;
+}
+
 inline void lightAttenuation( float distance , Color& intensity )
 {
 	// distance in real world can be 0.0f, but by adding extremely small number,

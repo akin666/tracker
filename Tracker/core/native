@@ -30,11 +30,9 @@ namespace native
 	
 	template <class PixelType> bool load( std::string location , std::string name , PixelBuffer<PixelType>& buffer ) { return false; }
 	template <> bool load( std::string location , std::string name , PixelBuffer<RGBALow>& buffer );
-	template <> bool load( std::string location , std::string name , PixelBuffer<RGBAHigh>& buffer );
 	
 	template <class PixelType> bool save( std::string location , std::string name , PixelBuffer<PixelType>& buffer ) { return false; }
 	template <> bool save( std::string location , std::string name , PixelBuffer<RGBALow>& buffer );
-	template <> bool save( std::string location , std::string name , PixelBuffer<RGBAHigh>& buffer );
 } // namespace native
 
 #endif // COMMONNATIVE_H_

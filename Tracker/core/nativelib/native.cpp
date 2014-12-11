@@ -15,6 +15,9 @@
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include <stb/stb_image_write.h>
 
+#define STB_IMAGE_IMPLEMENTATION
+#include <stb/stb_image.h>
+
 namespace native {
 
 void log( const std::string& hint , std::string message )
@@ -101,7 +104,26 @@ bool saveImage(
 	return false;
 }*/
 
-//template <> bool load( std::string location , std::string name , PixelBuffer<RGBALow>& buffer );
+template <> bool load( std::string location , std::string name , PixelBuffer<RGBALow>& buffer )
+{
+	std::string filename = getPath( location ) + name + ".png";
+	int x,y,comp,req;
+	req = 4;
+	void *data = stbi_load( filename.c_str() , &x, &y, &comp, req);
+	
+	if( data == nullptr )
+	{
+		return false;
+	}
+	
+	buffer.init((uint)x, (uint)y );
+	
+	std::memcpy( buffer.getBuffer() , data, x*y*4);
+	
+	stbi_image_free(data);
+	
+	return true;
+}
 //template <> bool load( std::string location , std::string name , PixelBuffer<RGBAHigh>& buffer );
 	
 template <> bool save( std::string location , std::string name , PixelBuffer<RGBALow>& buffer )

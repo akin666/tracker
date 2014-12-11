@@ -9,9 +9,11 @@
 #define APP_PIXELBUFFER_HPP_
 
 #include <stdtypes>
+#include <colorsource>
+#include <colortools>
 
 template <class CType>
-class PixelBuffer
+class PixelBuffer : public ColorSource
 {
 private:
 	uint width;
@@ -28,7 +30,7 @@ public:
 	{
 	}
 
-	~PixelBuffer()
+	virtual ~PixelBuffer()
 	{
 		delete[] data;
 		data = nullptr;
@@ -58,6 +60,45 @@ public:
 	uint getHeight() const
 	{
 		return height;
+	}
+	
+	virtual void get( const float& at , Color& color ) const
+	{
+		uint index = ((uint)at) % this->width;
+		
+		if( index >= this->size )
+		{
+			throw "NOOO";
+		}
+		convert( color , data[index] );
+	}
+	
+	virtual void get( const glm::vec2& at , Color& color ) const
+	{
+		uint x = ((uint)at.x) % this->width;
+		uint y = ((uint)at.y) % this->height;
+		
+		uint index = ((y*this->width)+x);
+		
+		if( index >= this->size )
+		{
+			throw "NOOO";
+		}
+		convert( color , data[index] );
+	}
+	
+	virtual void get( const glm::vec3& at , Color& color ) const
+	{
+		uint x = ((uint)at.x) % this->width;
+		uint y = ((uint)at.y) % this->height;
+		
+		uint index = ((y*this->width)+x);
+		
+		if( index >= this->size )
+		{
+			throw "NOOO";
+		}
+		convert( color , data[index] );
 	}
 
 	uint getSize() const
