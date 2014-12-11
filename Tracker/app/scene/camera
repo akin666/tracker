@@ -10,10 +10,12 @@
 
 #include <traccore>
 #include "node"
+#include "../pixelbuffer"
 
 class Camera : public Node
 {
 private:
+	PixelBuffer<Color> buffer;
 public:
 	Camera();
 	virtual ~Camera();
@@ -29,6 +31,9 @@ public:
 	float getHeight() const;
 	float getDistance() const;
 	float getDpmm() const;
+	
+	void init();
+	PixelBuffer<Color>& getBuffer();
 };
 
 #endif // APP_CAMERA_HPP_

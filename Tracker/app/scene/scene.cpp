@@ -135,7 +135,7 @@ void Scene::traceTo( const glm::vec3& position , const Node *target , HitInfo& i
 	}
 }
 
-const std::vector<Camera*>& Scene::getCameras() const
+std::vector<Camera*>& Scene::getCameras()
 {
 	return cameras;
 }

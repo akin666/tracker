@@ -64,7 +64,7 @@ public:
 	void trace( const Ray& ray , HitInfo& info ) const;
 	void traceTo( const glm::vec3& origin , const Node *target , HitInfo& info ) const;
 
-	const std::vector<Camera*>& getCameras() const;
+	std::vector<Camera*>& getCameras();
 };
 
 #endif	// SCENE_HPP

@@ -10,14 +10,11 @@
 
 #include <traccore>
 #include "scene/scene"
-#include "pixelbuffer"
 
 class Tracker : public core::Application
 {
 private:
-	int times;
 	Scene scene;
-	PixelBuffer<Color> buffer;
 public:
 	Tracker();
 

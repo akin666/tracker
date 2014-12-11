@@ -21,7 +21,6 @@
 #include <outputvideo>
 
 Tracker::Tracker()
-: times(0)
 {
 }
 
@@ -58,6 +57,12 @@ bool Tracker::init()
 		}
 	}
 	/**/
+	
+	for( auto* camera : scene.getCameras() )
+	{
+		camera->init();
+	}
+	
     return true;
 }
 
@@ -69,21 +74,17 @@ void Tracker::run()
 	
 	Ray ray;
 	
-	for( const auto* camera : scene.getCameras() )
+	for( auto* camera : scene.getCameras() )
 	{
-		const float camwidth = camera->getWidth();
-		const float camheight = camera->getHeight();
 		const float distance = camera->getDistance();
 		
-		// init buffer..
-		buffer.init((uint)camwidth , (uint)camheight );
-		BufferTool::clear( buffer );
-		
-		const float halfw = camwidth * 0.5f;
-		const float halfh = camheight * 0.5f;
+		const float halfw = camera->getWidth() * 0.5f;
+		const float halfh = camera->getHeight() * 0.5f;
 		const float dscale = 1.0f / (camera->getDpmm() * M2MM); // all things in world are in meters.. mm->m
 		
 		glm::vec3 corigo = camera->getPosition();
+		
+		PixelBuffer<Color>& buffer = camera->getBuffer();
 		
 		const uint width = buffer.getWidth();
 		const uint height = buffer.getHeight();

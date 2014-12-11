@@ -6,6 +6,7 @@
  */
 
 #include "camera"
+#include "../buffertool"
 
 Camera::Camera()
 : distance( 0.1f )
@@ -34,4 +35,16 @@ float Camera::getDistance() const
 float Camera::getDpmm() const
 {
 	return dpmm;
+}
+
+void Camera::init()
+{
+	// init buffer..
+	buffer.init((uint)getWidth() , (uint)getHeight() );
+	BufferTool::clear( buffer );
+}
+
+PixelBuffer<Color>& Camera::getBuffer()
+{
+	return buffer;
 }
