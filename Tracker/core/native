@@ -12,7 +12,8 @@
 #define COMMONNATIVE_H_
 
 #include "stdtypes"
-#include "outputvideo"
+#include "pixelbuffer"
+#include "stdgfx"
 
 #ifndef OS_NOT_DETECTED
 # define USE_COMMON_NATIVELIB
@@ -24,9 +25,16 @@ namespace native
 	
 	std::string getPath( std::string location );
 	
-	bool readFile( std::string location , std::string name , std::string& content );
+	bool load( std::string location , std::string name , std::string& content );
+	//bool save( std::string location , std::string name , std::string& content );
 	
-	bool saveImage( std::string location , std::string name , int width , int height , pixelformat::Format inputformat , const void *pixels );
+	template <class PixelType> bool load( std::string location , std::string name , PixelBuffer<PixelType>& buffer ) { return false; }
+	template <> bool load( std::string location , std::string name , PixelBuffer<RGBALow>& buffer );
+	template <> bool load( std::string location , std::string name , PixelBuffer<RGBAHigh>& buffer );
+	
+	template <class PixelType> bool save( std::string location , std::string name , PixelBuffer<PixelType>& buffer ) { return false; }
+	template <> bool save( std::string location , std::string name , PixelBuffer<RGBALow>& buffer );
+	template <> bool save( std::string location , std::string name , PixelBuffer<RGBAHigh>& buffer );
 } // namespace native
 
 #endif // COMMONNATIVE_H_

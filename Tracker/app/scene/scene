@@ -46,6 +46,7 @@ public:
 	float max;
 	float infinite;
 	std::string name;
+	std::string type;
 	Color ambient;
 private:
 public:

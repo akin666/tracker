@@ -3,6 +3,7 @@
 		"name": "TestScene",
 		"maximum ray": 1000.0,
 		"infinite ray": 1001.0,
+		"type": "image",
 		"ambient" : {
 			"r": 0.3,
 			"g": 0.3,

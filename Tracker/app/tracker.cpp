@@ -58,6 +58,15 @@ bool Tracker::init()
 	}
 	/**/
 	
+	if( scene.type == "dynamic" )
+	{
+		// video cameras
+	}
+	else
+	{
+		// static images
+	}
+	
 	for( auto* camera : scene.getCameras() )
 	{
 		camera->init();
@@ -116,7 +125,7 @@ void Tracker::run()
 		
 		int dpi = (int)dpmm2dpi(camera->dpmm);
 		
-		native::saveImage( "" , camera->name , lowbuffer.getWidth() , lowbuffer.getHeight() , pixelformat::RGBA8 , lowbuffer.getBuffer() );
+		native::save( "" , camera->name , lowbuffer );
 		
 		output::Video video;
 		

@@ -10,7 +10,10 @@
 #ifdef USE_COMMON_NATIVELIB
 
 #include <iostream>
-#include "tgalib.hpp"
+#include <fstream>
+
+#define STB_IMAGE_WRITE_IMPLEMENTATION
+#include <stb/stb_image_write.h>
 
 namespace native {
 
@@ -34,7 +37,7 @@ std::string getPath( std::string location )
 	return "unknown/";
 }
 	
-bool readFile( std::string location , std::string name , std::string& content )
+bool load( std::string location , std::string name , std::string& content )
 {
 	std::string filename = getPath( location ) + name;
 	
@@ -51,7 +54,26 @@ bool readFile( std::string location , std::string name , std::string& content )
 	}
 	return false;
 }
-
+/*
+bool save( std::string location , std::string name , std::string& content )
+{
+	std::string filename = getPath( location ) + name;
+	
+	std::ifstream file(filename, std::ios::in | std::ios::binary);
+	if( file )
+	{
+		file.seekg(0, std::ios::end);
+		size_t size = file.tellg();
+		content.resize(size);
+		file.seekg(0, std::ios::beg);
+		file.read(&content[0], size);
+		
+		return true;
+	}
+	return false;
+}
+*/
+/*
 bool saveImage(
     std::string location ,
 	std::string name ,
@@ -60,24 +82,35 @@ bool saveImage(
 	pixelformat::Format inputformat ,
 	const void *pixels )
 {
-	std::string filename = getPath( location ) + name + ".tga";
+	std::string filename = getPath( location ) + name + ".png";
 	
 	switch( inputformat )
 	{
 		case pixelformat::RGB8 :
-			return tgalib::RGB8InterleavedWrite( filename , width , height , pixels );
+			return stbi_write_png(filename.c_str(), width, height, 3, pixels, 0) == 1;
 			break;
 		case pixelformat::RGBA8 :
-			return tgalib::RGBA8InterleavedWrite( filename , width , height , pixels );
+			return stbi_write_png(filename.c_str(), width, height, 4, pixels, 0) == 1;
 			break;
 		case pixelformat::ALPHA8 :
-			return tgalib::ALPHA8Write( filename , width , height , pixels );
+			return stbi_write_png(filename.c_str(), width, height, 1, pixels, 0) == 1;
 			break;
 		default:
 			break;
 	}
 	return false;
+}*/
+
+//template <> bool load( std::string location , std::string name , PixelBuffer<RGBALow>& buffer );
+//template <> bool load( std::string location , std::string name , PixelBuffer<RGBAHigh>& buffer );
+	
+template <> bool save( std::string location , std::string name , PixelBuffer<RGBALow>& buffer )
+{
+	std::string filename = getPath( location ) + name + ".png";
+	return stbi_write_png(filename.c_str(), buffer.getWidth(), buffer.getHeight(), 4, buffer.getBuffer() , 0) == 1;
 }
+	
+//template <> bool save( std::string location , std::string name , PixelBuffer<RGBAHigh>& buffer );
 
 } // native
 

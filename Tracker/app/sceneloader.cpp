@@ -222,6 +222,7 @@ bool SceneLoader::load( std::string path , Scene& scene )
 	{
 		// extract settings
 		read( settings["name"] , scene.name );
+		read( settings["type"] , scene.type );
 		read( settings["maximum ray"] , scene.max );
 		read( settings["infinite ray"] , scene.infinite );
 		readColor( settings["ambient"] , scene.ambient );

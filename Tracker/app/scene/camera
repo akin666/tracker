@@ -10,7 +10,7 @@
 
 #include <traccore>
 #include "node"
-#include "../pixelbuffer"
+#include <pixelbuffer>
 
 class Camera : public Node
 {

@@ -40,6 +40,7 @@
 		E7B4E09F1A2F7D2000A7C565 /* TinyJS_MathFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7B4E09B1A2F7D2000A7C565 /* TinyJS_MathFunctions.cpp */; };
 		E7B4E0A11A3526E300A7C565 /* test.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = E7B4E0A01A3526D500A7C565 /* test.json */; };
 		E7B4E0A41A375B6100A7C565 /* disc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7B4E0A31A375B6100A7C565 /* disc.cpp */; };
+		E7B4E0FA1A39FEE400A7C565 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = E7B4E0C21A39FEE400A7C565 /* README.md */; };
 		E7C852A71A0645CD00478AC0 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C852A61A0645CD00478AC0 /* main.cpp */; };
 		E7C854021A0649C100478AC0 /* glm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C853201A0649C000478AC0 /* glm.cpp */; };
 		E7C854B21A13626600478AC0 /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C854B11A13626600478AC0 /* jsoncpp.cpp */; };
@@ -62,6 +63,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E72BF4E51A3A0331002DE8CB /* pixelbuffer */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = pixelbuffer; sourceTree = "<group>"; };
 		E760EC121A2DA7BC00737A89 /* init.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = init.js; sourceTree = "<group>"; };
 		E760EC171A2E546200737A89 /* action */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = action; sourceTree = "<group>"; };
 		E760EC191A2E546200737A89 /* buffertool */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = buffertool; sourceTree = "<group>"; };
@@ -77,7 +79,6 @@
 		E760EC241A2E546200737A89 /* material.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = material.cpp; sourceTree = "<group>"; };
 		E760EC251A2E546200737A89 /* materials */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = materials; sourceTree = "<group>"; };
 		E760EC261A2E546200737A89 /* materials.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = materials.cpp; sourceTree = "<group>"; };
-		E760EC271A2E546200737A89 /* pixelbuffer */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = pixelbuffer; sourceTree = "<group>"; };
 		E760EC281A2E546200737A89 /* ray */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = ray; sourceTree = "<group>"; };
 		E760EC291A2E546200737A89 /* rayinfo */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = rayinfo; sourceTree = "<group>"; };
 		E760EC2A1A2E546200737A89 /* rayinfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rayinfo.cpp; sourceTree = "<group>"; };
@@ -135,6 +136,10 @@
 		E7B4E0A01A3526D500A7C565 /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
 		E7B4E0A21A375B6100A7C565 /* disc */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = disc; sourceTree = "<group>"; };
 		E7B4E0A31A375B6100A7C565 /* disc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = disc.cpp; sourceTree = "<group>"; };
+		E7B4E0C21A39FEE400A7C565 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		E7B4E0C81A39FEE400A7C565 /* stb_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
+		E7B4E0CA1A39FEE400A7C565 /* stb_image_write.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image_write.h; sourceTree = "<group>"; };
+		E7B4E0CB1A39FEE400A7C565 /* stb_perlin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_perlin.h; sourceTree = "<group>"; };
 		E7C852A31A0645CD00478AC0 /* Tracker */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Tracker; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7C852A61A0645CD00478AC0 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		E7C852E01A06463400478AC0 /* defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = defines.h; sourceTree = "<group>"; };
@@ -423,7 +428,6 @@
 				E760EC241A2E546200737A89 /* material.cpp */,
 				E760EC251A2E546200737A89 /* materials */,
 				E760EC261A2E546200737A89 /* materials.cpp */,
-				E760EC271A2E546200737A89 /* pixelbuffer */,
 				E760EC281A2E546200737A89 /* ray */,
 				E760EC291A2E546200737A89 /* rayinfo */,
 				E760EC2A1A2E546200737A89 /* rayinfo.cpp */,
@@ -470,6 +474,7 @@
 		E760EC3F1A2E546200737A89 /* core */ = {
 			isa = PBXGroup;
 			children = (
+				E72BF4E51A3A0331002DE8CB /* pixelbuffer */,
 				E7B4E07C1A2E7E0D00A7C565 /* config.cpp */,
 				E760EC401A2E546200737A89 /* application */,
 				E760EC411A2E546200737A89 /* colortools */,
@@ -530,6 +535,17 @@
 			path = "tiny-js";
 			sourceTree = "<group>";
 		};
+		E7B4E0A51A39FEE400A7C565 /* stb */ = {
+			isa = PBXGroup;
+			children = (
+				E7B4E0C21A39FEE400A7C565 /* README.md */,
+				E7B4E0C81A39FEE400A7C565 /* stb_image.h */,
+				E7B4E0CA1A39FEE400A7C565 /* stb_image_write.h */,
+				E7B4E0CB1A39FEE400A7C565 /* stb_perlin.h */,
+			);
+			path = stb;
+			sourceTree = "<group>";
+		};
 		E7C8529A1A0645CD00478AC0 = {
 			isa = PBXGroup;
 			children = (
@@ -565,6 +581,7 @@
 		E7C852E11A06463400478AC0 /* ext */ = {
 			isa = PBXGroup;
 			children = (
+				E7B4E0A51A39FEE400A7C565 /* stb */,
 				E7B4E0961A2F7D2000A7C565 /* tiny-js */,
 				E7C854AE1A13626600478AC0 /* json */,
 				E7C853031A0649C000478AC0 /* glm */,
@@ -926,6 +943,7 @@
 				E760EC711A2E546200737A89 /* log.cpp in Sources */,
 				E760EC701A2E546200737A89 /* init.cpp in Sources */,
 				E7B4E09F1A2F7D2000A7C565 /* TinyJS_MathFunctions.cpp in Sources */,
+				E7B4E0FA1A39FEE400A7C565 /* README.md in Sources */,
 				E760EC691A2E546200737A89 /* blank.cpp in Sources */,
 				E7C854B21A13626600478AC0 /* jsoncpp.cpp in Sources */,
 				E760EC6E1A2E546200737A89 /* corerandom.cpp in Sources */,
