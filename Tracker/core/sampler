@@ -11,6 +11,7 @@
 #include <stdtypes>
 #include <stdgfx>
 
+
 class Sampler
 {
 public:

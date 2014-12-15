@@ -22,7 +22,10 @@ Disc::~Disc()
 float Disc::getEmissionRadius() const
 {
 	Color color;
-	material.emission->at(0.0f, color);
+	if( material.emission != nullptr)
+	{
+		material.emission->at(0.0f, color);
+	}
 	return radius + ::lightMaxDistance(color);
 }
 

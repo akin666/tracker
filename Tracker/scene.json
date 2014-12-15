@@ -72,8 +72,6 @@
 				"g": 0.99,
 				"b": 0.99
 			},
-			"emission": "black",
-			"transparency": "black",
 			"diffuse": {
 				"type": "color",
 				"r": 0.01,
@@ -83,11 +81,7 @@
 		},
 		{
 			"name": "space",
-			"reflection": "black",
-			"emission": "black",
-			"transparency": "white",
-			"diffuse": "black",
-			"refraction": "no refraction"
+			"transparency": "white"
 		},
 		{
 			"name": "air",
@@ -97,15 +91,12 @@
 				"g": 0.01,
 				"b": 0.01
 			},
-			"emission": "black",
 			"transparency":  {
 				"type": "color",
 				"r": 0.98,
 				"g": 0.98,
 				"b": 1.0
-			},
-			"diffuse": "black",
-			"refraction": "no refraction"
+			}
 		},
 		{
 			"name": "glass",
@@ -115,14 +106,12 @@
 				"g": 0.0,
 				"b": 0.0
 			},
-			"emission": "black",
 			"transparency":  {
 				"type": "color",
 				"r": 1.0,
 				"g": 1.0,
 				"b": 1.0
 			},
-			"diffuse": "black",
 			"refraction": "glass"
 		},
 		{
@@ -133,10 +122,7 @@
 				"g": 0.1,
 				"b": 0.1
 			},
-			"emission": "black",
-			"transparency": "black",
-			"diffuse": "red",
-			"refraction": "no refraction"
+			"diffuse": "red"
 		},
 		{
 			"name": "blue",
@@ -146,7 +132,6 @@
 				"g": 0.1,
 				"b": 0.1
 			},
-			"emission": "black",
 			"transparency": {
 				"type": "color",
 				"r": 0.1,
@@ -164,12 +149,6 @@
 				"g": 0.40,
 				"b": 0.30
 			},
-			"emission": {
-				"type": "color",
-				"r": 0.0,
-				"g": 0.0,
-				"b": 0.0
-			},
 			"transparency": {
 				"type": "color",
 				"r": 0.1,
@@ -186,7 +165,6 @@
 		},
 		{
 			"name": "light",
-			"reflection": "black",
 			"emission": {
 				"type": "color",
 				"r": 10.0,
@@ -194,7 +172,6 @@
 				"b": 10.0
 			},
 			"transparency": "white",
-			"diffuse": "black",
 			"refraction": "glass"
 		}
 	],

@@ -42,10 +42,13 @@ Color solve( const Scene& scene , const RayInfo& ray , const Material& medium )
 	int bounces = ray.bounces + 1;
 	
 	Color tmpColor;
-	Color tmpColor2;
 	
-	medium.transparency->at(0.0f , tmpColor);
-	Color transparency = Color(1.0f) - glm::min( (Color(1.0f) - tmpColor ) * distance , Color(1.0f) );
+	Color mediumTransparency;
+	if( medium.transparency != nullptr )
+	{
+		medium.transparency->at(0.0f , mediumTransparency);
+	}
+	Color transparency = Color(1.0f) - glm::min( (Color(1.0f) - mediumTransparency ) * distance , Color(1.0f) );
 	if( distance > scene.max || bounces > 10 )
 	{
 		return infinite(ray) * transparency;
@@ -72,11 +75,21 @@ Color solve( const Scene& scene , const RayInfo& ray , const Material& medium )
 	// see through?
 	// Refraction?
 	glm::vec3 direction = ray.direction;
-	material.refraction->at(0.0f,tmpColor);
-	if( tmpColor.r > 0.0f )
+	float materialRefraction = 1.0f;
+	if( material.refraction != nullptr )
 	{
-		medium.refraction->at(0.0f,tmpColor2);
-		float refraction = tmpColor2.r / tmpColor.r;
+		material.refraction->at(0.0f,tmpColor);
+		materialRefraction = tmpColor.r;
+	}
+	if( materialRefraction > 0.0f )
+	{
+		float mediumRefraction = 1.0f;
+		if( medium.refraction != nullptr )
+		{
+			medium.refraction->at(0.0f,tmpColor);
+			mediumRefraction = tmpColor.r;
+		}
+		float refraction = mediumRefraction / materialRefraction;
 		float cosI = glm::dot( hit.normal, ray.direction );
 		float cosT2 = 1.0f - refraction * refraction * (1.0f - cosI * cosI);
 		
@@ -90,6 +103,9 @@ Color solve( const Scene& scene , const RayInfo& ray , const Material& medium )
 	
 	RayInfo itmp( Ray( hit.point + ( direction * smallstep ) , direction ) , distance , bounces );
 	result += solve( scene , itmp , material );
+	
+	Color materialDiffuse;
+	material.diffuse->at(0.0f,materialDiffuse);
 	
 	//// Solving the hit surface
 	// how does this material react on the surface..
@@ -108,25 +124,35 @@ Color solve( const Scene& scene , const RayInfo& ray , const Material& medium )
 		{
 			const glm::vec3& lightPos = light->getPosition();
 			
+			const Material& lightMaterial = light->getMaterial();
+			if( lightMaterial.emission == nullptr )
+			{
+				continue;
+			}
+			
 			// line between hitpoint and light collides with something -> no light contibution
 			// we  need to trace in do while loop, or in for loop..
 			// and calculate the light contribution on the go..
 			// the ray might go through several refractions and surfaces
 			scene.traceTo( hit.point , light , tmpInfo );
-			tmpInfo.material.transparency->at(0.0f,tmpColor);
-			if( tmpInfo.count > 0 && tmpColor != World::black )
+			if( tmpInfo.count > 0 )
 			{
-				continue;
+				if( tmpInfo.material.transparency == nullptr )
+				{
+					continue;
+				}
+				tmpInfo.material.transparency->at(0.0f,tmpColor);
+				if( tmpColor == World::black )
+				{
+					continue;
+				}
 			}
-			
-			const Material& lightMaterial = light->getMaterial();
 			
 			glm::vec3 diff = lightPos - hit.point;
 			float distance = glm::length( diff );
 			
 			Color lighting;
 			lightMaterial.emission->at(0.0f,lighting);
-			
 			lightAttenuation( distance , lighting );
 			
 			auto directionoflight = glm::normalize( diff );
@@ -138,32 +164,40 @@ Color solve( const Scene& scene , const RayInfo& ray , const Material& medium )
 			
 			if( dot > 0.0f && (lighting.r > 0.0f || lighting.g > 0.0f || lighting.b > 0.0f ) )
 			{
-				material.diffuse->at(0.0f,tmpColor);
-				result += dot * tmpColor * lighting;
+				result += dot * materialDiffuse * lighting;
 			}
 		}
 	}
 	
 	// Reflection
-	material.reflection->at(0.0f,tmpColor);
-	if( (tmpColor.r + tmpColor.g + tmpColor.b) > 0.0f )
+	if( material.reflection != nullptr )
 	{
+		Color materialReflection(0.0f);
+		material.reflection->at(0.0f,materialReflection);
+		
 		glm::vec3 direction = ray.direction - 2.0f * glm::dot( ray.direction , hit.normal ) * hit.normal;
 		RayInfo itmp( Ray( hit.point + ( direction * smallstep ) , direction ) , distance , bounces );
 		
 		Color reflection = solve( scene , itmp , medium );
 		
-		result += reflection * tmpColor;
+		result += reflection * materialReflection;
 	}
 	
 	// Emissive
-	material.emission->at(0.0f,tmpColor);
-	result += tmpColor;
+	if( material.emission != nullptr )
+	{
+		Color materialEmission;
+		material.emission->at(0.0f,materialEmission);
+		result += materialEmission;
+	}
 	
 	// Ambient
-	material.diffuse->at(0.0f,tmpColor);
-	scene.ambient->at(0.0f,tmpColor2);
-	result += tmpColor * tmpColor2;
+	if( scene.ambient != nullptr )
+	{
+		Color sceneAmbient;
+		scene.ambient->at(0.0f,sceneAmbient);
+		result += materialDiffuse * sceneAmbient;
+	}
 	
 	return result * transparency;
 }
