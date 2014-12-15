@@ -78,12 +78,12 @@ void Scene::add( Camera *camera )
 	cameras.push_back( camera );
 }
 
-void Scene::set( std::string key , const Material& material )
+void Scene::set( String key , const Material& material )
 {
 	materials[key] = material;
 }
 
-void Scene::set( std::string key , Sampler::Shared& sampler )
+void Scene::set( String key , Sampler::Shared& sampler )
 {
 	auto iter = samplers.find( key );
 	if( iter != samplers.end() )
@@ -94,7 +94,7 @@ void Scene::set( std::string key , Sampler::Shared& sampler )
 	samplers[key] = sampler;
 }
 
-bool Scene::get( std::string key , Material& material ) const
+bool Scene::get( String key , Material& material ) const
 {
 	auto iter = materials.find( key );
 	if( iter == materials.end() )
@@ -105,7 +105,7 @@ bool Scene::get( std::string key , Material& material ) const
 	return true;
 }
 
-bool Scene::get( std::string key , Sampler::Shared& sampler ) const
+bool Scene::get( String key , Sampler::Shared& sampler ) const
 {
 	auto iter = samplers.find( key );
 	if( iter == samplers.end() )
@@ -116,12 +116,12 @@ bool Scene::get( std::string key , Sampler::Shared& sampler ) const
 	return true;
 }
 
-bool Scene::hasMaterial( std::string key ) const
+bool Scene::hasMaterial( String key ) const
 {
 	return materials.find( key ) != materials.end();
 }
 
-bool Scene::hasSampler( std::string key ) const
+bool Scene::hasSampler( String key ) const
 {
 	return samplers.find( key ) != samplers.end();
 }

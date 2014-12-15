@@ -16,7 +16,7 @@
 namespace core  {
 namespace scrpting {
 
-void log( std::string what , CScriptVar* c )
+void log( String what , CScriptVar* c )
 {
 	LOG->message("%s: %s" , what.c_str() , c->getFlagsAsString().c_str() );
 	for( auto *child = c->firstChild ; child != nullptr ; child = child->nextSibling )
@@ -49,7 +49,7 @@ void configGetString(CScriptVar *c, void *userdata)
 		return;
 	}
 	
-	std::string found = CONFIG->get( key->var->getString() , def->var->getString() );
+	String found = CONFIG->get( key->var->getString() , def->var->getString() );
 	
 	ret->var;
 }
@@ -61,7 +61,7 @@ void configSetString(CScriptVar *c, void *userdata)
 
 void logError(CScriptVar *c, void *userdata)
 {
-	std::string str;
+	String str;
 	for( auto *child = c->firstChild ; child != nullptr ; child = child->nextSibling )
 	{
 		auto *data = child->var;
@@ -99,7 +99,7 @@ bool Init::init()
 	}
 	
 	// init systems..
-	if( !native::load( "" , CONFIG->get<std::string>("initfile" , "init.js") , script ) )
+	if( !native::load( "" , CONFIG->get<String>("initfile" , "init.js") , script ) )
 	{
 		LOG->error("%s:%d Failed to read init file." , __FILE__ , __LINE__ );
 		return false;
@@ -136,7 +136,7 @@ bool Init::complete()
     return false;
 }
 
-std::string Init::getName() const
+String Init::getName() const
 {
 	return "Init";
 }

@@ -13,7 +13,7 @@
 
 namespace tgalib 
 {
-    bool RGBA8InterleavedWrite( std::string filename , int width , int height , const void *pixels )
+    bool RGBA8InterleavedWrite( String filename , int width , int height , const void *pixels )
     {
         //Error checking
         if( pixels == NULL || width <= 0 || height <= 0 )
@@ -57,7 +57,7 @@ namespace tgalib
         return true;
     }
 
-    bool RGB8InterleavedWrite( std::string filename , int width , int height , const void *pixels )
+    bool RGB8InterleavedWrite( String filename , int width , int height , const void *pixels )
     {
         //Error checking
         if( pixels == NULL || width <= 0 || height <= 0 )
@@ -101,7 +101,7 @@ namespace tgalib
         return true;
     }
 
-    bool ALPHA8Write( std::string filename , int width , int height , const void *pixels )
+    bool ALPHA8Write( String filename , int width , int height , const void *pixels )
     {
         //Error checking
         if( pixels == NULL || width <= 0 || height <= 0 )
@@ -145,7 +145,7 @@ namespace tgalib
         return true;
     }
 
-    bool RGBA8Write( std::string filename , int width , int height , const void *pixels )
+    bool RGBA8Write( String filename , int width , int height , const void *pixels )
     {
         // convert RGBARGBA... -> RRR...GGG...BBB...AAA...
         int total = width * height;
@@ -169,7 +169,7 @@ namespace tgalib
         return RGBA8InterleavedWrite(filename , width , height , &target[ 0 ] );
     }
 
-    bool RGB8Write( std::string filename , int width , int height , const void *pixels )
+    bool RGB8Write( String filename , int width , int height , const void *pixels )
     {
         // convert RGBARGBA... -> RRR...GGG...BBB...AAA...
         int total = width * height;

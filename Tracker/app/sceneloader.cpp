@@ -31,7 +31,7 @@ bool read( const Json::Value& value , float& val )
 	return true;
 }
 
-bool read( const Json::Value& value , std::string& val )
+bool read( const Json::Value& value , String& val )
 {
 	if( value.isNull() || (!value.isString()) )
 	{
@@ -75,7 +75,7 @@ bool read( const Json::Value& value, Scene& scene, Sampler::Shared& val )
 		return scene.get( value.asString() , val );
 	}
 	
-	std::string type;
+	String type;
 	if( !read( value["type"] , type ) )
 	{
 		// no type specified, skip.
@@ -228,7 +228,7 @@ bool read( const Json::Value& value , Scene& scene , Disc& val )
 	return true;
 }
 
-bool SceneLoader::load( std::string path , Scene& scene )
+bool SceneLoader::load( String path , Scene& scene )
 {
 	Json::Value root;
 	Json::Reader reader;
@@ -262,7 +262,7 @@ bool SceneLoader::load( std::string path , Scene& scene )
 	if( !samplers.isNull() && samplers.isArray() )
 	{
 		Sampler::Shared sampler;
-		std::string name;
+		String name;
 		
 		// extract samplers
 		for( int i = 0 ; i < samplers.size() ; ++i )
@@ -280,7 +280,7 @@ bool SceneLoader::load( std::string path , Scene& scene )
 	if( !materials.isNull() && materials.isArray() )
 	{
 		Material material;
-		std::string name;
+		String name;
 		
 		// extract materials
 		for( int i = 0 ; i < materials.size() ; ++i )
@@ -298,7 +298,7 @@ bool SceneLoader::load( std::string path , Scene& scene )
 	if( !cameras.isNull() && cameras.isArray() )
 	{
 		Material material;
-		std::string name;
+		String name;
 		
 		for( int i = 0 ; i < cameras.size() ; ++i )
 		{
@@ -321,7 +321,7 @@ bool SceneLoader::load( std::string path , Scene& scene )
 	if( !nodes.isNull() && nodes.isArray() )
 	{
 		// extract nodes
-		std::string type;
+		String type;
 		
 		for( int i = 0 ; i < nodes.size() ; ++i )
 		{

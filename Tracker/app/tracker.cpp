@@ -30,7 +30,7 @@ bool Tracker::init()
 {
 	SceneLoader loader;
 	
-	loader.load( CONFIG->get<std::string>("scene" ,"scene.json") , scene );
+	loader.load( CONFIG->get<String>("scene" ,"scene.json") , scene );
 	/**
 	Material mirror;
 	MATERIALS->get("mirror" , mirror );
@@ -138,7 +138,7 @@ bool Tracker::complete()
     return true; //(++times) > 10;
 }
 
-std::string Tracker::getName() const
+String Tracker::getName() const
 {
 	return "Tracker";
 }

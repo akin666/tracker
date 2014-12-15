@@ -14,7 +14,7 @@
 class SceneLoader
 {
 public:
-	bool load( std::string path , Scene& scene );
+	bool load( String path , Scene& scene );
 };
 
 #endif // APP_SCENELOADER_HPP_

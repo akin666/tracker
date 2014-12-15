@@ -20,12 +20,12 @@
 
 namespace native {
 
-void log( const std::string& hint , std::string message )
+void log( const String& hint , String message )
 {
 	std::cout << hint << " : " << message << std::endl;
 }
 	
-std::string getPath( std::string location )
+String getPath( String location )
 {
 	if( location.empty() )
 	{
@@ -40,9 +40,9 @@ std::string getPath( std::string location )
 	return "unknown/";
 }
 	
-bool load( std::string location , std::string name , std::string& content )
+bool load( String location , String name , String& content )
 {
-	std::string filename = getPath( location ) + name;
+	String filename = getPath( location ) + name;
 	
 	std::ifstream file(filename, std::ios::in | std::ios::binary);
 	if( file )
@@ -58,9 +58,9 @@ bool load( std::string location , std::string name , std::string& content )
 	return false;
 }
 /*
-bool save( std::string location , std::string name , std::string& content )
+bool save( String location , String name , String& content )
 {
-	std::string filename = getPath( location ) + name;
+	String filename = getPath( location ) + name;
 	
 	std::ifstream file(filename, std::ios::in | std::ios::binary);
 	if( file )
@@ -78,14 +78,14 @@ bool save( std::string location , std::string name , std::string& content )
 */
 /*
 bool saveImage(
-    std::string location ,
-	std::string name ,
+    String location ,
+	String name ,
 	int width ,
 	int height ,
 	pixelformat::Format inputformat ,
 	const void *pixels )
 {
-	std::string filename = getPath( location ) + name + ".png";
+	String filename = getPath( location ) + name + ".png";
 	
 	switch( inputformat )
 	{
@@ -104,9 +104,9 @@ bool saveImage(
 	return false;
 }*/
 
-template <> bool load( std::string location , std::string name , PixelBuffer<RGBALow>& buffer )
+template <> bool load( String location , String name , PixelBuffer<RGBALow>& buffer )
 {
-	std::string filename = getPath( location ) + name + ".png";
+	String filename = getPath( location ) + name + ".png";
 	int x,y,comp,req;
 	req = 4;
 	void *data = stbi_load( filename.c_str() , &x, &y, &comp, req);
@@ -124,15 +124,15 @@ template <> bool load( std::string location , std::string name , PixelBuffer<RGB
 	
 	return true;
 }
-//template <> bool load( std::string location , std::string name , PixelBuffer<RGBAHigh>& buffer );
+//template <> bool load( String location , String name , PixelBuffer<RGBAHigh>& buffer );
 	
-template <> bool save( std::string location , std::string name , PixelBuffer<RGBALow>& buffer )
+template <> bool save( String location , String name , PixelBuffer<RGBALow>& buffer )
 {
-	std::string filename = getPath( location ) + name + ".png";
+	String filename = getPath( location ) + name + ".png";
 	return stbi_write_png(filename.c_str(), buffer.getWidth(), buffer.getHeight(), 4, buffer.getBuffer() , 0) == 1;
 }
 	
-//template <> bool save( std::string location , std::string name , PixelBuffer<RGBAHigh>& buffer );
+//template <> bool save( String location , String name , PixelBuffer<RGBAHigh>& buffer );
 
 } // native
 

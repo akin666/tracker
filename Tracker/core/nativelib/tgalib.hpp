@@ -8,16 +8,16 @@
 #ifndef TGALIB_H
 #define	TGALIB_H
 
-#include <string>
+#include <stdtypes>
 
 namespace tgalib 
 {
-    bool RGBA8InterleavedWrite( std::string filename , int width , int height , const void *pixels );
-    bool RGB8InterleavedWrite( std::string filename , int width , int height , const void *pixels );
-    bool ALPHA8Write( std::string filename , int width , int height , const void *pixels );
+    bool RGBA8InterleavedWrite( String filename , int width , int height , const void *pixels );
+    bool RGB8InterleavedWrite( String filename , int width , int height , const void *pixels );
+    bool ALPHA8Write( String filename , int width , int height , const void *pixels );
 
-    bool RGBA8Write( std::string filename , int width , int height , const void *pixels );
-    bool RGB8Write( std::string filename , int width , int height , const void *pixels );
+    bool RGBA8Write( String filename , int width , int height , const void *pixels );
+    bool RGB8Write( String filename , int width , int height , const void *pixels );
 }
 
 #endif	/* tgalib */

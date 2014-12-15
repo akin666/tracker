@@ -25,13 +25,13 @@ public:
 	virtual bool initialize();
 	virtual void uninitialize();
 	
-	virtual void streamIt( const std::string& stream, const std::string& message );
+	virtual void streamIt( const String& stream, const String& message );
 
 	void message( const char* format , ... );
 	void error( const char* format , ... );
 	void warning( const char* format , ... );
 	
-	void print( const std::string& stream , const char* format , ... );
+	void print( const String& stream , const char* format , ... );
 };
 
 #define LOG singleton<Log>()

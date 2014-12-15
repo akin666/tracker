@@ -21,18 +21,18 @@
 
 namespace native 
 {
-	void log( const std::string& hint , std::string message );
+	void log( const String& hint , String message );
 	
-	std::string getPath( std::string location );
+	String getPath( String location );
 	
-	bool load( std::string location , std::string name , std::string& content );
-	//bool save( std::string location , std::string name , std::string& content );
+	bool load( String location , String name , String& content );
+	//bool save( String location , String name , String& content );
 	
-	template <class PixelType> bool load( std::string location , std::string name , PixelBuffer<PixelType>& buffer ) { return false; }
-	template <> bool load( std::string location , std::string name , PixelBuffer<RGBALow>& buffer );
+	template <class PixelType> bool load( String location , String name , PixelBuffer<PixelType>& buffer ) { return false; }
+	template <> bool load( String location , String name , PixelBuffer<RGBALow>& buffer );
 	
-	template <class PixelType> bool save( std::string location , std::string name , PixelBuffer<PixelType>& buffer ) { return false; }
-	template <> bool save( std::string location , std::string name , PixelBuffer<RGBALow>& buffer );
+	template <class PixelType> bool save( String location , String name , PixelBuffer<PixelType>& buffer ) { return false; }
+	template <> bool save( String location , String name , PixelBuffer<RGBALow>& buffer );
 } // namespace native
 
 #endif // COMMONNATIVE_H_

@@ -12,6 +12,7 @@
 #include <fstream>
 #include <iostream>
 #include <pixelformat>
+#include <stdtypes>
 
 namespace output
 {
@@ -22,7 +23,7 @@ private:
 	std::ofstream out;
 	size_t frameSize;
 public:
-	bool init( std::string location , std::string name , int width , int height , pixelformat::Format inputformat , int dpi , int framerate );
+	bool init( String location , String name , int width , int height , pixelformat::Format inputformat , int dpi , int framerate );
 	void append( const void *pixels );
 	void close();
 };

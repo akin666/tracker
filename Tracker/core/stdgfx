@@ -15,10 +15,10 @@
 #include "stdtypes"
 #include "tcolor"
 
-//typedef TColor3<float32> Color;
-typedef glm::vec3 Color;
+//using Color = TColor3<float32>;
+using Color = glm::vec3;
 
-typedef TColor4<float32> RGBAHigh;
-typedef TColor4<uint8> RGBALow;
+using RGBAHigh = TColor4<float32>;
+using RGBALow = TColor4<uint8>;
 
 #endif // STDGFX_H_123_

@@ -23,7 +23,7 @@ public:
 	
 	Sampler::Shared refraction;
 	
-	std::string name;
+	String name;
 public:
 	Material();
 	Material(const Material& other);

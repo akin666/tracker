@@ -34,7 +34,7 @@ void Log::uninitialize()
 {
 }
 
-void Log::streamIt( const std::string& stream , const std::string& message )
+void Log::streamIt( const String& stream , const String& message )
 {
 	::native::log( stream , message );
 }
@@ -46,8 +46,8 @@ void Log::message( const char* format , ... )
 	va_start( args, format );
 	vsnprintf( buffer, (MAX_LOG_MSG_LEN - 1), format, args);
 	va_end( args );
-	std::string msg(buffer);
-	const std::string stream("log");
+	String msg(buffer);
+	const String stream("log");
 	streamIt( stream , msg );
 }
 
@@ -58,8 +58,8 @@ void Log::error( const char* format , ... )
 	va_start( args, format );
 	vsnprintf( buffer, (MAX_LOG_MSG_LEN - 1), format, args);
 	va_end( args );
-	std::string msg(buffer);
-	const std::string stream("error");
+	String msg(buffer);
+	const String stream("error");
 	streamIt( stream , msg );
 }
 
@@ -70,19 +70,19 @@ void Log::warning( const char* format , ... )
 	va_start( args, format );
 	vsnprintf( buffer, (MAX_LOG_MSG_LEN - 1), format, args);
 	va_end( args );
-	std::string msg(buffer);
-	const std::string stream("warning");
+	String msg(buffer);
+	const String stream("warning");
 	streamIt( stream , msg );
 }
 
-void Log::print( const std::string& stream , const char* format , ... )
+void Log::print( const String& stream , const char* format , ... )
 {
 	char buffer[ MAX_LOG_MSG_LEN];
 	va_list args;
 	va_start( args, format );
 	vsnprintf( buffer, (MAX_LOG_MSG_LEN - 1), format, args);
 	va_end( args );
-	std::string msg(buffer);
+	String msg(buffer);
 	streamIt( stream , msg );
 }
 

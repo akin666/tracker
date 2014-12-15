@@ -8,7 +8,7 @@
 #include "config"
 
 template <>
-void Config::set<std::string>( std::string key , const std::string& value)
+void Config::set<String>( String key , const String& value)
 {
 	auto iter = keys.find( key );
 	if( iter == keys.end() )
@@ -20,7 +20,7 @@ void Config::set<std::string>( std::string key , const std::string& value)
 }
 
 template <>
-void Config::set<float>( std::string key , const float& value)
+void Config::set<float>( String key , const float& value)
 {
 	auto iter = keys.find( key );
 	if( iter == keys.end() )
@@ -32,7 +32,7 @@ void Config::set<float>( std::string key , const float& value)
 }
 
 template <>
-bool Config::get<float>( std::string key , float def , float& target )
+bool Config::get<float>( String key , float def , float& target )
 {
 	auto iter = keys.find( key );
 	if( iter == keys.end() )
@@ -45,7 +45,7 @@ bool Config::get<float>( std::string key , float def , float& target )
 }
 
 template <>
-bool Config::get<std::string>( std::string key , std::string def , std::string& target )
+bool Config::get<String>( String key , String def , String& target )
 {
 	auto iter = keys.find( key );
 	if( iter == keys.end() )

@@ -26,7 +26,7 @@ public:
 
     virtual bool complete();
 
-    virtual std::string getName() const;
+    virtual String getName() const;
 };
 
 #endif /* APP_TRACKER_HPP_ */

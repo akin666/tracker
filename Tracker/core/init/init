@@ -17,7 +17,7 @@ class Init : public Application
 {
 private:
 	CTinyJS *js;
-	std::string script;
+	String script;
 	bool initialized;
 public:
 	Init();
@@ -30,7 +30,7 @@ public:
     
     virtual bool complete();
 
-    virtual std::string getName() const;
+    virtual String getName() const;
 };
 
 }

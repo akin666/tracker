@@ -12,7 +12,7 @@
 namespace output
 {
 	
-bool Video::init( std::string location , std::string name , int width , int height , pixelformat::Format inputformat , int dpi , int framerate )
+bool Video::init( String location , String name , int width , int height , pixelformat::Format inputformat , int dpi , int framerate )
 {
 	if( out.is_open() )
 	{
@@ -35,7 +35,7 @@ bool Video::init( std::string location , std::string name , int width , int heig
 	snprintf( buffer, (maxbuffer - 1), "%s_ENC_%dx%d_%d_%s_fr%d.video" , name.c_str() , width , height , dpi , pixelformat , framerate );
 	
 	// Construct a full path..
-	std::string path = native::getPath( location ) + std::string(buffer);
+	String path = native::getPath( location ) + String(buffer);
 	
 	out.open( path , std::ios::out | std::ios::binary );
 	

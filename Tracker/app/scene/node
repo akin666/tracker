@@ -23,7 +23,7 @@ protected:
 	
 	void traverseChilds();
 public:
-	std::string name;
+	String name;
 public:
 	Node();
 	virtual ~Node();

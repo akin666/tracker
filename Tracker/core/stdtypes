@@ -72,57 +72,58 @@
 // Standard types
 #ifndef SKIP_STANDARD_TYPES
 	// signed types
-	typedef int8_t 		int8;
-	typedef int16_t		int16;
-	typedef int32_t		int32;
-	typedef int64_t 	int64;
+	using int8 = int8_t;
+	using int16 = int16_t;
+	using int32 = int32_t;
+	using int64 = int64_t;
 
 	// unsigned types
-	typedef uint8_t		uint8;
-	typedef uint16_t	uint16;
-	typedef uint32_t	uint32;
-	typedef uint64_t 	uint64;
+	using uint8 = uint8_t;
+	using uint16 = uint16_t;
+	using uint32 = uint32_t;
+	using uint64 = uint64_t;
 
 	// floating point
-	typedef float		float32;
-	typedef double		float64;
-//	typedef quad		float128;
+	using float32 = float;
+	using float64 = double;
+//	using float128 = quad;
 #endif
 
 #ifndef SKIP_HELPER_TYPES
-	typedef int8		schar;
-	typedef uint8		uchar;
-	typedef int16		sshort;
-	typedef uint16		ushort;
-	typedef int32 		sint;
-	typedef uint32		uint;
-	typedef int64 		slong;
+	using schar = int8;
+	using uchar = uint8;
+	using sshort = int16;
+	using ushort = uint16;
+	using sint = int32;
+	using uint = uint32;
+	using slong = int64;
 # ifndef OS_LINUX
-	typedef uint64		ulong;
+	using ulong = uint64;
 # endif
-	typedef float32		vec;
+	using vec = float32;
 #endif
 
 // Codepoints
-typedef uint32		 	UNICODE;
-typedef uint32		 	UTF32;
-typedef uint16		 	UNICODE16;
-typedef uint16		 	UTF16;
-typedef uint8		 	UTF8;
+using UNICODE = uint32;
+using UTF32 = uint32;
+using UNICODE16 = uint16;
+using UTF16 = uint16;
+using UTF8 = uint8;
 
 // Common
-typedef uint32		 	BufferIndex;
-typedef uint64 			EntityID;
+using BufferIndex = uint32;
+using EntityID = uint64;
 
-typedef std::vector<uchar> ByteArray;
-typedef std::shared_ptr<ByteArray> SharedByteArray;
-typedef std::shared_ptr<const ByteArray> ConstSharedByteArray;
-typedef std::weak_ptr<ByteArray> WeakByteArray;
-typedef std::weak_ptr<const ByteArray> ConstWeakByteArray;
+using ByteArray = std::vector<uchar>;
+using SharedByteArray = std::shared_ptr<ByteArray>;
+using ConstSharedByteArray = std::shared_ptr<const ByteArray>;
+using WeakByteArray = std::weak_ptr<ByteArray>;
+using ConstWeakByteArray = std::weak_ptr<const ByteArray>;
 
 // String types
-typedef typename std::string::size_type StringPos;
-typedef typename std::vector<std::string> StringSet;
+using String = std::string;
+using StringPos = String::size_type;
+using StringSet = std::vector<String>;
 
 // Primitive types
 namespace Primitive

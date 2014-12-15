@@ -8,7 +8,7 @@
 #ifndef APPLICATION_HPP
 #define	APPLICATION_HPP
 
-#include <string>
+#include <stdtypes>
 
 namespace core  {
 
@@ -33,7 +33,7 @@ public:
     	return true;
     }
     
-    virtual std::string getName() const
+    virtual String getName() const
     {
     	return "unknown";
     }

@@ -42,16 +42,16 @@ private:
 	std::vector<Node*> lights;
 	std::vector<Camera*> cameras;
 	
-	std::unordered_map<std::string, Sampler::Shared> samplers;
+	std::unordered_map<String, Sampler::Shared> samplers;
 	
-	std::unordered_map<std::string, Material> materials;
+	std::unordered_map<String, Material> materials;
 	
 	Material base;
 public:
 	float max;
 	float infinite;
-	std::string name;
-	std::string type;
+	String name;
+	String type;
 	
 	Sampler::Shared ambient;
 private:
@@ -64,14 +64,14 @@ public:
 	void add( Node *node );
 	void add( Camera *camera );
 	
-	void set( std::string key , const Material& material );
-	void set( std::string key , Sampler::Shared& sampler );
+	void set( String key , const Material& material );
+	void set( String key , Sampler::Shared& sampler );
 	
-	bool get( std::string key , Material& material ) const;
-	bool get( std::string key , Sampler::Shared& sampler ) const;
+	bool get( String key , Material& material ) const;
+	bool get( String key , Sampler::Shared& sampler ) const;
 	
-	bool hasMaterial( std::string key ) const;
-	bool hasSampler( std::string key ) const;
+	bool hasMaterial( String key ) const;
+	bool hasSampler( String key ) const;
 	
 	void setMaterial( const Material& material );
 	
