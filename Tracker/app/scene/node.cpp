@@ -7,7 +7,6 @@
 
 #include "node"
 #include "../hitinfo"
-#include "../materials"
 #include "world"
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/ext.hpp>
@@ -32,7 +31,7 @@ bool Node::intersects( const Ray& ray , HitInfo& info ) const
 
 const Material& Node::getMaterial() const
 {
-	return Materials::clear;
+	throw "NOOOO";
 }
 
 void Node::add( Node *child )

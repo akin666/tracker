@@ -9,17 +9,19 @@
 #define APP_MATERIAL_HPP_
 
 #include <traccore>
+#include <sampler>
 
 class Material
 {
 public:
 	// Surface:
-	Color reflection;
-	Color emission;
-	Color transparency; // 0.0 opaque, 1.0 transparent
+	Sampler::Shared reflection;
+	Sampler::Shared emission;
+	Sampler::Shared transparency; // 0.0 opaque, 1.0 transparent
 	
-	Color diffuse;
-	Color refraction;
+	Sampler::Shared diffuse;
+	
+	Sampler::Shared refraction;
 	
 	std::string name;
 public:

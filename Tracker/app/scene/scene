@@ -30,6 +30,7 @@
 #include "../material"
 #include <unordered_map>
 
+class Sampler;
 class Ray;
 class HitInfo;
 class Node;
@@ -41,13 +42,18 @@ private:
 	std::vector<Node*> lights;
 	std::vector<Camera*> cameras;
 	
+	std::unordered_map<std::string, Sampler::Shared> samplers;
+	
+	std::unordered_map<std::string, Material> materials;
+	
 	Material base;
 public:
 	float max;
 	float infinite;
 	std::string name;
 	std::string type;
-	Color ambient;
+	
+	Sampler::Shared ambient;
 private:
 public:
     Scene();
@@ -57,6 +63,15 @@ public:
 
 	void add( Node *node );
 	void add( Camera *camera );
+	
+	void set( std::string key , const Material& material );
+	void set( std::string key , Sampler::Shared& sampler );
+	
+	bool get( std::string key , Material& material ) const;
+	bool get( std::string key , Sampler::Shared& sampler ) const;
+	
+	bool hasMaterial( std::string key ) const;
+	bool hasSampler( std::string key ) const;
 	
 	void setMaterial( const Material& material );
 	

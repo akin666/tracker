@@ -1,0 +1,43 @@
+/*
+ * ColorSampler
+ *
+ *  Created on: 21.10.2014
+ *      Author: akin
+ */
+
+#ifndef APP_COLORSAMPLER_HPP_
+#define APP_COLORSAMPLER_HPP_
+
+#include <sampler>
+
+class ColorSampler : public Sampler
+{
+private:
+	Color color;
+public:
+	ColorSampler( Color color )
+	: color(color)
+	{
+	}
+	
+	virtual ~ColorSampler()
+	{
+	}
+	
+	virtual void at( const float& at , Color& color ) const
+	{
+		color = this->color;
+	}
+	
+	virtual void at( const glm::vec2& at , Color& color ) const
+	{
+		color = this->color;
+	}
+	
+	virtual void at( const glm::vec3& at , Color& color ) const
+	{
+		color = this->color;
+	}
+};
+
+#endif // APP_COLORSAMPLER_HPP_

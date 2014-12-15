@@ -11,8 +11,6 @@
 #include "ray"
 #include "solver/solver"
 #include "scene/sphere"
-#include "colors"
-#include "materials"
 #include <config>
 #include "scene/camera"
 

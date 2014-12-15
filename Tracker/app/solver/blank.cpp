@@ -6,12 +6,12 @@
  */
 
 #include "solver"
-#include "../colors"
+#include "../scene/world"
 
 namespace solver
 {
 	Color blank( const Scene& scene , const Ray& ray )
 	{
-		return Colors::black;
+		return World::black;
 	}
 }

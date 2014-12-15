@@ -7,13 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E72BF4EB1A3A5C88002DE8CB /* colorsources.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72BF4EA1A3A5C88002DE8CB /* colorsources.cpp */; };
 		E760EC5C1A2E546200737A89 /* buffertool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E760EC1A1A2E546200737A89 /* buffertool.cpp */; };
-		E760EC5D1A2E546200737A89 /* colors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E760EC1C1A2E546200737A89 /* colors.cpp */; };
 		E760EC5E1A2E546200737A89 /* hitinfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E760EC1E1A2E546200737A89 /* hitinfo.cpp */; };
 		E760EC5F1A2E546200737A89 /* intersect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E760EC201A2E546200737A89 /* intersect.cpp */; };
 		E760EC601A2E546200737A89 /* material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E760EC241A2E546200737A89 /* material.cpp */; };
-		E760EC611A2E546200737A89 /* materials.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E760EC261A2E546200737A89 /* materials.cpp */; };
 		E760EC621A2E546200737A89 /* rayinfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E760EC2A1A2E546200737A89 /* rayinfo.cpp */; };
 		E760EC631A2E546200737A89 /* camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E760EC2D1A2E546200737A89 /* camera.cpp */; };
 		E760EC641A2E546200737A89 /* node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E760EC2F1A2E546200737A89 /* node.cpp */; };
@@ -65,15 +62,12 @@
 
 /* Begin PBXFileReference section */
 		E72BF4E51A3A0331002DE8CB /* pixelbuffer */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = pixelbuffer; sourceTree = "<group>"; };
-		E72BF4E61A3A584A002DE8CB /* colorsource */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = colorsource; sourceTree = "<group>"; };
-		E72BF4E71A3A5C4B002DE8CB /* colorsources */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = colorsources; sourceTree = "<group>"; };
-		E72BF4EA1A3A5C88002DE8CB /* colorsources.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = colorsources.cpp; sourceTree = "<group>"; };
+		E72BF4E61A3A584A002DE8CB /* sampler */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = sampler; sourceTree = "<group>"; };
+		E72BF4EC1A3AD76D002DE8CB /* colorsampler */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = colorsampler; sourceTree = "<group>"; };
 		E760EC121A2DA7BC00737A89 /* init.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = init.js; sourceTree = "<group>"; };
 		E760EC171A2E546200737A89 /* action */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = action; sourceTree = "<group>"; };
 		E760EC191A2E546200737A89 /* buffertool */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = buffertool; sourceTree = "<group>"; };
 		E760EC1A1A2E546200737A89 /* buffertool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = buffertool.cpp; sourceTree = "<group>"; };
-		E760EC1B1A2E546200737A89 /* colors */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = colors; sourceTree = "<group>"; };
-		E760EC1C1A2E546200737A89 /* colors.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = colors.cpp; sourceTree = "<group>"; };
 		E760EC1D1A2E546200737A89 /* hitinfo */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = hitinfo; sourceTree = "<group>"; };
 		E760EC1E1A2E546200737A89 /* hitinfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hitinfo.cpp; sourceTree = "<group>"; };
 		E760EC1F1A2E546200737A89 /* intersect */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = intersect; sourceTree = "<group>"; };
@@ -81,8 +75,6 @@
 		E760EC221A2E546200737A89 /* line */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = line; sourceTree = "<group>"; };
 		E760EC231A2E546200737A89 /* material */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = material; sourceTree = "<group>"; };
 		E760EC241A2E546200737A89 /* material.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = material.cpp; sourceTree = "<group>"; };
-		E760EC251A2E546200737A89 /* materials */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = materials; sourceTree = "<group>"; };
-		E760EC261A2E546200737A89 /* materials.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = materials.cpp; sourceTree = "<group>"; };
 		E760EC281A2E546200737A89 /* ray */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = ray; sourceTree = "<group>"; };
 		E760EC291A2E546200737A89 /* rayinfo */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = rayinfo; sourceTree = "<group>"; };
 		E760EC2A1A2E546200737A89 /* rayinfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rayinfo.cpp; sourceTree = "<group>"; };
@@ -418,13 +410,9 @@
 		E760EC161A2E546200737A89 /* app */ = {
 			isa = PBXGroup;
 			children = (
-				E72BF4E71A3A5C4B002DE8CB /* colorsources */,
-				E72BF4EA1A3A5C88002DE8CB /* colorsources.cpp */,
 				E760EC171A2E546200737A89 /* action */,
 				E760EC191A2E546200737A89 /* buffertool */,
 				E760EC1A1A2E546200737A89 /* buffertool.cpp */,
-				E760EC1B1A2E546200737A89 /* colors */,
-				E760EC1C1A2E546200737A89 /* colors.cpp */,
 				E760EC1D1A2E546200737A89 /* hitinfo */,
 				E760EC1E1A2E546200737A89 /* hitinfo.cpp */,
 				E760EC1F1A2E546200737A89 /* intersect */,
@@ -432,8 +420,6 @@
 				E760EC221A2E546200737A89 /* line */,
 				E760EC231A2E546200737A89 /* material */,
 				E760EC241A2E546200737A89 /* material.cpp */,
-				E760EC251A2E546200737A89 /* materials */,
-				E760EC261A2E546200737A89 /* materials.cpp */,
 				E760EC281A2E546200737A89 /* ray */,
 				E760EC291A2E546200737A89 /* rayinfo */,
 				E760EC2A1A2E546200737A89 /* rayinfo.cpp */,
@@ -480,7 +466,8 @@
 		E760EC3F1A2E546200737A89 /* core */ = {
 			isa = PBXGroup;
 			children = (
-				E72BF4E61A3A584A002DE8CB /* colorsource */,
+				E72BF4EC1A3AD76D002DE8CB /* colorsampler */,
+				E72BF4E61A3A584A002DE8CB /* sampler */,
 				E72BF4E51A3A0331002DE8CB /* pixelbuffer */,
 				E7B4E07C1A2E7E0D00A7C565 /* config.cpp */,
 				E760EC401A2E546200737A89 /* application */,
@@ -960,12 +947,10 @@
 				E760EC751A2E546200737A89 /* pixelformat.cpp in Sources */,
 				E760EC6A1A2E546200737A89 /* dev.cpp in Sources */,
 				E760EC6D1A2E546200737A89 /* colortools.cpp in Sources */,
-				E72BF4EB1A3A5C88002DE8CB /* colorsources.cpp in Sources */,
 				E760EC661A2E546200737A89 /* sphere.cpp in Sources */,
 				E7B4E09D1A2F7D2000A7C565 /* TinyJS.cpp in Sources */,
 				E760EC621A2E546200737A89 /* rayinfo.cpp in Sources */,
 				E760EC601A2E546200737A89 /* material.cpp in Sources */,
-				E760EC611A2E546200737A89 /* materials.cpp in Sources */,
 				E760EC741A2E546200737A89 /* outputvideo.cpp in Sources */,
 				E760EC5F1A2E546200737A89 /* intersect.cpp in Sources */,
 				E760EC6B1A2E546200737A89 /* legacy.cpp in Sources */,
@@ -976,7 +961,6 @@
 				E760EC5E1A2E546200737A89 /* hitinfo.cpp in Sources */,
 				E7B4E0A41A375B6100A7C565 /* disc.cpp in Sources */,
 				E760EC6C1A2E546200737A89 /* tracker.cpp in Sources */,
-				E760EC5D1A2E546200737A89 /* colors.cpp in Sources */,
 				E7C854021A0649C100478AC0 /* glm.cpp in Sources */,
 				E7B4E09E1A2F7D2000A7C565 /* TinyJS_Functions.cpp in Sources */,
 				E760EC681A2E546200737A89 /* sceneloader.cpp in Sources */,

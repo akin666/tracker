@@ -21,7 +21,9 @@ Disc::~Disc()
 
 float Disc::getEmissionRadius() const
 {
-	return radius + ::lightMaxDistance(material.emission);
+	Color color;
+	material.emission->at(0.0f, color);
+	return radius + ::lightMaxDistance(color);
 }
 
 const Material& Disc::getMaterial() const

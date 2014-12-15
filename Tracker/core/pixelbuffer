@@ -9,11 +9,11 @@
 #define APP_PIXELBUFFER_HPP_
 
 #include <stdtypes>
-#include <colorsource>
+#include <sampler>
 #include <colortools>
 
 template <class CType>
-class PixelBuffer : public ColorSource
+class PixelBuffer : public Sampler
 {
 private:
 	uint width;

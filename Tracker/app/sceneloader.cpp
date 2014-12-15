@@ -8,17 +8,38 @@
 #include "sceneloader"
 #include <json/json.h>
 #include <fstream>
-#include "colors"
-#include "materials"
 
 #include "scene/sphere"
 #include "scene/disc"
 #include "scene/camera"
 
+#include <colorsampler>
+
 // glm::translate
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/quaternion.hpp>
 #include <glm/ext.hpp>
+
+
+bool read( const Json::Value& value , float& val )
+{
+	if( value.isNull() || (!value.isNumeric()) )
+	{
+		return false;
+	}
+	val = value.asFloat();
+	return true;
+}
+
+bool read( const Json::Value& value , std::string& val )
+{
+	if( value.isNull() || (!value.isString()) )
+	{
+		return false;
+	}
+	val = value.asString();
+	return true;
+}
 
 bool read( const Json::Value& value , glm::vec3& val )
 {
@@ -41,7 +62,7 @@ bool read( const Json::Value& value , glm::vec3& val )
 	return true;
 }
 
-bool readColor( const Json::Value& value , Color& val )
+bool read( const Json::Value& value, Scene& scene, Sampler::Shared& val )
 {
 	if( value.isNull() )
 	{
@@ -51,45 +72,81 @@ bool readColor( const Json::Value& value , Color& val )
 	if( value.isString() )
 	{
 		// seek color from COLORS
-		COLORS->get( value.asString() , val );
+		return scene.get( value.asString() , val );
+	}
+	
+	std::string type;
+	if( !read( value["type"] , type ) )
+	{
+		// no type specified, skip.
+		LOG->error("%s:%d no type specified for node!" , __FILE__ , __LINE__ );
+		return false;
+	}
+	
+	if( type == "color" )
+	{
+		const auto a = value["r"];
+		const auto b = value["g"];
+		const auto c = value["b"];
+		if( a.isNull() || b.isNull() || c.isNull() ||
+		   (!a.isNumeric()) || (!b.isNumeric()) || (!c.isNumeric()) )
+		{
+			return false;
+		}
+		Color color( a.asFloat() , b.asFloat() , c.asFloat() );
+		
+		Sampler::Shared ssampler(new ColorSampler(color));
+		val = ssampler;
+		
+		return true;
+	}
+	else if( type == "refraction" )
+	{
+		const auto a = value["value"];
+		if( a.isNull() || (!a.isNumeric()) )
+		{
+			return false;
+		}
+		Color color( a.asFloat() );
+		
+		Sampler::Shared ssampler(new ColorSampler(color));
+		val = ssampler;
+		
 		return true;
 	}
 	
-	const auto a = value["r"];
-	const auto b = value["g"];
-	const auto c = value["b"];
-	if( a.isNull() || b.isNull() || c.isNull() ||
-	   (!a.isNumeric()) || (!b.isNumeric()) || (!c.isNumeric()) )
-	{
-		return false;
-	}
-	val.r = a.asFloat();
-	val.g = b.asFloat();
-	val.b = c.asFloat();
-	return true;
+	LOG->error("Unknown sampler type.");
+	return false;
 }
 
-bool read( const Json::Value& value , float& val )
+bool read( const Json::Value& value , Scene& scene , Material& val )
 {
-	if( value.isNull() || (!value.isNumeric()) )
+	if( value.isNull() )
 	{
 		return false;
 	}
-	val = value.asFloat();
-	return true;
-}
-
-bool read( const Json::Value& value , std::string& val )
-{
-	if( value.isNull() || (!value.isString()) )
+	
+	if( value.isString() )
+	{
+		return scene.get( value.asString() , val );
+	}
+	
+	if(!value.isObject())
 	{
 		return false;
 	}
-	val = value.asString();
+	
+	read( value["reflection"] , scene , val.reflection );
+	read( value["emission"] , scene , val.emission );
+	read( value["transparency"] , scene , val.transparency );
+	read( value["diffuse"] , scene , val.diffuse );
+	read( value["refraction"] , scene , val.refraction );
+	read( value["name"] , val.name );
+	
 	return true;
 }
 
-bool read( const Json::Value& value , Node& val )
+bool read( const Json::Value& value , Scene& scene , Node& val )
 {
 	if( value.isNull() )
 	{
@@ -121,14 +178,14 @@ bool read( const Json::Value& value , Node& val )
 	return true;
 }
 
-bool read( const Json::Value& value , Camera& val )
+bool read( const Json::Value& value , Scene& scene , Camera& val )
 {
 	if( value.isNull() || (!value.isObject()) )
 	{
 		return false;
 	}
 	
-	read( value , (Node&)val );
+	read( value , scene , (Node&)val );
 	
 	float dpi;
 	
@@ -143,57 +200,30 @@ bool read( const Json::Value& value , Camera& val )
 	return true;
 }
 
-bool read( const Json::Value& value , Material& val )
-{
-	if( value.isNull() )
-	{
-		return false;
-	}
-	
-	if( value.isString() )
-	{
-		return MATERIALS->get( value.asString() , val );
-	}
-	
-	if(!value.isObject())
-	{
-		return false;
-	}
-	
-	readColor( value["reflection"] , val.reflection );
-	readColor( value["emission"] , val.emission );
-	readColor( value["transparency"] , val.transparency );
-	readColor( value["diffuse"] , val.diffuse );
-	readColor( value["refraction"] , val.refraction );
-	read( value["name"] , val.name );
-	
-	return true;
-}
-
-bool read( const Json::Value& value ,  Sphere& val )
+bool read( const Json::Value& value , Scene& scene , Sphere& val )
 {
 	if( value.isNull() || (!value.isObject()) )
 	{
 		return false;
 	}
 	
-	read( value , (Node&)val );
+	read( value , scene , (Node&)val );
 	read( value["radius"] , val.radius );
-	read( value["material"] , val.material );
+	read( value["material"] , scene , val.material );
 
 	return true;
 }
 
-bool read( const Json::Value& value ,  Disc& val )
+bool read( const Json::Value& value , Scene& scene , Disc& val )
 {
 	if( value.isNull() || (!value.isObject()) )
 	{
 		return false;
 	}
 	
-	read( value , (Node&)val );
+	read( value , scene , (Node&)val );
 	read( value["radius"] , val.radius );
-	read( value["material"] , val.material );
+	read( value["material"] , scene , val.material );
 	
 	return true;
 }
@@ -225,24 +255,24 @@ bool SceneLoader::load( std::string path , Scene& scene )
 		read( settings["type"] , scene.type );
 		read( settings["maximum ray"] , scene.max );
 		read( settings["infinite ray"] , scene.infinite );
-		readColor( settings["ambient"] , scene.ambient );
+		read( settings["ambient"] , scene , scene.ambient );
 	}
 	
-	const Json::Value& colors = root["colors"];
-	if( !colors.isNull() && colors.isArray() )
+	const Json::Value& samplers = root["samplers"];
+	if( !samplers.isNull() && samplers.isArray() )
 	{
-		Color color;
+		Sampler::Shared sampler;
 		std::string name;
 		
-		// extract materials
-		for( int i = 0 ; i < colors.size() ; ++i )
+		// extract samplers
+		for( int i = 0 ; i < samplers.size() ; ++i )
 		{
-			const auto& jscolor = colors[i];
+			const auto& jssampler = samplers[i];
 			
-			read( jscolor["name"] , name );
-			readColor( jscolor , color );
+			read( jssampler["name"] , name );
+			read( jssampler , scene , sampler );
 			
-			COLORS->set( name , color );
+			scene.set( name , sampler );
 		}
 	}
 	
@@ -258,9 +288,9 @@ bool SceneLoader::load( std::string path , Scene& scene )
 			const auto& jsmaterial = materials[i];
 			
 			read( jsmaterial["name"] , name );
-			read( jsmaterial , material );
+			read( jsmaterial , scene , material );
 			
-			MATERIALS->set( name , material );
+			scene.set( name , material );
 		}
 	}
 	
@@ -276,7 +306,7 @@ bool SceneLoader::load( std::string path , Scene& scene )
 			
 			auto *camera = new Camera;
 			
-			if( !read( jsmcamera , *camera ) )
+			if( !read( jsmcamera , scene , *camera ) )
 			{
 				// failed to read camera..
 				LOG->error("%s:%d failed to parse camera data!" , __FILE__ , __LINE__ );
@@ -308,7 +338,7 @@ bool SceneLoader::load( std::string path , Scene& scene )
 			{
 				auto *sphere = new Sphere;
 				
-				if( !read(jsnode , *sphere ) )
+				if( !read(jsnode , scene , *sphere ) )
 				{
 					// failed to read light..
 					LOG->error("%s:%d failed to parse sphere data!" , __FILE__ , __LINE__ );
@@ -324,7 +354,7 @@ bool SceneLoader::load( std::string path , Scene& scene )
 			{
 				auto *disc = new Disc;
 				
-				if( !read(jsnode , *disc ) )
+				if( !read(jsnode , scene , *disc ) )
 				{
 					// failed to read light..
 					LOG->error("%s:%d failed to parse disc data!" , __FILE__ , __LINE__ );
@@ -338,7 +368,9 @@ bool SceneLoader::load( std::string path , Scene& scene )
 		}
 	}
 	
-	scene.setMaterial( MATERIALS->get( "air" ) );
+	Material air;
+	scene.get( "air" , air );
+	scene.setMaterial( air );
 	
 	return true;
 }

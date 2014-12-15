@@ -7,7 +7,7 @@
 
 #include "buffertool"
 #include <glm/glm.hpp>
-#include "colors"
+#include "scene/world"
 
 BufferTool::BufferTool()
 {
@@ -74,6 +74,6 @@ void BufferTool::clear( PixelBuffer<Color>& target )
 	
 	for( size_t i = 0 ; i < length ; ++i )
 	{
-		trg[i] = COLORS->clear;
+		trg[i] = World::clear;
 	}
 }

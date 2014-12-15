@@ -9,7 +9,6 @@
 #include "../scene/world"
 #include "../intersect"
 #include "../scene/sphere"
-#include "../colors"
 #include "../rayinfo"
 #include "../hitinfo"
 
@@ -28,7 +27,7 @@ Color normalToColor( const glm::vec3& normal )
 
 Color infinite( const Ray& ray )
 {
-	return Colors::black;
+	return World::black;
 	return normalToColor(ray.direction);
 }
 
@@ -42,7 +41,11 @@ Color solve( const Scene& scene , const RayInfo& ray , const Material& medium )
 	float distance = ray.distance + hit.distance;
 	int bounces = ray.bounces + 1;
 	
-	Color transparency = Color(1.0f) - glm::min( (Color(1.0f) - medium.transparency ) * distance , Color(1.0f) );
+	Color tmpColor;
+	Color tmpColor2;
+	
+	medium.transparency->at(0.0f , tmpColor);
+	Color transparency = Color(1.0f) - glm::min( (Color(1.0f) - tmpColor ) * distance , Color(1.0f) );
 	if( distance > scene.max || bounces > 10 )
 	{
 		return infinite(ray) * transparency;
@@ -56,22 +59,24 @@ Color solve( const Scene& scene , const RayInfo& ray , const Material& medium )
 	
 	//// Solving the ray traversal till the hit point
 	// Transparency
-	if( transparency == Colors::black )
+	if( transparency == World::black )
 	{
-		return Colors::black;
+		return World::black;
 	}
 	
 	// If hit.inside < 0, then we are hitting the object from inside
 	const Material& material = hit.material;
 	
-	Color result = Colors::black;
+	Color result = World::black;
 	
 	// see through?
 	// Refraction?
 	glm::vec3 direction = ray.direction;
-	if( material.refraction.r > 0.0f )
+	material.refraction->at(0.0f,tmpColor);
+	if( tmpColor.r > 0.0f )
 	{
-		float refraction = medium.refraction.r / material.refraction.r;
+		medium.refraction->at(0.0f,tmpColor2);
+		float refraction = tmpColor2.r / tmpColor.r;
 		float cosI = glm::dot( hit.normal, ray.direction );
 		float cosT2 = 1.0f - refraction * refraction * (1.0f - cosI * cosI);
 		
@@ -108,7 +113,8 @@ Color solve( const Scene& scene , const RayInfo& ray , const Material& medium )
 			// and calculate the light contribution on the go..
 			// the ray might go through several refractions and surfaces
 			scene.traceTo( hit.point , light , tmpInfo );
-			if( tmpInfo.count > 0 && tmpInfo.material.transparency != Colors::black )
+			tmpInfo.material.transparency->at(0.0f,tmpColor);
+			if( tmpInfo.count > 0 && tmpColor != World::black )
 			{
 				continue;
 			}
@@ -118,7 +124,8 @@ Color solve( const Scene& scene , const RayInfo& ray , const Material& medium )
 			glm::vec3 diff = lightPos - hit.point;
 			float distance = glm::length( diff );
 			
-			Color lighting = lightMaterial.emission;
+			Color lighting;
+			lightMaterial.emission->at(0.0f,lighting);
 			
 			lightAttenuation( distance , lighting );
 			
@@ -131,27 +138,32 @@ Color solve( const Scene& scene , const RayInfo& ray , const Material& medium )
 			
 			if( dot > 0.0f && (lighting.r > 0.0f || lighting.g > 0.0f || lighting.b > 0.0f ) )
 			{
-				result += dot * material.diffuse * lighting;
+				material.diffuse->at(0.0f,tmpColor);
+				result += dot * tmpColor * lighting;
 			}
 		}
 	}
 	
 	// Reflection
-	if( (material.reflection.r + material.reflection.g + material.reflection.b) > 0.0f )
+	material.reflection->at(0.0f,tmpColor);
+	if( (tmpColor.r + tmpColor.g + tmpColor.b) > 0.0f )
 	{
 		glm::vec3 direction = ray.direction - 2.0f * glm::dot( ray.direction , hit.normal ) * hit.normal;
 		RayInfo itmp( Ray( hit.point + ( direction * smallstep ) , direction ) , distance , bounces );
 		
 		Color reflection = solve( scene , itmp , medium );
 		
-		result += reflection * material.reflection;
+		result += reflection * tmpColor;
 	}
 	
 	// Emissive
-	result += material.emission;
+	material.emission->at(0.0f,tmpColor);
+	result += tmpColor;
 	
 	// Ambient
-	result += material.diffuse * scene.ambient;
+	material.diffuse->at(0.0f,tmpColor);
+	scene.ambient->at(0.0f,tmpColor2);
+	result += tmpColor * tmpColor2;
 	
 	return result * transparency;
 }
