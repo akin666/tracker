@@ -121,6 +121,12 @@
 				"r": 0.1,
 				"g": 0.1,
 				"b": 0.1
+				  },
+			"transparency": {
+				"type": "color",
+				"r": 0.0,
+				"g": 0.0,
+				"b": 0.0
 			},
 			"diffuse": "red"
 		},
@@ -204,7 +210,7 @@
 			"position": {
 				"x": 2.0,
 				"y": 0.0,
-				"z": 6.0
+				"z": 4.0
 			},
 			"material": "red"
 		},
@@ -227,6 +233,16 @@
 				"z": 2.0
 			},
 			"material": "glass"
+		},
+		{
+			"type": "sphere",
+			"radius": 1.2,
+			"position": {
+				"x": -2.5,
+				"y": -2.5,
+				"z": 2.0
+			},
+			"material": "green"
 		},
 		{
 			"type": "sphere",

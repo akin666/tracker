@@ -46,7 +46,7 @@ Color solve( const Scene& scene , const RayInfo& ray , const Material& medium )
 	Color mediumTransparency;
 	if( medium.transparency != nullptr )
 	{
-		medium.transparency->at(0.0f , mediumTransparency);
+		medium.transparency->at(hit.materialCoordinates , mediumTransparency);
 	}
 	Color transparency = Color(1.0f) - glm::min( (Color(1.0f) - mediumTransparency ) * distance , Color(1.0f) );
 	if( distance > scene.max || bounces > 10 )
@@ -78,7 +78,7 @@ Color solve( const Scene& scene , const RayInfo& ray , const Material& medium )
 	float materialRefraction = 1.0f;
 	if( material.refraction != nullptr )
 	{
-		material.refraction->at(0.0f,tmpColor);
+		material.refraction->at(hit.materialCoordinates,tmpColor);
 		materialRefraction = tmpColor.r;
 	}
 	if( materialRefraction > 0.0f )
@@ -86,7 +86,7 @@ Color solve( const Scene& scene , const RayInfo& ray , const Material& medium )
 		float mediumRefraction = 1.0f;
 		if( medium.refraction != nullptr )
 		{
-			medium.refraction->at(0.0f,tmpColor);
+			medium.refraction->at(hit.materialCoordinates,tmpColor);
 			mediumRefraction = tmpColor.r;
 		}
 		float refraction = mediumRefraction / materialRefraction;
@@ -152,7 +152,7 @@ Color solve( const Scene& scene , const RayInfo& ray , const Material& medium )
 			float distance = glm::length( diff );
 			
 			Color lighting;
-			lightMaterial.emission->at(0.0f,lighting);
+			lightMaterial.emission->at(tmpInfo.materialCoordinates,lighting);
 			lightAttenuation( distance , lighting );
 			
 			auto directionoflight = glm::normalize( diff );
@@ -173,7 +173,7 @@ Color solve( const Scene& scene , const RayInfo& ray , const Material& medium )
 	if( material.reflection != nullptr )
 	{
 		Color materialReflection(0.0f);
-		material.reflection->at(0.0f,materialReflection);
+		material.reflection->at(hit.materialCoordinates,materialReflection);
 		
 		glm::vec3 direction = ray.direction - 2.0f * glm::dot( ray.direction , hit.normal ) * hit.normal;
 		RayInfo itmp( Ray( hit.point + ( direction * smallstep ) , direction ) , distance , bounces );
@@ -187,7 +187,7 @@ Color solve( const Scene& scene , const RayInfo& ray , const Material& medium )
 	if( material.emission != nullptr )
 	{
 		Color materialEmission;
-		material.emission->at(0.0f,materialEmission);
+		material.emission->at(hit.materialCoordinates,materialEmission);
 		result += materialEmission;
 	}
 	
@@ -195,7 +195,7 @@ Color solve( const Scene& scene , const RayInfo& ray , const Material& medium )
 	if( scene.ambient != nullptr )
 	{
 		Color sceneAmbient;
-		scene.ambient->at(0.0f,sceneAmbient);
+		scene.ambient->at(hit.materialCoordinates,sceneAmbient);
 		result += materialDiffuse * sceneAmbient;
 	}
 	

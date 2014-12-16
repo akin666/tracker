@@ -9,41 +9,11 @@
 #include "../hitinfo"
 #include "node"
 #include "camera"
-#include <colorsampler>
-#include "world"
+#include "../manager"
 
 Scene::Scene()
 {
-	Sampler::Shared clear(new ColorSampler(World::clear));
-	
-	Sampler::Shared white(new ColorSampler(World::white));
-	Sampler::Shared black(new ColorSampler(World::black));
-	Sampler::Shared grey(new ColorSampler(World::grey));
-	
-	Sampler::Shared red(new ColorSampler(World::red));
-	Sampler::Shared green(new ColorSampler(World::green));
-	Sampler::Shared blue(new ColorSampler(World::blue));
-	
-	Sampler::Shared teal(new ColorSampler(World::teal));
-	Sampler::Shared yellow(new ColorSampler(World::yellow));
-	Sampler::Shared magenta(new ColorSampler(World::magenta));
-	
-	// Add basic samplers..
-	set("clear" , clear);
-	
-	set("white" , white);
-	set("black" , black);
-	set("grey" , grey);
-	
-	set("red" , red);
-	set("green" , green);
-	set("blue" , blue);
-	
-	set("teal" , teal);
-	set("yellow" , yellow);
-	set("magenta" , magenta);
-	
-	base.transparency = clear;
+	manager.get("clear" , base.transparency);
 }
 
 Scene::~Scene()
@@ -56,6 +26,11 @@ Scene::~Scene()
 	nodes.clear();
 	lights.clear();
 	cameras.clear();
+}
+
+Manager& Scene::getManager()
+{
+	return manager;
 }
 
 const Material& Scene::getMaterialAt( const glm::vec3& position ) const
@@ -76,54 +51,6 @@ void Scene::add( Node *node )
 void Scene::add( Camera *camera )
 {
 	cameras.push_back( camera );
-}
-
-void Scene::set( String key , const Material& material )
-{
-	materials[key] = material;
-}
-
-void Scene::set( String key , Sampler::Shared& sampler )
-{
-	auto iter = samplers.find( key );
-	if( iter != samplers.end() )
-	{
-		// replace!
-		throw "NOOO";
-	}
-	samplers[key] = sampler;
-}
-
-bool Scene::get( String key , Material& material ) const
-{
-	auto iter = materials.find( key );
-	if( iter == materials.end() )
-	{
-		return false;
-	}
-	material = iter->second;
-	return true;
-}
-
-bool Scene::get( String key , Sampler::Shared& sampler ) const
-{
-	auto iter = samplers.find( key );
-	if( iter == samplers.end() )
-	{
-		return false;
-	}
-	sampler = iter->second;
-	return true;
-}
-
-bool Scene::hasMaterial( String key ) const
-{
-	return materials.find( key ) != materials.end();
-}
-
-bool Scene::hasSampler( String key ) const
-{
-	return samplers.find( key ) != samplers.end();
 }
 
 void Scene::setMaterial( const Material& material )

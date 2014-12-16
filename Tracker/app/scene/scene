@@ -28,9 +28,8 @@
 
 #include <traccore>
 #include "../material"
-#include <unordered_map>
+#include "../manager"
 
-class Sampler;
 class Ray;
 class HitInfo;
 class Node;
@@ -42,10 +41,6 @@ private:
 	std::vector<Node*> lights;
 	std::vector<Camera*> cameras;
 	
-	std::unordered_map<String, Sampler::Shared> samplers;
-	
-	std::unordered_map<String, Material> materials;
-	
 	Material base;
 public:
 	float max;
@@ -55,23 +50,17 @@ public:
 	
 	Sampler::Shared ambient;
 private:
+	Manager manager;
 public:
     Scene();
     ~Scene();
+	
+	Manager& getManager();
 	
 	const Material& getMaterialAt( const glm::vec3& position ) const;
 
 	void add( Node *node );
 	void add( Camera *camera );
-	
-	void set( String key , const Material& material );
-	void set( String key , Sampler::Shared& sampler );
-	
-	bool get( String key , Material& material ) const;
-	bool get( String key , Sampler::Shared& sampler ) const;
-	
-	bool hasMaterial( String key ) const;
-	bool hasSampler( String key ) const;
 	
 	void setMaterial( const Material& material );
 	

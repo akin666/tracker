@@ -62,7 +62,7 @@ bool read( const Json::Value& value , glm::vec3& val )
 	return true;
 }
 
-bool read( const Json::Value& value, Scene& scene, Sampler::Shared& val )
+bool read( const Json::Value& value, Manager& manager, Sampler::Shared& val )
 {
 	if( value.isNull() )
 	{
@@ -71,8 +71,8 @@ bool read( const Json::Value& value, Scene& scene, Sampler::Shared& val )
 	
 	if( value.isString() )
 	{
-		// seek color from COLORS
-		return scene.get( value.asString() , val );
+		// seek sampler from manager
+		return manager.get( value.asString() , val );
 	}
 	
 	String type;
@@ -119,7 +119,7 @@ bool read( const Json::Value& value, Scene& scene, Sampler::Shared& val )
 	return false;
 }
 
-bool read( const Json::Value& value , Scene& scene , Material& val )
+bool read( const Json::Value& value , Manager& manager , Material& val )
 {
 	if( value.isNull() )
 	{
@@ -128,7 +128,7 @@ bool read( const Json::Value& value , Scene& scene , Material& val )
 	
 	if( value.isString() )
 	{
-		return scene.get( value.asString() , val );
+		return manager.get( value.asString() , val );
 	}
 	
 	if(!value.isObject())
@@ -136,17 +136,17 @@ bool read( const Json::Value& value , Scene& scene , Material& val )
 		return false;
 	}
 	
-	read( value["reflection"] , scene , val.reflection );
-	read( value["emission"] , scene , val.emission );
-	read( value["transparency"] , scene , val.transparency );
-	read( value["diffuse"] , scene , val.diffuse );
-	read( value["refraction"] , scene , val.refraction );
+	read( value["reflection"] , manager , val.reflection );
+	read( value["emission"] , manager , val.emission );
+	read( value["transparency"] , manager , val.transparency );
+	read( value["diffuse"] , manager , val.diffuse );
+	read( value["refraction"] , manager , val.refraction );
 	read( value["name"] , val.name );
 	
 	return true;
 }
 
-bool read( const Json::Value& value , Scene& scene , Node& val )
+bool read( const Json::Value& value , Manager& manager , Node& val )
 {
 	if( value.isNull() )
 	{
@@ -178,14 +178,14 @@ bool read( const Json::Value& value , Scene& scene , Node& val )
 	return true;
 }
 
-bool read( const Json::Value& value , Scene& scene , Camera& val )
+bool read( const Json::Value& value , Manager& manager , Camera& val )
 {
 	if( value.isNull() || (!value.isObject()) )
 	{
 		return false;
 	}
 	
-	read( value , scene , (Node&)val );
+	read( value , manager , (Node&)val );
 	
 	float dpi;
 	
@@ -200,36 +200,38 @@ bool read( const Json::Value& value , Scene& scene , Camera& val )
 	return true;
 }
 
-bool read( const Json::Value& value , Scene& scene , Sphere& val )
+bool read( const Json::Value& value , Manager& manager , Sphere& val )
 {
 	if( value.isNull() || (!value.isObject()) )
 	{
 		return false;
 	}
 	
-	read( value , scene , (Node&)val );
+	read( value , manager , (Node&)val );
 	read( value["radius"] , val.radius );
-	read( value["material"] , scene , val.material );
+	read( value["material"] , manager , val.material );
 
 	return true;
 }
 
-bool read( const Json::Value& value , Scene& scene , Disc& val )
+bool read( const Json::Value& value , Manager& manager , Disc& val )
 {
 	if( value.isNull() || (!value.isObject()) )
 	{
 		return false;
 	}
 	
-	read( value , scene , (Node&)val );
+	read( value , manager , (Node&)val );
 	read( value["radius"] , val.radius );
-	read( value["material"] , scene , val.material );
+	read( value["material"] , manager , val.material );
 	
 	return true;
 }
 
 bool SceneLoader::load( String path , Scene& scene )
 {
+	Manager& manager = scene.getManager();
+	
 	Json::Value root;
 	Json::Reader reader;
 	
@@ -255,7 +257,7 @@ bool SceneLoader::load( String path , Scene& scene )
 		read( settings["type"] , scene.type );
 		read( settings["maximum ray"] , scene.max );
 		read( settings["infinite ray"] , scene.infinite );
-		read( settings["ambient"] , scene , scene.ambient );
+		read( settings["ambient"] , manager , scene.ambient );
 	}
 	
 	const Json::Value& samplers = root["samplers"];
@@ -270,9 +272,9 @@ bool SceneLoader::load( String path , Scene& scene )
 			const auto& jssampler = samplers[i];
 			
 			read( jssampler["name"] , name );
-			read( jssampler , scene , sampler );
+			read( jssampler , manager , sampler );
 			
-			scene.set( name , sampler );
+			manager.set( name , sampler );
 		}
 	}
 	
@@ -288,9 +290,9 @@ bool SceneLoader::load( String path , Scene& scene )
 			const auto& jsmaterial = materials[i];
 			
 			read( jsmaterial["name"] , name );
-			read( jsmaterial , scene , material );
+			read( jsmaterial , manager , material );
 			
-			scene.set( name , material );
+			manager.set( name , material );
 		}
 	}
 	
@@ -306,7 +308,7 @@ bool SceneLoader::load( String path , Scene& scene )
 			
 			auto *camera = new Camera;
 			
-			if( !read( jsmcamera , scene , *camera ) )
+			if( !read( jsmcamera , manager , *camera ) )
 			{
 				// failed to read camera..
 				LOG->error("%s:%d failed to parse camera data!" , __FILE__ , __LINE__ );
@@ -338,7 +340,7 @@ bool SceneLoader::load( String path , Scene& scene )
 			{
 				auto *sphere = new Sphere;
 				
-				if( !read(jsnode , scene , *sphere ) )
+				if( !read(jsnode , manager , *sphere ) )
 				{
 					// failed to read light..
 					LOG->error("%s:%d failed to parse sphere data!" , __FILE__ , __LINE__ );
@@ -354,7 +356,7 @@ bool SceneLoader::load( String path , Scene& scene )
 			{
 				auto *disc = new Disc;
 				
-				if( !read(jsnode , scene , *disc ) )
+				if( !read(jsnode , manager , *disc ) )
 				{
 					// failed to read light..
 					LOG->error("%s:%d failed to parse disc data!" , __FILE__ , __LINE__ );
@@ -369,7 +371,7 @@ bool SceneLoader::load( String path , Scene& scene )
 	}
 	
 	Material air;
-	scene.get( "air" , air );
+	manager.get( "air" , air );
 	scene.setMaterial( air );
 	
 	return true;
