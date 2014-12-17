@@ -40,11 +40,9 @@ String getPath( String location )
 	return "unknown/";
 }
 	
-bool load( String location , String name , String& content )
+bool load( String path , String& content )
 {
-	String filename = getPath( location ) + name;
-	
-	std::ifstream file(filename, std::ios::in | std::ios::binary);
+	std::ifstream file(path, std::ios::in | std::ios::binary);
 	if( file )
 	{
 		file.seekg(0, std::ios::end);
@@ -104,12 +102,11 @@ bool saveImage(
 	return false;
 }*/
 
-template <> bool load( String location , String name , PixelBuffer<RGBALow>& buffer )
+template <> bool load( String path , PixelBuffer<RGBALow>& buffer )
 {
-	String filename = getPath( location ) + name + ".png";
 	int x,y,comp,req;
 	req = 4;
-	void *data = stbi_load( filename.c_str() , &x, &y, &comp, req);
+	void *data = stbi_load( path.c_str() , &x, &y, &comp, req);
 	
 	if( data == nullptr )
 	{
@@ -126,9 +123,9 @@ template <> bool load( String location , String name , PixelBuffer<RGBALow>& buf
 }
 //template <> bool load( String location , String name , PixelBuffer<RGBAHigh>& buffer );
 	
-template <> bool save( String location , String name , PixelBuffer<RGBALow>& buffer )
+template <> bool save( String path , PixelBuffer<RGBALow>& buffer )
 {
-	String filename = getPath( location ) + name + ".png";
+	String filename = path + ".png";
 	return stbi_write_png(filename.c_str(), buffer.getWidth(), buffer.getHeight(), 4, buffer.getBuffer() , 0) == 1;
 }
 	

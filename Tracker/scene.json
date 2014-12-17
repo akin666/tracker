@@ -170,6 +170,20 @@
 			"refraction": "glass"
 		},
 		{
+			"name": "tex",
+			"reflection": {
+				"type": "color",
+				"r": 0.50,
+				"g": 0.40,
+				"b": 0.30
+			},
+			"diffuse": {
+				"type": "texture",
+				"path": "pattern.png"
+			},
+			"refraction": "glass"
+		},
+		{
 			"name": "light",
 			"emission": {
 				"type": "color",
@@ -242,7 +256,7 @@
 				"y": -2.5,
 				"z": 2.0
 			},
-			"material": "green"
+			"material": "tex"
 		},
 		{
 			"type": "sphere",

@@ -94,6 +94,8 @@ void Scene::trace( const Ray& ray , HitInfo& info ) const
 		{
 			info.material = info.node->getMaterial();
 		}
+		
+		info.materialCoordinates = (info.point - info.node->getPosition()) * 100.0f;
 	}
 }
 

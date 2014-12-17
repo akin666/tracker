@@ -99,7 +99,7 @@ bool Init::init()
 	}
 	
 	// init systems..
-	if( !native::load( "" , CONFIG->get<String>("initfile" , "init.js") , script ) )
+	if( !native::load( CONFIG->get<String>("initfile" , "init.js") , script ) )
 	{
 		LOG->error("%s:%d Failed to read init file." , __FILE__ , __LINE__ );
 		return false;

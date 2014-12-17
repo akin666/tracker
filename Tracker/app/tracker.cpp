@@ -123,11 +123,11 @@ void Tracker::run()
 		
 		int dpi = (int)dpmm2dpi(camera->dpmm);
 		
-		native::save( "" , camera->name , lowbuffer );
+		native::save( camera->name , lowbuffer );
 		
 		output::Video video;
 		
-		video.init( "" , camera->name , lowbuffer.getWidth() , lowbuffer.getHeight() , pixelformat::RGBA8 , dpi , 1 );
+		video.init( camera->name , lowbuffer.getWidth() , lowbuffer.getHeight() , pixelformat::RGBA8 , dpi , 1 );
 		video.append(lowbuffer.getBuffer());
 		video.close();
 	}

@@ -7,23 +7,23 @@
 
 #include "manager"
 #include "scene/world"
-#include <colorsampler>
+#include <samplercolor>
 
 Manager::Manager()
 {
-	Sampler::Shared clear(new ColorSampler(World::clear));
+	Sampler::Shared clear(new SamplerColor(World::clear));
 	
-	Sampler::Shared white(new ColorSampler(World::white));
-	Sampler::Shared black(new ColorSampler(World::black));
-	Sampler::Shared grey(new ColorSampler(World::grey));
+	Sampler::Shared white(new SamplerColor(World::white));
+	Sampler::Shared black(new SamplerColor(World::black));
+	Sampler::Shared grey(new SamplerColor(World::grey));
 	
-	Sampler::Shared red(new ColorSampler(World::red));
-	Sampler::Shared green(new ColorSampler(World::green));
-	Sampler::Shared blue(new ColorSampler(World::blue));
+	Sampler::Shared red(new SamplerColor(World::red));
+	Sampler::Shared green(new SamplerColor(World::green));
+	Sampler::Shared blue(new SamplerColor(World::blue));
 	
-	Sampler::Shared teal(new ColorSampler(World::teal));
-	Sampler::Shared yellow(new ColorSampler(World::yellow));
-	Sampler::Shared magenta(new ColorSampler(World::magenta));
+	Sampler::Shared teal(new SamplerColor(World::teal));
+	Sampler::Shared yellow(new SamplerColor(World::yellow));
+	Sampler::Shared magenta(new SamplerColor(World::magenta));
 	
 	// Add basic samplers..
 	set("clear" , clear);

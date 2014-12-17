@@ -105,7 +105,7 @@ Color solve( const Scene& scene , const RayInfo& ray , const Material& medium )
 	result += solve( scene , itmp , material );
 	
 	Color materialDiffuse;
-	material.diffuse->at(0.0f,materialDiffuse);
+	material.diffuse->at(hit.materialCoordinates,materialDiffuse);
 	
 	//// Solving the hit surface
 	// how does this material react on the surface..

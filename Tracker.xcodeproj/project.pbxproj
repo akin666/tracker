@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E72BF4EF1A401ED6002DE8CB /* test.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = E72BF4EE1A401EBC002DE8CB /* test.png */; };
 		E72BF4F21A409740002DE8CB /* manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E72BF4F11A409740002DE8CB /* manager.cpp */; };
+		E72BF4FA1A40F7B8002DE8CB /* pattern.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = E72BF4F91A40F7B2002DE8CB /* pattern.png */; };
 		E760EC5C1A2E546200737A89 /* buffertool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E760EC1A1A2E546200737A89 /* buffertool.cpp */; };
 		E760EC5E1A2E546200737A89 /* hitinfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E760EC1E1A2E546200737A89 /* hitinfo.cpp */; };
 		E760EC5F1A2E546200737A89 /* intersect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E760EC201A2E546200737A89 /* intersect.cpp */; };
@@ -52,9 +52,9 @@
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
 			dstPath = "";
-			dstSubfolderSpec = 16;
+			dstSubfolderSpec = 1;
 			files = (
-				E72BF4EF1A401ED6002DE8CB /* test.png in CopyFiles */,
+				E72BF4FA1A40F7B8002DE8CB /* pattern.png in CopyFiles */,
 				E7B4E0A11A3526E300A7C565 /* test.json in CopyFiles */,
 				E7B4E07E1A2E84A800A7C565 /* init.js in CopyFiles */,
 				E7C854BD1A15806600478AC0 /* scene.json in CopyFiles */,
@@ -66,10 +66,10 @@
 /* Begin PBXFileReference section */
 		E72BF4E51A3A0331002DE8CB /* pixelbuffer */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = pixelbuffer; sourceTree = "<group>"; };
 		E72BF4E61A3A584A002DE8CB /* sampler */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = sampler; sourceTree = "<group>"; };
-		E72BF4EC1A3AD76D002DE8CB /* colorsampler */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = colorsampler; sourceTree = "<group>"; };
-		E72BF4EE1A401EBC002DE8CB /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
+		E72BF4EC1A3AD76D002DE8CB /* samplercolor */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = samplercolor; sourceTree = "<group>"; };
 		E72BF4F01A409740002DE8CB /* manager */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = manager; sourceTree = "<group>"; };
 		E72BF4F11A409740002DE8CB /* manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = manager.cpp; sourceTree = "<group>"; };
+		E72BF4F91A40F7B2002DE8CB /* pattern.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pattern.png; sourceTree = "<group>"; };
 		E760EC121A2DA7BC00737A89 /* init.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = init.js; sourceTree = "<group>"; };
 		E760EC171A2E546200737A89 /* action */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = action; sourceTree = "<group>"; };
 		E760EC191A2E546200737A89 /* buffertool */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = buffertool; sourceTree = "<group>"; };
@@ -413,14 +413,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E72BF4ED1A401EBC002DE8CB /* res */ = {
-			isa = PBXGroup;
-			children = (
-				E72BF4EE1A401EBC002DE8CB /* test.png */,
-			);
-			path = res;
-			sourceTree = "<group>";
-		};
 		E760EC161A2E546200737A89 /* app */ = {
 			isa = PBXGroup;
 			children = (
@@ -482,8 +474,8 @@
 		E760EC3F1A2E546200737A89 /* core */ = {
 			isa = PBXGroup;
 			children = (
-				E72BF4EC1A3AD76D002DE8CB /* colorsampler */,
 				E72BF4E61A3A584A002DE8CB /* sampler */,
+				E72BF4EC1A3AD76D002DE8CB /* samplercolor */,
 				E72BF4E51A3A0331002DE8CB /* pixelbuffer */,
 				E7B4E07C1A2E7E0D00A7C565 /* config.cpp */,
 				E760EC401A2E546200737A89 /* application */,
@@ -576,7 +568,7 @@
 		E7C852A51A0645CD00478AC0 /* Tracker */ = {
 			isa = PBXGroup;
 			children = (
-				E72BF4ED1A401EBC002DE8CB /* res */,
+				E72BF4F91A40F7B2002DE8CB /* pattern.png */,
 				E7B4E0A01A3526D500A7C565 /* test.json */,
 				E760EC161A2E546200737A89 /* app */,
 				E760EC3F1A2E546200737A89 /* core */,

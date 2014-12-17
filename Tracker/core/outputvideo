@@ -23,7 +23,7 @@ private:
 	std::ofstream out;
 	size_t frameSize;
 public:
-	bool init( String location , String name , int width , int height , pixelformat::Format inputformat , int dpi , int framerate );
+	bool init( String path , int width , int height , pixelformat::Format inputformat , int dpi , int framerate );
 	void append( const void *pixels );
 	void close();
 };

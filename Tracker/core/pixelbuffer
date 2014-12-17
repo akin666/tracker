@@ -62,7 +62,7 @@ public:
 		return height;
 	}
 	
-	virtual void get( const float& at , Color& color ) const
+	virtual void at( const float& at , Color& color ) const
 	{
 		uint index = ((uint)at) % this->width;
 		
@@ -73,7 +73,7 @@ public:
 		convert( color , data[index] );
 	}
 	
-	virtual void get( const glm::vec2& at , Color& color ) const
+	virtual void at( const glm::vec2& at , Color& color ) const
 	{
 		uint x = ((uint)at.x) % this->width;
 		uint y = ((uint)at.y) % this->height;
@@ -87,7 +87,7 @@ public:
 		convert( color , data[index] );
 	}
 	
-	virtual void get( const glm::vec3& at , Color& color ) const
+	virtual void at( const glm::vec3& at , Color& color ) const
 	{
 		uint x = ((uint)at.x) % this->width;
 		uint y = ((uint)at.y) % this->height;

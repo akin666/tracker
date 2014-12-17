@@ -13,7 +13,8 @@
 #include "scene/disc"
 #include "scene/camera"
 
-#include <colorsampler>
+#include <samplercolor>
+#include <pixelbuffer>
 
 // glm::translate
 #include <glm/gtc/matrix_transform.hpp>
@@ -95,7 +96,7 @@ bool read( const Json::Value& value, Manager& manager, Sampler::Shared& val )
 		}
 		Color color( a.asFloat() , b.asFloat() , c.asFloat() );
 		
-		Sampler::Shared ssampler(new ColorSampler(color));
+		Sampler::Shared ssampler(new SamplerColor(color));
 		val = ssampler;
 		
 		return true;
@@ -109,7 +110,29 @@ bool read( const Json::Value& value, Manager& manager, Sampler::Shared& val )
 		}
 		Color color( a.asFloat() );
 		
-		Sampler::Shared ssampler(new ColorSampler(color));
+		Sampler::Shared ssampler(new SamplerColor(color));
+		val = ssampler;
+		
+		return true;
+	}
+	else if( type == "texture" )
+	{
+		String path;
+		if( !read( value["path"] , path ) )
+		{
+			return false;
+		}
+		
+		auto *ptr = new PixelBuffer<RGBALow>();
+		
+		if( !native::load( path , *ptr ) )
+		{
+			LOG->error("Failed to load %s", path.c_str());
+			delete ptr;
+			return false;
+		}
+		
+		Sampler::Shared ssampler(ptr);
 		val = ssampler;
 		
 		return true;
