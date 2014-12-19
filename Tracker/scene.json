@@ -68,15 +68,15 @@
 			"name": "mirror",
 			"reflection": {
 				"type": "color",
-			    "r": 0.99,
-				"g": 0.99,
-				"b": 0.99
+			    "r": 0.9,
+				"g": 0.9,
+				"b": 0.9
 			},
 			"diffuse": {
 				"type": "color",
-				"r": 0.01,
-				"g": 0.01,
-				"b": 0.01
+				"r": 0.1,
+				"g": 0.1,
+				"b": 0.1
 			}
 		},
 		{
@@ -85,16 +85,10 @@
 		},
 		{
 			"name": "air",
-			"reflection": {
-				"type": "color",
-				"r": 0.01,
-				"g": 0.01,
-				"b": 0.01
-			},
 			"transparency":  {
 				"type": "color",
-				"r": 0.98,
-				"g": 0.98,
+				"r": 1.0,
+				"g": 1.0,
 				"b": 1.0
 			}
 		},
@@ -102,9 +96,15 @@
 			"name": "glass",
 			"reflection": {
 				"type": "color",
-				"r": 0.0,
-				"g": 0.0,
-				"b": 0.0
+				"r": 0.3,
+				"g": 0.5,
+				"b": 0.8
+				  },
+			"diffuse": {
+				"type": "color",
+				"r": 0.1,
+				"g": 0.1,
+				"b": 0.1
 			},
 			"transparency":  {
 				"type": "color",
@@ -132,18 +132,6 @@
 		},
 		{
 			"name": "blue",
-			"reflection": {
-				"type": "color",
-				"r": 0.1,
-				"g": 0.1,
-				"b": 0.1
-			},
-			"transparency": {
-				"type": "color",
-				"r": 0.1,
-				"g": 0.1,
-				"b": 0.5
-			},
 			"diffuse": "blue",
 			"refraction": "glass"
 		},
@@ -171,17 +159,10 @@
 		},
 		{
 			"name": "tex",
-			"reflection": {
-				"type": "color",
-				"r": 0.50,
-				"g": 0.40,
-				"b": 0.30
-			},
 			"diffuse": {
 				"type": "texture",
 				"path": "pattern.png"
-			},
-			"refraction": "glass"
+			}
 		},
 		{
 			"name": "light",
@@ -191,8 +172,7 @@
 				"g": 10.0,
 				"b": 10.0
 			},
-			"transparency": "white",
-			"refraction": "glass"
+			"transparency": "white"
 		}
 	],
 	"nodes": [
@@ -240,11 +220,11 @@
 		},
 		{
 			"type": "sphere",
-			"radius": 1.2,
+			"radius": 2.2,
 			"position": {
 				"x": -3.1,
 				"y": 0.0,
-				"z": 2.0
+				"z": 1.0
 			},
 			"material": "glass"
 		},
@@ -281,7 +261,7 @@
 				"y": 90.0,
 				"z": 0.0
 			},
-			"material": "blue"
+			"material": "mirror"
 		}
 	]
 }

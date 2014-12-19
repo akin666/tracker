@@ -12,9 +12,9 @@ template<class T>
 class TColor3
 {
 public:
-	union { T r, h; };
-	union { T g, s; };
-	union { T b, i, l, p; };
+	union { T r, h, y; };
+	union { T g, s, u; };
+	union { T b, i, l, p, v; };
 public:
 	TColor3()
 	{}

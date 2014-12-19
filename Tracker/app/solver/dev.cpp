@@ -27,13 +27,13 @@ Color normalToColor( const glm::vec3& normal )
 
 Color infinite( const Ray& ray )
 {
-	return World::black;
+	//return World::black;
 	return normalToColor(ray.direction);
 }
 
 Color solve( const Scene& scene , const RayInfo& ray , const Material& medium )
 {
-	const float smallstep = 0.001f;
+	const float smallstep = 0.0001f;
 	
 	// Hit solving..
 	HitInfo hit;
@@ -70,6 +70,10 @@ Color solve( const Scene& scene , const RayInfo& ray , const Material& medium )
 	// If hit.inside < 0, then we are hitting the object from inside
 	const Material& material = hit.material;
 	
+	if (material.name=="light") {
+		int nn = 0;
+	}
+	
 	Color result = World::black;
 	
 	// see through?
@@ -104,13 +108,11 @@ Color solve( const Scene& scene , const RayInfo& ray , const Material& medium )
 	RayInfo itmp( Ray( hit.point + ( direction * smallstep ) , direction ) , distance , bounces );
 	result += solve( scene , itmp , material );
 	
-	Color materialDiffuse;
-	material.diffuse->at(hit.materialCoordinates,materialDiffuse);
-	
-	//// Solving the hit surface
-	// how does this material react on the surface..
-	// It hit something..
+	if( material.diffuse != nullptr )
 	{
+		Color materialDiffuse;
+		material.diffuse->at(hit.materialCoordinates,materialDiffuse);
+		
 		glm::vec3 normalEpsilon = hit.normal * (std::numeric_limits<float>::epsilon());
 		glm::vec3 hitpointOut = hit.point + normalEpsilon;
 		glm::vec3 hitpointIn = hit.point - normalEpsilon;
@@ -167,6 +169,14 @@ Color solve( const Scene& scene , const RayInfo& ray , const Material& medium )
 				result += dot * materialDiffuse * lighting;
 			}
 		}
+		
+		// Ambient
+		if( scene.ambient != nullptr )
+		{
+			Color sceneAmbient;
+			scene.ambient->at(hit.materialCoordinates,sceneAmbient);
+			result += materialDiffuse * sceneAmbient;
+		}
 	}
 	
 	// Reflection
@@ -175,7 +185,7 @@ Color solve( const Scene& scene , const RayInfo& ray , const Material& medium )
 		Color materialReflection(0.0f);
 		material.reflection->at(hit.materialCoordinates,materialReflection);
 		
-		glm::vec3 direction = ray.direction - 2.0f * glm::dot( ray.direction , hit.normal ) * hit.normal;
+		glm::vec3 direction = glm::normalize(ray.direction - 2.0f * glm::dot( ray.direction , hit.normal ) * hit.normal );
 		RayInfo itmp( Ray( hit.point + ( direction * smallstep ) , direction ) , distance , bounces );
 		
 		Color reflection = solve( scene , itmp , medium );
@@ -189,14 +199,6 @@ Color solve( const Scene& scene , const RayInfo& ray , const Material& medium )
 		Color materialEmission;
 		material.emission->at(hit.materialCoordinates,materialEmission);
 		result += materialEmission;
-	}
-	
-	// Ambient
-	if( scene.ambient != nullptr )
-	{
-		Color sceneAmbient;
-		scene.ambient->at(hit.materialCoordinates,sceneAmbient);
-		result += materialDiffuse * sceneAmbient;
 	}
 	
 	return result * transparency;

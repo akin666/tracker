@@ -30,12 +30,27 @@ void hsp2rgb( const Color& from , Color& to );
 Color rgb2hsp( Color from );
 Color hsp2rgb( Color from );
 
+// YUV
+void rgb2yuv( const Color& from , Color& to );
+void yuv2rgb( const Color& from , Color& to );
+
+Color rgb2yuv( Color from );
+Color yuv2rgb( Color from );
+
+// YCbCr
+void rgb2YCbCr( const Color& from , Color& to );
+void YCbCr2rgb( const Color& from , Color& to );
+
+Color rgb2YCbCr( Color from );
+Color YCbCr2rgb( Color from );
+
 // Low <=> conversions..
 inline void convert( RGBALow& to , const Color& from )
 {
-	to.r = glm::min( from.r , 1.0f ) * 255.0f;
-	to.g = glm::min( from.g , 1.0f ) * 255.0f;
-	to.b = glm::min( from.b , 1.0f ) * 255.0f;
+	to.r = glm::clamp( from.r , 0.0f ,  1.0f ) * 255.0f;
+	to.g = glm::clamp( from.g , 0.0f ,  1.0f ) * 255.0f;
+	to.b = glm::clamp( from.b , 0.0f ,  1.0f ) * 255.0f;
+	to.a = 0xFF;
 }
 inline void convert( Color& to , const RGBALow& from )
 {
@@ -43,7 +58,21 @@ inline void convert( Color& to , const RGBALow& from )
 	to.g = from.g / 255.0f;
 	to.b = from.b / 255.0f;
 }
-inline template <class TC> void convert( TC& to , const TC& from )
+inline void convert( Color& to , const YUVLow& from )
+{
+	Color tmp( (float)from.r / 255.f , (float)from.g / 255.f , (float)from.b / 255.f );
+	yuv2rgb( tmp , to );
+}
+inline void convert( YUVLow& to , const Color& from )
+{
+	Color tmp;
+	rgb2yuv(from, tmp);
+	
+	to.r = glm::clamp( tmp.r , 0.0f ,  1.0f ) * 255.0f;
+	to.g = glm::clamp( tmp.g , 0.0f ,  1.0f ) * 255.0f;
+	to.b = glm::clamp( tmp.b , 0.0f ,  1.0f ) * 255.0f;
+}
+template <class TC> void convert( TC& to , const TC& from )
 {
 	to = from;
 }

@@ -159,12 +159,12 @@ bool read( const Json::Value& value , Manager& manager , Material& val )
 		return false;
 	}
 	
+	read( value["name"] , val.name );
 	read( value["reflection"] , manager , val.reflection );
 	read( value["emission"] , manager , val.emission );
 	read( value["transparency"] , manager , val.transparency );
 	read( value["diffuse"] , manager , val.diffuse );
 	read( value["refraction"] , manager , val.refraction );
-	read( value["name"] , val.name );
 	
 	return true;
 }
@@ -292,6 +292,7 @@ bool SceneLoader::load( String path , Scene& scene )
 		// extract samplers
 		for( int i = 0 ; i < samplers.size() ; ++i )
 		{
+			sampler.reset();
 			const auto& jssampler = samplers[i];
 			
 			read( jssampler["name"] , name );
@@ -304,25 +305,22 @@ bool SceneLoader::load( String path , Scene& scene )
 	const Json::Value& materials = root["materials"];
 	if( !materials.isNull() && materials.isArray() )
 	{
-		Material material;
-		String name;
-		
 		// extract materials
 		for( int i = 0 ; i < materials.size() ; ++i )
 		{
+			// material needs to be empty, fresh, thats why it is redone in loop..
+			Material material;
 			const auto& jsmaterial = materials[i];
 			
-			read( jsmaterial["name"] , name );
 			read( jsmaterial , manager , material );
 			
-			manager.set( name , material );
+			manager.set( material.name , material );
 		}
 	}
 	
 	const Json::Value& cameras = root["cameras"];
 	if( !cameras.isNull() && cameras.isArray() )
 	{
-		Material material;
 		String name;
 		
 		for( int i = 0 ; i < cameras.size() ; ++i )

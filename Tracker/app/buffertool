@@ -17,8 +17,8 @@ public:
 	BufferTool();
 	~BufferTool();
 	
-	static void convertHSB( const PixelBuffer<Color>& source , PixelBuffer<RGBALow>& target );
 	static void convert( const PixelBuffer<Color>& source , PixelBuffer<RGBALow>& target );
+	static void convert( const PixelBuffer<Color>& source , PixelBuffer<YUVLow>& target );
 	
 	static void clear( PixelBuffer<Color>& buffer );
 };

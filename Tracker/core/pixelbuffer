@@ -18,7 +18,9 @@ class PixelBuffer : public Sampler
 private:
 	uint width;
 	uint height;
-	uint size;
+	size_t size;
+	
+	size_t used;
 	
 	CType *data;
 public:
@@ -27,6 +29,7 @@ public:
 	, width(0)
 	, height(0)
 	, size(0)
+	, used(0)
 	{
 	}
 
@@ -48,6 +51,7 @@ public:
 		this->height = height;
 
 		this->size = this->width * this->height;
+		this->used = this->size;
 
 		this->data = new CType[this->size];
 	}
@@ -56,15 +60,25 @@ public:
 	{
 		return width;
 	}
-
+	
 	uint getHeight() const
 	{
 		return height;
 	}
 	
+	size_t getUsed() const
+	{
+		return used;
+	}
+	
+	void setUsed( size_t used )
+	{
+		this->used = used;
+	}
+	
 	virtual void at( const float& at , Color& color ) const
 	{
-		uint index = ((uint)at) % this->width;
+		size_t index = ((uint)at) % this->width;
 		
 		if( index >= this->size )
 		{
@@ -78,7 +92,7 @@ public:
 		uint x = ((uint)at.x) % this->width;
 		uint y = ((uint)at.y) % this->height;
 		
-		uint index = ((y*this->width)+x);
+		size_t index = ((y*this->width)+x);
 		
 		if( index >= this->size )
 		{
@@ -92,7 +106,7 @@ public:
 		uint x = ((uint)at.x) % this->width;
 		uint y = ((uint)at.y) % this->height;
 		
-		uint index = ((y*this->width)+x);
+		size_t index = ((y*this->width)+x);
 		
 		if( index >= this->size )
 		{
@@ -101,7 +115,7 @@ public:
 		convert( color , data[index] );
 	}
 
-	uint getSize() const
+	size_t getSize() const
 	{
 		return size;
 	}
@@ -115,7 +129,7 @@ public:
 	{
 		width %= this->width;
 		height %= this->height;
-		uint index = ((height*this->width)+width);
+		size_t index = ((height*this->width)+width);
 		
 		if( index >= this->size )
 		{

@@ -9,13 +9,45 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Tracker/app/sceneloader.cpp"
-            timestampString = "440466179.679458"
+            filePath = "Tracker/app/tracker.cpp"
+            timestampString = "440637995.557628"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
-            landmarkName = "read( const Json::Value&amp; value, Manager&amp; manager, Sampler::Shared&amp; val )"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "Tracker::run()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tracker/app/solver/dev.cpp"
+            timestampString = "440639110.551288"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "solve( const Scene&amp; scene , const RayInfo&amp; ray , const Material&amp; medium )"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tracker/app/solver/dev.cpp"
+            timestampString = "440639758.472434"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "infinite( const Ray&amp; ray )"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

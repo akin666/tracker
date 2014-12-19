@@ -352,3 +352,67 @@ Color hsp2rgb( Color from )
 	hsp2rgb(from, to);
 	return to;
 }
+
+// YUV
+// algorithm:
+// http://www.equasys.de/colorconversion.html
+void rgb2yuv( const Color& from , Color& to )
+{
+	to.r =  0.299 * from.r + 0.587 * from.g + 0.114 * from.b; // Y
+	to.g = -0.147 * from.r - 0.289 * from.g + 0.436 * from.b; // U
+	to.b =  0.615 * from.r - 0.515 * from.g - 0.071 * from.b; // V
+}
+
+void yuv2rgb( const Color& from , Color& to )
+{
+	to.r = from.r + 1.140 * from.b;
+	to.g = from.r - 0.395 * from.g - 0.581 * from.b;
+	to.b = from.r + 2.032 * from.g;
+}
+
+Color rgb2yuv( Color from )
+{
+	Color to;
+	rgb2yuv(from, to);
+	return to;
+}
+
+Color yuv2rgb( Color from )
+{
+	Color to;
+	yuv2rgb(from, to);
+	return to;
+}
+
+// YCbCr
+// algorithm:
+// http://www.equasys.de/colorconversion.html
+void rgb2YCbCr( const Color& from , Color& to )
+{
+	to.r =  0.257 * from.r + 0.504 * from.g + 0.098 * from.b + 16;  // Y
+	to.g = -0.148 * from.r - 0.291 * from.g + 0.439 * from.b + 128; // Cb
+	to.b =  0.439 * from.r - 0.368 * from.g - 0.071 * from.b + 128; // Cr
+}
+
+void YCbCr2rgb( const Color& from , Color& to )
+{
+	Color tmp( from.r - 16 , from.g - 128 , from.b - 128 );
+	
+	to.r = 1.164 * tmp.r + 1.596 * tmp.b;
+	to.g = 1.164 * tmp.r - 0.392 * tmp.g - 0.813 * tmp.b;
+	to.b = 1.164 * tmp.r + 2.017 * tmp.g;
+}
+
+Color rgb2YCbCr( Color from )
+{
+	Color to;
+	rgb2yuv(from, to);
+	return to;
+}
+
+Color YCbCr2rgb( Color from )
+{
+	Color to;
+	yuv2rgb(from, to);
+	return to;
+}

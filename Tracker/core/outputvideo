@@ -21,11 +21,13 @@ class Video
 {
 private:
 	std::ofstream out;
-	size_t frameSize;
+	String name;
 public:
-	bool init( String path , int width , int height , pixelformat::Format inputformat , int dpi , int framerate );
-	void append( const void *pixels );
+	bool init(String name, String path , int width , int height , pixelformat::Format inputformat , int dpi , int framerate );
+	void append( const void *pixels , size_t count );
 	void close();
+
+	String getName() const;
 };
 
 }
