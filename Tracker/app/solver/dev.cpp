@@ -69,12 +69,18 @@ Color solve( const Scene& scene , const RayInfo& ray , const Material& medium )
 	
 	// If hit.inside < 0, then we are hitting the object from inside
 	const Material& material = hit.material;
-	
-	if (material.name=="light") {
-		int nn = 0;
-	}
+	glm::vec3 normal = hit.normal;
 	
 	Color result = World::black;
+	
+	// Normal mapping?
+	if( material.normal != nullptr )
+	{
+		material.normal->at(hit.materialCoordinates,tmpColor);
+		// Modify 'normal' with tmpColor.
+		// TODO! verify this..
+		normal *= tmpColor;
+	}
 	
 	// see through?
 	// Refraction?
@@ -94,14 +100,14 @@ Color solve( const Scene& scene , const RayInfo& ray , const Material& medium )
 			mediumRefraction = tmpColor.r;
 		}
 		float refraction = mediumRefraction / materialRefraction;
-		float cosI = glm::dot( hit.normal, ray.direction );
+		float cosI = glm::dot( normal, ray.direction );
 		float cosT2 = 1.0f - refraction * refraction * (1.0f - cosI * cosI);
 		
 		float sqf = glm::sqrt( cosT2 );
 		
 		if( !isnan(sqf) )
 		{
-			direction = (refraction * ray.direction) + (refraction * cosI - sqf) * hit.normal;
+			direction = (refraction * ray.direction) + (refraction * cosI - sqf) * normal;
 		}
 	}
 	
@@ -113,7 +119,7 @@ Color solve( const Scene& scene , const RayInfo& ray , const Material& medium )
 		Color materialDiffuse;
 		material.diffuse->at(hit.materialCoordinates,materialDiffuse);
 		
-		glm::vec3 normalEpsilon = hit.normal * (std::numeric_limits<float>::epsilon());
+		glm::vec3 normalEpsilon = normal * (std::numeric_limits<float>::epsilon());
 		glm::vec3 hitpointOut = hit.point + normalEpsilon;
 		glm::vec3 hitpointIn = hit.point - normalEpsilon;
 		
@@ -158,7 +164,7 @@ Color solve( const Scene& scene , const RayInfo& ray , const Material& medium )
 			lightAttenuation( distance , lighting );
 			
 			auto directionoflight = glm::normalize( diff );
-			float dot = glm::dot( hit.normal , directionoflight );
+			float dot = glm::dot( normal , directionoflight );
 			
 			if ( lighting.r < 0.0f ) lighting.r = 0.0f;
 			if ( lighting.g < 0.0f ) lighting.g = 0.0f;
@@ -185,7 +191,7 @@ Color solve( const Scene& scene , const RayInfo& ray , const Material& medium )
 		Color materialReflection(0.0f);
 		material.reflection->at(hit.materialCoordinates,materialReflection);
 		
-		glm::vec3 direction = glm::normalize(ray.direction - 2.0f * glm::dot( ray.direction , hit.normal ) * hit.normal );
+		glm::vec3 direction = glm::normalize(ray.direction - 2.0f * glm::dot( ray.direction , normal ) * normal );
 		RayInfo itmp( Ray( hit.point + ( direction * smallstep ) , direction ) , distance , bounces );
 		
 		Color reflection = solve( scene , itmp , medium );

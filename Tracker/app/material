@@ -18,6 +18,7 @@ public:
 	Sampler::Shared reflection;
 	Sampler::Shared emission;
 	Sampler::Shared transparency; // 0.0 opaque, 1.0 transparent
+	Sampler::Shared normal;
 	
 	Sampler::Shared diffuse;
 	
@@ -30,4 +31,4 @@ public:
 	~Material();
 };
 
-#endif /* APP_MATERIAL_HPP_ */
+#endif // APP_MATERIAL_HPP_ 
