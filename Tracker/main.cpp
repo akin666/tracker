@@ -2,7 +2,7 @@
 #include <iostream>
 #include <vector>
 
-#include <init/init>
+#include "app/tracker"
 #include <traccore>
 #include <config>
 
@@ -35,7 +35,7 @@ int main(int argc, char**argv)
     }
 	
     // first thing to run, is init application
-    createSingleton<core::Application , core::Init>();
+    createSingleton<core::Application , Tracker>();
 
     Singleton<core::Application>::Shared app;
     do

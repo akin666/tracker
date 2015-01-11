@@ -1,0 +1,8 @@
+
+Main script, komentamaan mitä tehdään, mikä filu ladataan, ja mitä tehdään sitten..
+
+Mitä muuta? pelkkä main script on aika tylsä juttu.. pitäis saada vähän eloakin maailmaan..
+
+Erillinen scenegraph maailma, missä eri asiat aiheuttavat interactiota? toki scriptissä voi olla timed eventtejä..
+ellei sitten ole jotain sää emulaatiota/event emulaatiota joka generoi erillaisia eventtejä..
+Vois kokeilla.. ja pitää renderoija erillään..

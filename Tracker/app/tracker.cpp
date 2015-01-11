@@ -28,6 +28,9 @@ Tracker::~Tracker()
 
 bool Tracker::init()
 {
+	
+	exit(0);
+	
 	SceneLoader loader;
 	
 	loader.load( CONFIG->get<String>("scene" ,"scene.json") , scene );
