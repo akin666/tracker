@@ -1,10 +1,12 @@
 
+#include "defines.hpp"
+
 #include <iostream>
 #include <vector>
 
-#include "app/tracker"
-#include <traccore>
-#include <config>
+#include "app/tracker.hpp"
+#include <core.hpp>
+#include <config.hpp>
 
 // package the args into string vector..
 int main(int argc, char**argv) 
@@ -29,18 +31,15 @@ int main(int argc, char**argv)
 			std::string value( argv[i] );
 			if( value.size() > 1 )
 			{
-				CONFIG->set( key , value );
+				core::config::set<std::string>( key , value );
 			}
 		}
     }
 	
     // first thing to run, is init application
-    createSingleton<core::Application , Tracker>();
-
-    Singleton<core::Application>::Shared app;
+    core::Application::Shared app = std::dynamic_pointer_cast<core::Application>( std::make_shared<Tracker>() );
     do
     {
-        app = singleton<core::Application>();
         // init
         if( !app->init() )
         {

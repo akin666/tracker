@@ -5,10 +5,10 @@
  *      Author: akin
  */
 
-#include "buffertool"
+#include "buffertool.hpp"
 #include <glm/glm.hpp>
-#include "scene/world"
-#include <colortools>
+#include "scene/world.hpp"
+#include <graphics/colortools.hpp>
 
 BufferTool::BufferTool()
 {

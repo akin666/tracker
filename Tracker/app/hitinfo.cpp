@@ -5,8 +5,8 @@
  *      Author: akin
  */
 
-#include "hitinfo"
-#include "scene/node"
+#include "hitinfo.hpp"
+#include "scene/node.hpp"
 
 HitInfo::HitInfo()
 : count(0)

@@ -8,7 +8,7 @@
 #ifndef APP_RAY_HPP_
 #define APP_RAY_HPP_
 
-#include <traccore>
+#include <core.hpp>
 
 class Ray
 {

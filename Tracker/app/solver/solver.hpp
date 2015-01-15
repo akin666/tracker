@@ -2,9 +2,11 @@
 #ifndef APP_PATHSOLVER_HPP_
 #define APP_PATHSOLVER_HPP_
 
-#include <traccore>
-#include "../ray"
-#include "../scene/scene"
+#include <core>
+#include "../ray.hpp"
+#include "../scene/scene.hpp"
+
+using namespace core;
 
 namespace solver
 {

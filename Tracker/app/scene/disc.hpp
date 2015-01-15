@@ -13,9 +13,9 @@
 #ifndef APP_DISC_HPP_
 #define APP_DISC_HPP_
 
-#include <traccore>
-#include "node"
-#include "../material"
+#include <core.hpp>
+#include "node.hpp"
+#include "../material.hpp"
 
 class Disc : public Node
 {

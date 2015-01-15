@@ -5,8 +5,8 @@
  *      Author: akin
  */
 
-#include "solver"
-#include "../scene/world"
+#include "solver.hpp"
+#include "../scene/world.hpp"
 
 namespace solver
 {

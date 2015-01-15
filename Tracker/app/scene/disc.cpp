@@ -5,10 +5,10 @@
  *      Author: akin
  */
 
-#include "disc"
-#include "../intersect"
-#include <colortools>
-#include "../hitinfo"
+#include "disc.hpp"
+#include "../intersect.hpp"
+#include <graphics/colortools.hpp>
+#include "../hitinfo.hpp"
 
 Disc::Disc()
 : radius( 0.0f )

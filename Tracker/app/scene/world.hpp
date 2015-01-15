@@ -8,7 +8,7 @@
 #ifndef APP_WORLD_HPP_
 #define APP_WORLD_HPP_
 
-#include <traccore>
+#include <core>
 
 class World
 {

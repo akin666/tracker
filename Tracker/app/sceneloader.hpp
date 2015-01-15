@@ -8,13 +8,13 @@
 #ifndef APP_SCENELOADER_HPP_
 #define APP_SCENELOADER_HPP_
 
-#include <traccore>
-#include "scene/scene"
+#include <core>
+#include "scene/scene.hpp"
 
 class SceneLoader
 {
 public:
-	bool load( String path , Scene& scene );
+	bool load( std::string path , Scene& scene );
 };
 
 #endif // APP_SCENELOADER_HPP_

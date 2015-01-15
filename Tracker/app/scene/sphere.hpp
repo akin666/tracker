@@ -8,9 +8,9 @@
 #ifndef APP_SPHERE_HPP_
 #define APP_SPHERE_HPP_
 
-#include <traccore>
-#include "node"
-#include "../material"
+#include <core>
+#include "node.hpp"
+#include "../material.hpp"
 
 class Sphere : public Node
 {

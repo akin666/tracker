@@ -8,8 +8,8 @@
 #ifndef APP_BUFFERTOOL_HPP_
 #define APP_BUFFERTOOL_HPP_
 
-#include "pixelbuffer"
-#include <traccore>
+#include <graphics/buffer2d.hpp>
+#include <core.hpp>
 
 class BufferTool
 {

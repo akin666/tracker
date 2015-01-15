@@ -5,18 +5,18 @@
  *      Author: akin
  */
 
-#include "tracker"
-#include "buffertool"
-#include "scene/world"
-#include "ray"
-#include "solver/solver"
-#include "scene/sphere"
-#include <config>
-#include "scene/camera"
+#include "tracker.hpp"
+#include "buffertool.hpp"
+#include "scene/world.hpp"
+#include "ray.hpp"
+#include "solver/solver.hpp"
+#include "scene/sphere.hpp"
+#include <config.hpp>
+#include "scene/camera.hpp"
 
-#include "sceneloader"
+#include "sceneloader.hpp"
 
-#include <outputvideo>
+#include <output/video.hpp>
 
 Tracker::Tracker()
 {
@@ -33,7 +33,7 @@ bool Tracker::init()
 	
 	SceneLoader loader;
 	
-	loader.load( CONFIG->get<String>("scene" ,"scene.json") , scene );
+	loader.load( CONFIG->get<std::string>("scene" ,"scene.json") , scene );
 	/**
 	Material mirror;
 	MATERIALS->get("mirror" , mirror );
@@ -82,7 +82,7 @@ void Tracker::run()
 	
 	solver::solver solve = &solver::dev;
 	
-	std::map<String, output::Video*> videos;
+	std::map<std::string, output::Video*> videos;
 	
 	int framerate = 60;
 	// create videos for cameras..
@@ -185,7 +185,7 @@ bool Tracker::complete()
     return true; //(++times) > 10;
 }
 
-String Tracker::getName() const
+std::string Tracker::getName() const
 {
 	return "Tracker";
 }

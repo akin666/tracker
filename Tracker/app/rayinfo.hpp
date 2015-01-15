@@ -8,8 +8,8 @@
 #ifndef APP_RAYINFO_HPP_
 #define APP_RAYINFO_HPP_
 
-#include <traccore>
-#include "ray"
+#include <core.hpp>
+#include "ray.hpp"
 
 class RayInfo : public Ray
 {

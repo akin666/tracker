@@ -5,7 +5,7 @@
  *      Author: akin
  */
 
-#include "intersect"
+#include "intersect.hpp"
 
 // based on http://ray-tracer-concept.blogspot.fi/2011/11/ray-sphere-intersection.html
 bool intersects( const Ray& ray , const glm::vec3& position , float radius )

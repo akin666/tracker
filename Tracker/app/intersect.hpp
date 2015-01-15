@@ -8,10 +8,10 @@
 #ifndef APP_INTERSECT_HPP_
 #define APP_INTERSECT_HPP_
 
-#include <traccore>
-#include "ray"
-#include "line"
-#include "scene/node"
+#include <core.hpp>
+#include "ray.hpp"
+#include "line.hpp"
+#include "scene/node.hpp"
 
 bool intersects( const Ray& ray , const glm::vec3& position , float radius );
 bool intersects(

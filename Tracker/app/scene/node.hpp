@@ -8,9 +8,11 @@
 #ifndef APP_NODE_HPP_
 #define APP_NODE_HPP_
 
-#include <traccore>
-#include "../ray"
-#include "../material"
+#include <core.hpp>
+#include "../ray.hpp"
+#include "../material.hpp"
+
+using namespace core;
 
 class HitInfo;
 class Node
@@ -23,7 +25,7 @@ protected:
 	
 	void traverseChilds();
 public:
-	String name;
+	std::string name;
 public:
 	Node();
 	virtual ~Node();

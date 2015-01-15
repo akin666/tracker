@@ -8,8 +8,8 @@
 #ifndef APP_MATERIAL_HPP_
 #define APP_MATERIAL_HPP_
 
-#include <traccore>
-#include <sampler>
+#include <core.hpp>
+#include <graphics/sampler/sampler.hpp>
 
 class Material
 {
@@ -24,7 +24,7 @@ public:
 	
 	Sampler::Shared refraction;
 	
-	String name;
+	std::string name;
 public:
 	Material();
 	Material(const Material& other);

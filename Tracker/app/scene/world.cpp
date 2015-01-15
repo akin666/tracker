@@ -5,7 +5,7 @@
  *      Author: akin
  */
 
-#include "world"
+#include "world.hpp"
 
 const glm::vec4 World::center( 0.0f , 0.0f , 0.0f , 1.0f );
 const glm::vec4 World::up( 0.0f , 1.0f , 0.0f , 1.0f );

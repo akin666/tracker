@@ -8,8 +8,8 @@
 #ifndef APP_HITINFO_HPP_
 #define APP_HITINFO_HPP_
 
-#include <traccore>
-#include "material"
+#include <core.hpp>
+#include "material.hpp"
 
 class Node;
 class HitInfo

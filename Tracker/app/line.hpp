@@ -8,7 +8,7 @@
 #ifndef APP_LINE_HPP_
 #define APP_LINE_HPP_
 
-#include <traccore>
+#include <core.hpp>
 
 class Line
 {

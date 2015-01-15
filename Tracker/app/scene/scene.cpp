@@ -5,11 +5,11 @@
  * Created on 20. lokakuuta 2014, 21:09
  */
 
-#include "scene"
-#include "../hitinfo"
-#include "node"
-#include "camera"
-#include "../manager"
+#include "scene.hpp"
+#include "../hitinfo.hpp"
+#include "node.hpp"
+#include "camera.hpp"
+#include "../manager.hpp"
 
 Scene::Scene()
 {

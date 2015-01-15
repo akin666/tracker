@@ -5,7 +5,7 @@
  *      Author: akin
  */
 
-#include "rayinfo"
+#include "rayinfo.hpp"
 
 RayInfo::RayInfo( const Ray& ray, float distance )
 : Ray(ray)

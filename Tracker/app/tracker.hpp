@@ -8,8 +8,8 @@
 #ifndef APP_TRACKER_HPP_
 #define APP_TRACKER_HPP_
 
-#include <traccore>
-#include "scene/scene"
+#include <core.hpp>
+#include "scene/scene.hpp"
 
 class Tracker : public core::Application
 {
@@ -26,7 +26,7 @@ public:
 
     virtual bool complete();
 
-    virtual String getName() const;
+    virtual std::string getName() const;
 };
 
 #endif /* APP_TRACKER_HPP_ */

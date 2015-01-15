@@ -5,12 +5,12 @@
  *      Author: akin
  */
 
-#include "solver"
-#include "../scene/world"
-#include "../intersect"
-#include "../scene/sphere"
-#include "../rayinfo"
-#include "../hitinfo"
+#include "solver.hpp"
+#include "../scene/world.hpp"
+#include "../intersect.hpp"
+#include "../scene/sphere.hpp"
+#include "../rayinfo.hpp"
+#include "../hitinfo.hpp"
 
 namespace solver
 {

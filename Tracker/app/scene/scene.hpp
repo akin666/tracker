@@ -26,9 +26,9 @@
 #ifndef SCENE_HPP
 #define	SCENE_HPP
 
-#include <traccore>
-#include "../material"
-#include "../manager"
+#include <core.hpp>
+#include "../material.hpp"
+#include "../manager.hpp"
 
 class Ray;
 class HitInfo;
@@ -45,8 +45,8 @@ private:
 public:
 	float max;
 	float infinite;
-	String name;
-	String type;
+	std::string name;
+	std::string type;
 	
 	Sampler::Shared ambient;
 private:

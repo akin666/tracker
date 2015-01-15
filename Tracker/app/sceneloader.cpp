@@ -5,16 +5,17 @@
  *      Author: akin
  */
 
-#include "sceneloader"
+#include "sceneloader.hpp"
 #include <json/json.h>
 #include <fstream>
 
-#include "scene/sphere"
-#include "scene/disc"
-#include "scene/camera"
+#include "scene/sphere.hpp"
+#include "scene/disc.hpp"
+#include "scene/camera.hpp"
 
-#include <samplercolor>
-#include <pixelbuffer>
+#include <graphics/sampler/color.hpp>
+#include <graphics/sampler/buffer.hpp>
+#include <graphics/buffer2d.hpp>
 
 // glm::translate
 #include <glm/gtc/matrix_transform.hpp>
@@ -32,7 +33,7 @@ bool read( const Json::Value& value , float& val )
 	return true;
 }
 
-bool read( const Json::Value& value , String& val )
+bool read( const Json::Value& value , std::string& val )
 {
 	if( value.isNull() || (!value.isString()) )
 	{
@@ -76,7 +77,7 @@ bool read( const Json::Value& value, Manager& manager, Sampler::Shared& val )
 		return manager.get( value.asString() , val );
 	}
 	
-	String type;
+	std::string type;
 	if( !read( value["type"] , type ) )
 	{
 		// no type specified, skip.
@@ -117,7 +118,7 @@ bool read( const Json::Value& value, Manager& manager, Sampler::Shared& val )
 	}
 	else if( type == "texture" )
 	{
-		String path;
+		std::string path;
 		if( !read( value["path"] , path ) )
 		{
 			return false;
@@ -251,7 +252,7 @@ bool read( const Json::Value& value , Manager& manager , Disc& val )
 	return true;
 }
 
-bool SceneLoader::load( String path , Scene& scene )
+bool SceneLoader::load( std::string path , Scene& scene )
 {
 	Manager& manager = scene.getManager();
 	
@@ -287,7 +288,7 @@ bool SceneLoader::load( String path , Scene& scene )
 	if( !samplers.isNull() && samplers.isArray() )
 	{
 		Sampler::Shared sampler;
-		String name;
+		std::string name;
 		
 		// extract samplers
 		for( int i = 0 ; i < samplers.size() ; ++i )
@@ -321,7 +322,7 @@ bool SceneLoader::load( String path , Scene& scene )
 	const Json::Value& cameras = root["cameras"];
 	if( !cameras.isNull() && cameras.isArray() )
 	{
-		String name;
+		std::string name;
 		
 		for( int i = 0 ; i < cameras.size() ; ++i )
 		{
@@ -344,7 +345,7 @@ bool SceneLoader::load( String path , Scene& scene )
 	if( !nodes.isNull() && nodes.isArray() )
 	{
 		// extract nodes
-		String type;
+		std::string type;
 		
 		for( int i = 0 ; i < nodes.size() ; ++i )
 		{

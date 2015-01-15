@@ -5,9 +5,9 @@
  *      Author: akin
  */
 
-#include "node"
-#include "../hitinfo"
-#include "world"
+#include "node.hpp"
+#include "../hitinfo.hpp"
+#include "world.hpp"
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/ext.hpp>
 

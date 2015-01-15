@@ -5,10 +5,10 @@
  *      Author: akin
  */
 
-#include "sphere"
-#include "../intersect"
-#include <colortools>
-#include "../hitinfo"
+#include "sphere.hpp"
+#include "../intersect.hpp"
+#include <graphics/colortools.hpp>
+#include "../hitinfo.hpp"
 
 Sphere::Sphere()
 : radius( 0.0f )

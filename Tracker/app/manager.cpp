@@ -5,9 +5,9 @@
  *      Author: akin
  */
 
-#include "manager"
-#include "scene/world"
-#include <samplercolor>
+#include "manager.hpp"
+#include "scene/world.hpp"
+#include <graphics/sampler/color.hpp>
 
 Manager::Manager()
 {
@@ -45,12 +45,12 @@ Manager::~Manager()
 {
 }
 
-void Manager::set( String key , const Material& material )
+void Manager::set( std::string key , const Material& material )
 {
 	materials[key] = material;
 }
 
-void Manager::set( String key , Sampler::Shared& sampler )
+void Manager::set( std::string key , Sampler::Shared& sampler )
 {
 	auto iter = samplers.find( key );
 	if( iter != samplers.end() )
@@ -61,7 +61,7 @@ void Manager::set( String key , Sampler::Shared& sampler )
 	samplers[key] = sampler;
 }
 
-bool Manager::get( String key , Material& material ) const
+bool Manager::get( std::string key , Material& material ) const
 {
 	auto iter = materials.find( key );
 	if( iter == materials.end() )
@@ -72,7 +72,7 @@ bool Manager::get( String key , Material& material ) const
 	return true;
 }
 
-bool Manager::get( String key , Sampler::Shared& sampler ) const
+bool Manager::get( std::string key , Sampler::Shared& sampler ) const
 {
 	auto iter = samplers.find( key );
 	if( iter == samplers.end() )
@@ -83,12 +83,12 @@ bool Manager::get( String key , Sampler::Shared& sampler ) const
 	return true;
 }
 
-bool Manager::hasMaterial( String key ) const
+bool Manager::hasMaterial( std::string key ) const
 {
 	return materials.find( key ) != materials.end();
 }
 
-bool Manager::hasSampler( String key ) const
+bool Manager::hasSampler( std::string key ) const
 {
 	return samplers.find( key ) != samplers.end();
 }

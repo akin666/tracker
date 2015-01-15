@@ -5,7 +5,7 @@
  *      Author: akin
  */
 
-#include "material"
+#include "material.hpp"
 
 Material::Material()
 {

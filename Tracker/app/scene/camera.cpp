@@ -5,8 +5,8 @@
  *      Author: akin
  */
 
-#include "camera"
-#include "../buffertool"
+#include "camera.hpp"
+#include "../buffertool.hpp"
 
 Camera::Camera()
 : distance( 0.1f )

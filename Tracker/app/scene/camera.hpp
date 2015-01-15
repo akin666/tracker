@@ -8,9 +8,9 @@
 #ifndef APP_CAMERA_HPP_
 #define APP_CAMERA_HPP_
 
-#include <traccore>
-#include "node"
-#include <pixelbuffer>
+#include <core.hpp>
+#include "node.hpp"
+#include <graphics/buffer2d.hpp>
 
 class Camera : public Node
 {
