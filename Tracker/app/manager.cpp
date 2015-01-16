@@ -8,22 +8,24 @@
 #include "manager.hpp"
 #include "scene/world.hpp"
 #include <graphics/sampler/color.hpp>
+#include <exceptions/notfound.hpp>
+#include <exceptions/cannot.hpp>
 
 Manager::Manager()
 {
-	Sampler::Shared clear(new SamplerColor(World::clear));
+	Sampler::Shared clear(new core::graphics::ColorSampler(World::clear));
 	
-	Sampler::Shared white(new SamplerColor(World::white));
-	Sampler::Shared black(new SamplerColor(World::black));
-	Sampler::Shared grey(new SamplerColor(World::grey));
+	Sampler::Shared white(new core::graphics::ColorSampler(World::white));
+	Sampler::Shared black(new core::graphics::ColorSampler(World::black));
+	Sampler::Shared grey(new core::graphics::ColorSampler(World::grey));
 	
-	Sampler::Shared red(new SamplerColor(World::red));
-	Sampler::Shared green(new SamplerColor(World::green));
-	Sampler::Shared blue(new SamplerColor(World::blue));
+	Sampler::Shared red(new core::graphics::ColorSampler(World::red));
+	Sampler::Shared green(new core::graphics::ColorSampler(World::green));
+	Sampler::Shared blue(new core::graphics::ColorSampler(World::blue));
 	
-	Sampler::Shared teal(new SamplerColor(World::teal));
-	Sampler::Shared yellow(new SamplerColor(World::yellow));
-	Sampler::Shared magenta(new SamplerColor(World::magenta));
+	Sampler::Shared teal(new core::graphics::ColorSampler(World::teal));
+	Sampler::Shared yellow(new core::graphics::ColorSampler(World::yellow));
+	Sampler::Shared magenta(new core::graphics::ColorSampler(World::magenta));
 	
 	// Add basic samplers..
 	set("clear" , clear);
@@ -50,13 +52,13 @@ void Manager::set( std::string key , const Material& material )
 	materials[key] = material;
 }
 
-void Manager::set( std::string key , Sampler::Shared& sampler )
+void Manager::set( std::string key , core::graphics::Sampler::Shared& sampler )
 {
 	auto iter = samplers.find( key );
 	if( iter != samplers.end() )
 	{
 		// replace!
-		throw "NOOO";
+		throw core::Cannot( "Manager can't set '" + key + "', it already exists." );
 	}
 	samplers[key] = sampler;
 }
@@ -72,7 +74,7 @@ bool Manager::get( std::string key , Material& material ) const
 	return true;
 }
 
-bool Manager::get( std::string key , Sampler::Shared& sampler ) const
+bool Manager::get( std::string key , core::graphics::Sampler::Shared& sampler ) const
 {
 	auto iter = samplers.find( key );
 	if( iter == samplers.end() )

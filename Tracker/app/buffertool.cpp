@@ -10,6 +10,8 @@
 #include "scene/world.hpp"
 #include <graphics/colortools.hpp>
 
+using namespace core::graphics;
+
 BufferTool::BufferTool()
 {
 }
@@ -18,14 +20,14 @@ BufferTool::~BufferTool()
 {
 }
 
-void BufferTool::convert( const PixelBuffer<Color>& source , PixelBuffer<RGBALow>& target )
+void BufferTool::convert( const Buffer2D<Color>& source , Buffer2D<RGBALow>& target )
 {
-	target.init<Color>( source );
+	target.init( source.width() , source.height() );
 	
-	auto *trg = target.getBuffer();
-	const auto *src = source.getBuffer();
+	auto *trg = target.get();
+	const auto *src = source.get();
 	
-	size_t length = source.getSize();
+	size_t length = source.size();
 	
 	for( size_t i = 0 ; i < length ; ++i )
 	{
@@ -34,10 +36,10 @@ void BufferTool::convert( const PixelBuffer<Color>& source , PixelBuffer<RGBALow
 	}
 }
 
-void BufferTool::clear( PixelBuffer<Color>& target )
+void BufferTool::clear( Buffer2D<Color>& target )
 {
-	auto *trg = target.getBuffer();
-	size_t length = target.getSize();
+	auto *trg = target.get();
+	size_t length = target.size();
 	
 	for( size_t i = 0 ; i < length ; ++i )
 	{
@@ -46,13 +48,13 @@ void BufferTool::clear( PixelBuffer<Color>& target )
 }
 
 // http://stackoverflow.com/questions/9465815/rgb-to-yuv420-algorithm-efficiency
-size_t rgb2Yuv420p( const PixelBuffer<Color>& source , PixelBuffer<YUVLow>& target )
+size_t rgb2Yuv420p( const Buffer2D<Color>& source , Buffer2D<YUVLow>& target )
 {
-	uint8_t *destination = (uint8_t*)target.getBuffer();
-	const auto *src = source.getBuffer();
+	uint8_t *destination = (uint8_t*)target.get();
+	const auto *src = source.get();
 	
-	size_t width = source.getWidth();
-	size_t height = source.getHeight();
+	size_t width = source.width();
+	size_t height = source.height();
 	
 	size_t image_size = width * height;
 	size_t upos = image_size;
@@ -88,11 +90,12 @@ size_t rgb2Yuv420p( const PixelBuffer<Color>& source , PixelBuffer<YUVLow>& targ
 	return vpos;
 }
 
-void BufferTool::convert( const PixelBuffer<Color>& source , PixelBuffer<YUVLow>& target )
+void BufferTool::convert( const Buffer2D<Color>& source , Buffer2D<YUVLow>& target )
 {
-	target.init<Color>( source );
+	target.init<Color>( source.width() , source.height() );
 	
 	size_t used = rgb2Yuv420p(source , target);
 	
-	target.setUsed( used );
+	// TODO!
+	// target.setUsed( used );
 }

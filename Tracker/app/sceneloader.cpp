@@ -64,7 +64,7 @@ bool read( const Json::Value& value , glm::vec3& val )
 	return true;
 }
 
-bool read( const Json::Value& value, Manager& manager, Sampler::Shared& val )
+bool read( const Json::Value& value, Manager& manager, core::graphics::Sampler::Shared& val )
 {
 	if( value.isNull() )
 	{
