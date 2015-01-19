@@ -76,7 +76,7 @@
 		E7A361111A68EBEF00C9E3EF /* cannot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7A3610F1A68EBEF00C9E3EF /* cannot.cpp */; };
 		E7A361151A69799000C9E3EF /* cci18n.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7A361131A69799000C9E3EF /* cci18n.cpp */; };
 		E7A361181A697B4A00C9E3EF /* translate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7A361161A697B4A00C9E3EF /* translate.cpp */; };
-		E7B4E07E1A2E84A800A7C565 /* init.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = E760EC121A2DA7BC00737A89 /* init.js */; };
+		E7B4E07E1A2E84A800A7C565 /* init.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = E760EC121A2DA7BC00737A89 /* init.json */; };
 		E7B4E0A11A3526E300A7C565 /* test.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = E7B4E0A01A3526D500A7C565 /* test.json */; };
 		E7B4E0A41A375B6100A7C565 /* disc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7B4E0A31A375B6100A7C565 /* disc.cpp */; };
 		E7C852A71A0645CD00478AC0 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7C852A61A0645CD00478AC0 /* main.cpp */; };
@@ -92,7 +92,7 @@
 			files = (
 				E72BF4FA1A40F7B8002DE8CB /* pattern.png in CopyFiles */,
 				E7B4E0A11A3526E300A7C565 /* test.json in CopyFiles */,
-				E7B4E07E1A2E84A800A7C565 /* init.js in CopyFiles */,
+				E7B4E07E1A2E84A800A7C565 /* init.json in CopyFiles */,
 				E7C854BD1A15806600478AC0 /* scene.json in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -104,7 +104,7 @@
 		E72BF4F01A409740002DE8CB /* manager.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = manager.hpp; sourceTree = "<group>"; };
 		E72BF4F11A409740002DE8CB /* manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = manager.cpp; sourceTree = "<group>"; };
 		E72BF4F91A40F7B2002DE8CB /* pattern.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pattern.png; sourceTree = "<group>"; };
-		E760EC121A2DA7BC00737A89 /* init.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = init.js; sourceTree = "<group>"; };
+		E760EC121A2DA7BC00737A89 /* init.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = init.json; sourceTree = "<group>"; };
 		E760EC171A2E546200737A89 /* action.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = action.hpp; sourceTree = "<group>"; };
 		E760EC191A2E546200737A89 /* buffertool.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = buffertool.hpp; sourceTree = "<group>"; };
 		E760EC1A1A2E546200737A89 /* buffertool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = buffertool.cpp; sourceTree = "<group>"; };
@@ -1138,7 +1138,7 @@
 				E7C852E01A06463400478AC0 /* defines.hpp */,
 				E7C852A61A0645CD00478AC0 /* main.cpp */,
 				E7C854B61A14271F00478AC0 /* scene.json */,
-				E760EC121A2DA7BC00737A89 /* init.js */,
+				E760EC121A2DA7BC00737A89 /* init.json */,
 				E7201F141A5EE84B00839B89 /* todo.txt */,
 			);
 			path = Tracker;

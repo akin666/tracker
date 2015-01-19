@@ -18,6 +18,16 @@ int main(int argc, char**argv)
 	// configure logging
 	el::Loggers::reconfigureAllLoggers(el::ConfigurationType::Format, "%datetime - %level@%fbase:%line: %msg");
 	
+	// load config.
+	try
+	{
+		core::config::load("init.json");
+	}
+	catch( ... )
+	{
+		LOG(ERROR) << " Application failed to configuration!";
+	}
+	
 	// skip 1st argument, it is the executable name..
     std::vector<std::string> args(argc);
     for( int i = 1 ; i < argc ; ++i )
