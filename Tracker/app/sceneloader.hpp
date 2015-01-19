@@ -8,9 +8,9 @@
 #ifndef APP_SCENELOADER_HPP_
 #define APP_SCENELOADER_HPP_
 
-#include <core>
-#include "scene/scene.hpp"
+#include <string>
 
+class Scene;
 class SceneLoader
 {
 public:

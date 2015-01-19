@@ -15,7 +15,7 @@
 class Camera : public Node
 {
 private:
-	PixelBuffer<Color> buffer;
+	core::graphics::Buffer2D<Color>::Shared buffer;
 public:
 	Camera();
 	virtual ~Camera();
@@ -33,7 +33,7 @@ public:
 	float getDpmm() const;
 	
 	void init();
-	PixelBuffer<Color>& getBuffer();
+	core::graphics::Buffer2D<Color>::Shared getBuffer();
 };
 
 #endif // APP_CAMERA_HPP_

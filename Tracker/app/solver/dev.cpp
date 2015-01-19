@@ -161,7 +161,7 @@ Color solve( const Scene& scene , const RayInfo& ray , const Material& medium )
 			
 			Color lighting;
 			lightMaterial.emission->at(tmpInfo.materialCoordinates,lighting);
-			lightAttenuation( distance , lighting );
+			core::graphics::lightAttenuation( distance , lighting );
 			
 			auto directionoflight = glm::normalize( diff );
 			float dot = glm::dot( normal , directionoflight );

@@ -18,6 +18,8 @@
 
 #include <output/video.hpp>
 
+using namespace core;
+
 Tracker::Tracker()
 {
 }
@@ -33,7 +35,7 @@ bool Tracker::init()
 	
 	SceneLoader loader;
 	
-	loader.load( CONFIG->get<std::string>("scene" ,"scene.json") , scene );
+	loader.load( config::get<std::string>("scene" ,"scene.json") , scene );
 	/**
 	Material mirror;
 	MATERIALS->get("mirror" , mirror );
@@ -78,7 +80,7 @@ bool Tracker::init()
 
 void Tracker::run()
 {
-	LOG->message("Tracker is running");
+	LOG(INFO) << "Tracker is running";
 	
 	solver::solver solve = &solver::dev;
 	
@@ -90,10 +92,10 @@ void Tracker::run()
 	{
 		auto *video = new output::Video();
 		
-		PixelBuffer<Color>& buffer = camera->getBuffer();
+		auto buffer = camera->getBuffer();
 		int dpi = (int)dpmm2dpi(camera->dpmm);
 		
-		video->init( camera->name , camera->name , buffer.getWidth() , buffer.getHeight() , pixelformat::RGBA8 , dpi , framerate );
+		video->init( camera->name , camera->name , buffer->width() , buffer->height() , graphics::RGBA8 , dpi , framerate );
 		
 		videos[camera->name] = video;
 	}
@@ -104,7 +106,7 @@ void Tracker::run()
 	//for( int time = 0 ; time < 300 ; ++time )
 	int time = 0;
 	{
-		LOG->message("Rendering frame %d." , time );
+		LOG(INFO) << "Rendering frame " << time;
 		// kaikille kamoille..
 		for( auto* camera : scene.getCameras() )
 		{
@@ -118,15 +120,15 @@ void Tracker::run()
 		
 			glm::vec3 corigo = camera->getPosition();
 		
-			PixelBuffer<Color>& buffer = camera->getBuffer();
+			auto buffer = camera->getBuffer();
 		
-			const uint width = buffer.getWidth();
-			const uint height = buffer.getHeight();
+			const auto width = buffer->width();
+			const auto height = buffer->height();
 		
-			LOG->message("Rendering camera %s %dx%d." , camera->name.c_str() , width , height );
+			LOG(INFO) << "Rendering camera " << camera->name << width << "x" << height;
 			for( uint y = 0 ; y < height ; ++y )
 			{
-				//LOG->message("Starting line %d of %d." , y + 1 , height );
+				//LOG(INFO) << "Starting line << (y + 1) << " of " << height;
 				for( uint x = 0 ; x < width ; ++x )
 				{
 					// center the film, and scale..
@@ -139,22 +141,22 @@ void Tracker::run()
 					ray.direction = glm::normalize(ray.position - corigo);
 				
 					// cast ray solving.
-					buffer.set(x, y, solve(scene , ray));
+					buffer->set(x, y, solve(scene , ray));
 				}
-				//LOG->message("Done line %d." , y + 1 );
+				//LOG(INFO) << "Done line " << (y + 1);
 			}
-			LOG->message("Complete.");
+			LOG(INFO) << "Complete.";
 		
 			// still image
 			if( time == 0 )
 			{
-				PixelBuffer<RGBALow> lowbuffer;
-				BufferTool::convert( buffer , lowbuffer );
+				graphics::Buffer2D<graphics::RGBALow> lowbuffer;
+				BufferTool::convert( *buffer , lowbuffer );
 				native::save( camera->name , lowbuffer );
 			}
 			
-			PixelBuffer<YUVLow> yuvbuffer;
-			BufferTool::convert( buffer , yuvbuffer );
+			graphics::Buffer2D<graphics::YUVLow> yuvbuffer;
+			size_t targetSize = BufferTool::convert( *buffer , yuvbuffer );
 			
 			// Get video output..
 			auto iter = videos.find(camera->name);
@@ -165,7 +167,7 @@ void Tracker::run()
 			}
 			
 			auto *video = iter->second;
-			video->append(yuvbuffer.getBuffer() , yuvbuffer.getUsed());
+			video->append(yuvbuffer.buffer() , targetSize );
 		}
 	}
 	

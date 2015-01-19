@@ -2,7 +2,7 @@
 #ifndef APP_PATHSOLVER_HPP_
 #define APP_PATHSOLVER_HPP_
 
-#include <core>
+#include <core.hpp>
 #include "../ray.hpp"
 #include "../scene/scene.hpp"
 

@@ -15,14 +15,14 @@ class Material
 {
 public:
 	// Surface:
-	Sampler::Shared reflection;
-	Sampler::Shared emission;
-	Sampler::Shared transparency; // 0.0 opaque, 1.0 transparent
-	Sampler::Shared normal;
+	core::graphics::Sampler::Shared reflection;
+	core::graphics::Sampler::Sampler::Shared emission;
+	core::graphics::Sampler::Sampler::Shared transparency; // 0.0 opaque, 1.0 transparent
+	core::graphics::Sampler::Sampler::Shared normal;
 	
-	Sampler::Shared diffuse;
+	core::graphics::Sampler::Sampler::Shared diffuse;
 	
-	Sampler::Shared refraction;
+	core::graphics::Sampler::Sampler::Shared refraction;
 	
 	std::string name;
 public:

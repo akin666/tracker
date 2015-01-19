@@ -5,6 +5,9 @@
  *      Author: akin
  */
 
+#include <core.hpp>
+#include "scene/scene.hpp"
+
 #include "sceneloader.hpp"
 #include <json/json.h>
 #include <fstream>
@@ -81,7 +84,7 @@ bool read( const Json::Value& value, Manager& manager, core::graphics::Sampler::
 	if( !read( value["type"] , type ) )
 	{
 		// no type specified, skip.
-		LOG->error("%s:%d no type specified for node!" , __FILE__ , __LINE__ );
+		LOG(ERROR) << "No type specified for node!";
 		return false;
 	}
 	
@@ -97,7 +100,7 @@ bool read( const Json::Value& value, Manager& manager, core::graphics::Sampler::
 		}
 		Color color( a.asFloat() , b.asFloat() , c.asFloat() );
 		
-		Sampler::Shared ssampler(new SamplerColor(color));
+		core::graphics::Sampler::Shared ssampler(new core::graphics::ColorSampler(color));
 		val = ssampler;
 		
 		return true;
@@ -111,7 +114,7 @@ bool read( const Json::Value& value, Manager& manager, core::graphics::Sampler::
 		}
 		Color color( a.asFloat() );
 		
-		Sampler::Shared ssampler(new SamplerColor(color));
+		core::graphics::Sampler::Shared ssampler(new core::graphics::ColorSampler(color));
 		val = ssampler;
 		
 		return true;
@@ -124,22 +127,20 @@ bool read( const Json::Value& value, Manager& manager, core::graphics::Sampler::
 			return false;
 		}
 		
-		auto *ptr = new PixelBuffer<RGBALow>();
-		
+		auto ptr = std::make_shared<core::graphics::Buffer2D<core::graphics::RGBALow>>();
 		if( !native::load( path , *ptr ) )
 		{
-			LOG->error("Failed to load %s", path.c_str());
-			delete ptr;
+			LOG(ERROR) << "Failed to load " << path << ".";
 			return false;
 		}
 		
-		Sampler::Shared ssampler(ptr);
+		core::graphics::Sampler::Shared ssampler(new core::graphics::Buffer2DSampler<core::graphics::RGBALow>(ptr) );
 		val = ssampler;
 		
 		return true;
 	}
 	
-	LOG->error("Unknown sampler type.");
+	LOG(ERROR) << ("Unknown sampler type.");
 	return false;
 }
 
@@ -263,13 +264,13 @@ bool SceneLoader::load( std::string path , Scene& scene )
 	
 	if( !in.is_open() )
 	{
-		LOG->error( "could not open %s." , path.c_str() );
+		LOG(ERROR) << "Could not open " << path << ".";
 		return false;
 	}
 	
 	if( !reader.parse( in , root , false ) )
 	{
-		LOG->error( reader.getFormatedErrorMessages().c_str() );
+		LOG(ERROR) << reader.getFormatedErrorMessages();
 		return false;
 	}
 	
@@ -287,7 +288,7 @@ bool SceneLoader::load( std::string path , Scene& scene )
 	const Json::Value& samplers = root["samplers"];
 	if( !samplers.isNull() && samplers.isArray() )
 	{
-		Sampler::Shared sampler;
+		core::graphics::Sampler::Shared sampler;
 		std::string name;
 		
 		// extract samplers
@@ -333,7 +334,7 @@ bool SceneLoader::load( std::string path , Scene& scene )
 			if( !read( jsmcamera , manager , *camera ) )
 			{
 				// failed to read camera..
-				LOG->error("%s:%d failed to parse camera data!" , __FILE__ , __LINE__ );
+				LOG(ERROR) << "Failed to parse camera data!";
 				delete camera; // do not leak it..
 				continue;
 			}
@@ -354,7 +355,7 @@ bool SceneLoader::load( std::string path , Scene& scene )
 			if( !read( jsnode["type"] , type ) )
 			{
 				// no type specified, skip.
-				LOG->error("%s:%d no type specified for node!" , __FILE__ , __LINE__ );
+				LOG(ERROR) << "No type specified for node!";
 				continue;
 			}
 			
@@ -365,7 +366,7 @@ bool SceneLoader::load( std::string path , Scene& scene )
 				if( !read(jsnode , manager , *sphere ) )
 				{
 					// failed to read light..
-					LOG->error("%s:%d failed to parse sphere data!" , __FILE__ , __LINE__ );
+					LOG(ERROR) << "Failed to parse sphere data!";
 					delete sphere; // do not leak it..
 					continue;
 				}
@@ -381,7 +382,7 @@ bool SceneLoader::load( std::string path , Scene& scene )
 				if( !read(jsnode , manager , *disc ) )
 				{
 					// failed to read light..
-					LOG->error("%s:%d failed to parse disc data!" , __FILE__ , __LINE__ );
+					LOG(ERROR) << "Failed to parse disc data!";
 					delete disc; // do not leak it..
 					continue;
 				}

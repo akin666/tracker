@@ -12,7 +12,6 @@
 #include <graphics/sampler/sampler.hpp>
 #include "material.hpp"
 
-class Sampler;
 class Manager
 {
 private:

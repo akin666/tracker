@@ -10,6 +10,7 @@
 #include "scene/world.hpp"
 #include <graphics/colortools.hpp>
 
+using namespace core;
 using namespace core::graphics;
 
 BufferTool::BufferTool()
@@ -24,8 +25,8 @@ void BufferTool::convert( const Buffer2D<Color>& source , Buffer2D<RGBALow>& tar
 {
 	target.init( source.width() , source.height() );
 	
-	auto *trg = target.get();
-	const auto *src = source.get();
+	auto *trg = target.buffer();
+	const auto *src = source.buffer();
 	
 	size_t length = source.size();
 	
@@ -38,7 +39,7 @@ void BufferTool::convert( const Buffer2D<Color>& source , Buffer2D<RGBALow>& tar
 
 void BufferTool::clear( Buffer2D<Color>& target )
 {
-	auto *trg = target.get();
+	auto *trg = target.buffer();
 	size_t length = target.size();
 	
 	for( size_t i = 0 ; i < length ; ++i )
@@ -50,8 +51,8 @@ void BufferTool::clear( Buffer2D<Color>& target )
 // http://stackoverflow.com/questions/9465815/rgb-to-yuv420-algorithm-efficiency
 size_t rgb2Yuv420p( const Buffer2D<Color>& source , Buffer2D<YUVLow>& target )
 {
-	uint8_t *destination = (uint8_t*)target.get();
-	const auto *src = source.get();
+	uint8_t *destination = (uint8_t*)target.buffer();
+	const auto *src = source.buffer();
 	
 	size_t width = source.width();
 	size_t height = source.height();
@@ -90,11 +91,11 @@ size_t rgb2Yuv420p( const Buffer2D<Color>& source , Buffer2D<YUVLow>& target )
 	return vpos;
 }
 
-void BufferTool::convert( const Buffer2D<Color>& source , Buffer2D<YUVLow>& target )
+size_t BufferTool::convert( const Buffer2D<Color>& source , Buffer2D<YUVLow>& target )
 {
-	target.init<Color>( source.width() , source.height() );
+	target.init( source.width() , source.height() );
 	
-	size_t used = rgb2Yuv420p(source , target);
+	return rgb2Yuv420p(source , target);
 	
 	// TODO!
 	// target.setUsed( used );

@@ -17,10 +17,10 @@ public:
 	BufferTool();
 	~BufferTool();
 	
-	static void convert( const core::graphics::Buffer2D<core::graphics::Color>& source , core::graphics::Buffer2D<core::graphics::RGBALow>& target );
-	static void convert( const core::graphics::Buffer2D<core::graphics::Color>& source , core::graphics::Buffer2D<core::graphics::YUVLow>& target );
+	static void convert( const core::graphics::Buffer2D<core::Color>& source , core::graphics::Buffer2D<core::graphics::RGBALow>& target );
+	static size_t convert( const core::graphics::Buffer2D<core::Color>& source , core::graphics::Buffer2D<core::graphics::YUVLow>& target );
 	
-	static void clear( core::graphics::Buffer2D<core::graphics::Color>& buffer );
+	static void clear( core::graphics::Buffer2D<core::Color>& buffer );
 };
 
 #endif // APP_BUFFERTOOL_HPP_

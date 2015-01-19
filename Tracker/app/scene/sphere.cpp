@@ -26,7 +26,7 @@ float Sphere::getEmissionRadius() const
 	{
 		material.emission->at(0.0f, color);
 	}
-	return radius + ::lightMaxDistance(color);
+	return radius + core::graphics::lightMaxDistance(color);
 }
 
 const Material& Sphere::getMaterial() const

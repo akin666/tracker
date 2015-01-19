@@ -29,6 +29,7 @@
 #include <core.hpp>
 #include "../material.hpp"
 #include "../manager.hpp"
+#include <graphics/sampler/sampler.hpp>
 
 class Ray;
 class HitInfo;
@@ -48,7 +49,7 @@ public:
 	std::string name;
 	std::string type;
 	
-	Sampler::Shared ambient;
+	core::graphics::Sampler::Shared ambient;
 private:
 	Manager manager;
 public:

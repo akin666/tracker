@@ -11,6 +11,8 @@
 #include <exceptions/notfound.hpp>
 #include <exceptions/cannot.hpp>
 
+using namespace core::graphics;
+
 Manager::Manager()
 {
 	Sampler::Shared clear(new core::graphics::ColorSampler(World::clear));

@@ -74,6 +74,8 @@
 		E7A3610D1A686E5800C9E3EF /* lvm.c in Sources */ = {isa = PBXBuildFile; fileRef = E7A360C21A686E5800C9E3EF /* lvm.c */; };
 		E7A3610E1A686E5800C9E3EF /* lzio.c in Sources */ = {isa = PBXBuildFile; fileRef = E7A360C41A686E5800C9E3EF /* lzio.c */; };
 		E7A361111A68EBEF00C9E3EF /* cannot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7A3610F1A68EBEF00C9E3EF /* cannot.cpp */; };
+		E7A361151A69799000C9E3EF /* cci18n.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7A361131A69799000C9E3EF /* cci18n.cpp */; };
+		E7A361181A697B4A00C9E3EF /* translate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7A361161A697B4A00C9E3EF /* translate.cpp */; };
 		E7B4E07E1A2E84A800A7C565 /* init.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = E760EC121A2DA7BC00737A89 /* init.js */; };
 		E7B4E0A11A3526E300A7C565 /* test.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = E7B4E0A01A3526D500A7C565 /* test.json */; };
 		E7B4E0A41A375B6100A7C565 /* disc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7B4E0A31A375B6100A7C565 /* disc.cpp */; };
@@ -510,6 +512,11 @@
 		E7A360DD1A686E5800C9E3EF /* stb_perlin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_perlin.h; sourceTree = "<group>"; };
 		E7A3610F1A68EBEF00C9E3EF /* cannot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cannot.cpp; sourceTree = "<group>"; };
 		E7A361101A68EBEF00C9E3EF /* cannot.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = cannot.hpp; sourceTree = "<group>"; };
+		E7A361131A69799000C9E3EF /* cci18n.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cci18n.cpp; sourceTree = "<group>"; };
+		E7A361141A69799000C9E3EF /* cci18n.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = cci18n.hpp; sourceTree = "<group>"; };
+		E7A361161A697B4A00C9E3EF /* translate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = translate.cpp; sourceTree = "<group>"; };
+		E7A361171A697B4A00C9E3EF /* translate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = translate.hpp; sourceTree = "<group>"; };
+		E7A3611C1A69E11200C9E3EF /* internal.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = internal.hpp; sourceTree = "<group>"; };
 		E7B4E0A01A3526D500A7C565 /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
 		E7B4E0A21A375B6100A7C565 /* disc.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = disc.hpp; sourceTree = "<group>"; };
 		E7B4E0A31A375B6100A7C565 /* disc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = disc.cpp; sourceTree = "<group>"; };
@@ -591,6 +598,7 @@
 		E7A35F561A686E5700C9E3EF /* core */ = {
 			isa = PBXGroup;
 			children = (
+				E7A361121A69799000C9E3EF /* cci18n */,
 				E7A35F581A686E5700C9E3EF /* application.hpp */,
 				E7A35F591A686E5700C9E3EF /* config.cpp */,
 				E7A35F5A1A686E5700C9E3EF /* config.hpp */,
@@ -1090,6 +1098,18 @@
 			path = stb;
 			sourceTree = "<group>";
 		};
+		E7A361121A69799000C9E3EF /* cci18n */ = {
+			isa = PBXGroup;
+			children = (
+				E7A3611C1A69E11200C9E3EF /* internal.hpp */,
+				E7A361161A697B4A00C9E3EF /* translate.cpp */,
+				E7A361171A697B4A00C9E3EF /* translate.hpp */,
+				E7A361131A69799000C9E3EF /* cci18n.cpp */,
+				E7A361141A69799000C9E3EF /* cci18n.hpp */,
+			);
+			path = cci18n;
+			sourceTree = "<group>";
+		};
 		E7C8529A1A0645CD00478AC0 = {
 			isa = PBXGroup;
 			children = (
@@ -1180,6 +1200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7A361181A697B4A00C9E3EF /* translate.cpp in Sources */,
 				E7A360E51A686E5800C9E3EF /* outofbounds.cpp in Sources */,
 				E7A360EC1A686E5800C9E3EF /* video.cpp in Sources */,
 				E7A360F21A686E5800C9E3EF /* lbitlib.c in Sources */,
@@ -1197,6 +1218,7 @@
 				E7A3610A1A686E5800C9E3EF /* ltablib.c in Sources */,
 				E7A361071A686E5800C9E3EF /* lstring.c in Sources */,
 				E7A361031A686E5800C9E3EF /* lopcodes.c in Sources */,
+				E7A361151A69799000C9E3EF /* cci18n.cpp in Sources */,
 				E7A360FB1A686E5800C9E3EF /* lgc.c in Sources */,
 				E7A361011A686E5800C9E3EF /* loadlib.c in Sources */,
 				E72BF4F21A409740002DE8CB /* manager.cpp in Sources */,

@@ -8,7 +8,7 @@
 #ifndef APP_SPHERE_HPP_
 #define APP_SPHERE_HPP_
 
-#include <core>
+#include <core.hpp>
 #include "node.hpp"
 #include "../material.hpp"
 

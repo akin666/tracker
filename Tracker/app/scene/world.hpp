@@ -8,8 +8,9 @@
 #ifndef APP_WORLD_HPP_
 #define APP_WORLD_HPP_
 
-#include <core>
+#include <core.hpp>
 
+using namespace core;
 class World
 {
 public:

@@ -11,6 +11,7 @@
 Camera::Camera()
 : distance( 0.1f )
 {
+	buffer = std::make_shared<core::graphics::Buffer2D<Color>>();
 }
 
 Camera::~Camera()
@@ -40,11 +41,11 @@ float Camera::getDpmm() const
 void Camera::init()
 {
 	// init buffer..
-	buffer.init((uint)getWidth() , (uint)getHeight() );
-	BufferTool::clear( buffer );
+	buffer->init((uint)getWidth() , (uint)getHeight() );
+	BufferTool::clear( *buffer );
 }
 
-PixelBuffer<Color>& Camera::getBuffer()
+core::graphics::Buffer2D<Color>::Shared Camera::getBuffer()
 {
 	return buffer;
 }

@@ -8,9 +8,16 @@
 #include <core.hpp>
 #include <config.hpp>
 
+// the blody easylogging requires this..
+// (I hate when random libraries pollute my codebase with their nonsense)
+INITIALIZE_EASYLOGGINGPP
+
 // package the args into string vector..
 int main(int argc, char**argv) 
 {
+	// configure logging
+	el::Loggers::reconfigureAllLoggers(el::ConfigurationType::Format, "%datetime - %level@%fbase:%line: %msg");
+	
 	// skip 1st argument, it is the executable name..
     std::vector<std::string> args(argc);
     for( int i = 1 ; i < argc ; ++i )
@@ -43,12 +50,12 @@ int main(int argc, char**argv)
         // init
         if( !app->init() )
         {
-        	LOG->error( "%s Application init failed!" , app->getName().c_str());
+			LOG(ERROR) << app->getName() << " Application init failed!";
 
             // Failed!
             return -1;
-        }
-    	LOG->print( "system", "%s running." , app->getName().c_str());
+		}
+		LOG(INFO) << app->getName() << " is running.";
         app->run();
     }
     while( app && !app->complete() );
