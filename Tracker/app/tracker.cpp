@@ -30,9 +30,6 @@ Tracker::~Tracker()
 
 bool Tracker::init()
 {
-	
-	exit(0);
-	
 	SceneLoader loader;
 	
 	loader.load( config::get<std::string>("scene" ,"scene.json") , scene );

@@ -76,6 +76,7 @@
 		E7A361111A68EBEF00C9E3EF /* cannot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7A3610F1A68EBEF00C9E3EF /* cannot.cpp */; };
 		E7A361151A69799000C9E3EF /* cci18n.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7A361131A69799000C9E3EF /* cci18n.cpp */; };
 		E7A361181A697B4A00C9E3EF /* translate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7A361161A697B4A00C9E3EF /* translate.cpp */; };
+		E7A3611F1A6D69F600C9E3EF /* error.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7A3611D1A6D69F600C9E3EF /* error.cpp */; };
 		E7B4E07E1A2E84A800A7C565 /* init.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = E760EC121A2DA7BC00737A89 /* init.json */; };
 		E7B4E0A11A3526E300A7C565 /* test.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = E7B4E0A01A3526D500A7C565 /* test.json */; };
 		E7B4E0A41A375B6100A7C565 /* disc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E7B4E0A31A375B6100A7C565 /* disc.cpp */; };
@@ -517,6 +518,8 @@
 		E7A361161A697B4A00C9E3EF /* translate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = translate.cpp; sourceTree = "<group>"; };
 		E7A361171A697B4A00C9E3EF /* translate.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = translate.hpp; sourceTree = "<group>"; };
 		E7A3611C1A69E11200C9E3EF /* internal.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = internal.hpp; sourceTree = "<group>"; };
+		E7A3611D1A6D69F600C9E3EF /* error.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = error.cpp; sourceTree = "<group>"; };
+		E7A3611E1A6D69F600C9E3EF /* error.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = error.hpp; sourceTree = "<group>"; };
 		E7B4E0A01A3526D500A7C565 /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
 		E7B4E0A21A375B6100A7C565 /* disc.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = disc.hpp; sourceTree = "<group>"; };
 		E7B4E0A31A375B6100A7C565 /* disc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = disc.cpp; sourceTree = "<group>"; };
@@ -624,6 +627,8 @@
 		E7A35F5E1A686E5700C9E3EF /* exceptions */ = {
 			isa = PBXGroup;
 			children = (
+				E7A3611D1A6D69F600C9E3EF /* error.cpp */,
+				E7A3611E1A6D69F600C9E3EF /* error.hpp */,
 				E7A3610F1A68EBEF00C9E3EF /* cannot.cpp */,
 				E7A361101A68EBEF00C9E3EF /* cannot.hpp */,
 				E7A35F5F1A686E5700C9E3EF /* exception.cpp */,
@@ -1212,6 +1217,7 @@
 				E7A360E21A686E5800C9E3EF /* invalidtype.cpp in Sources */,
 				E760EC671A2E546200737A89 /* world.cpp in Sources */,
 				E7A361041A686E5800C9E3EF /* loslib.c in Sources */,
+				E7A3611F1A6D69F600C9E3EF /* error.cpp in Sources */,
 				E760EC6A1A2E546200737A89 /* dev.cpp in Sources */,
 				E760EC661A2E546200737A89 /* sphere.cpp in Sources */,
 				E7A360F01A686E5800C9E3EF /* lauxlib.c in Sources */,
