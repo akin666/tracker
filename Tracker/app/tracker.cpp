@@ -168,8 +168,6 @@ void Tracker::run()
 		}
 	}
 	
-	// ffmpeg -s 384x216 -i test.yuv -vcodec libx264 test.h264
-	
 	for( auto iter : videos )
 	{
 		auto *video = iter.second;
