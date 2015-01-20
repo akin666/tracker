@@ -106,17 +106,14 @@
 		E72BF4F11A409740002DE8CB /* manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = manager.cpp; sourceTree = "<group>"; };
 		E72BF4F91A40F7B2002DE8CB /* pattern.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pattern.png; sourceTree = "<group>"; };
 		E760EC121A2DA7BC00737A89 /* init.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = init.json; sourceTree = "<group>"; };
-		E760EC171A2E546200737A89 /* action.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = action.hpp; sourceTree = "<group>"; };
 		E760EC191A2E546200737A89 /* buffertool.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = buffertool.hpp; sourceTree = "<group>"; };
 		E760EC1A1A2E546200737A89 /* buffertool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = buffertool.cpp; sourceTree = "<group>"; };
 		E760EC1D1A2E546200737A89 /* hitinfo.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = hitinfo.hpp; sourceTree = "<group>"; };
 		E760EC1E1A2E546200737A89 /* hitinfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hitinfo.cpp; sourceTree = "<group>"; };
 		E760EC1F1A2E546200737A89 /* intersect.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = intersect.hpp; sourceTree = "<group>"; };
 		E760EC201A2E546200737A89 /* intersect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = intersect.cpp; sourceTree = "<group>"; };
-		E760EC221A2E546200737A89 /* line.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = line.hpp; sourceTree = "<group>"; };
 		E760EC231A2E546200737A89 /* material.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = material.hpp; sourceTree = "<group>"; };
 		E760EC241A2E546200737A89 /* material.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = material.cpp; sourceTree = "<group>"; };
-		E760EC281A2E546200737A89 /* ray.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = ray.hpp; sourceTree = "<group>"; };
 		E760EC291A2E546200737A89 /* rayinfo.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = rayinfo.hpp; sourceTree = "<group>"; };
 		E760EC2A1A2E546200737A89 /* rayinfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rayinfo.cpp; sourceTree = "<group>"; };
 		E760EC2C1A2E546200737A89 /* camera.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = camera.hpp; sourceTree = "<group>"; };
@@ -520,6 +517,9 @@
 		E7A3611C1A69E11200C9E3EF /* internal.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = internal.hpp; sourceTree = "<group>"; };
 		E7A3611D1A6D69F600C9E3EF /* error.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = error.cpp; sourceTree = "<group>"; };
 		E7A3611E1A6D69F600C9E3EF /* error.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = error.hpp; sourceTree = "<group>"; };
+		E7A361701A6EFE2B00C9E3EF /* line.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = line.hpp; sourceTree = "<group>"; };
+		E7A361711A6EFE2B00C9E3EF /* ray.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ray.hpp; sourceTree = "<group>"; };
+		E7A361721A6EFECF00C9E3EF /* action.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = action.hpp; sourceTree = "<group>"; };
 		E7B4E0A01A3526D500A7C565 /* test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test.json; sourceTree = "<group>"; };
 		E7B4E0A21A375B6100A7C565 /* disc.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = disc.hpp; sourceTree = "<group>"; };
 		E7B4E0A31A375B6100A7C565 /* disc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = disc.cpp; sourceTree = "<group>"; };
@@ -545,17 +545,14 @@
 			children = (
 				E72BF4F01A409740002DE8CB /* manager.hpp */,
 				E72BF4F11A409740002DE8CB /* manager.cpp */,
-				E760EC171A2E546200737A89 /* action.hpp */,
 				E760EC191A2E546200737A89 /* buffertool.hpp */,
 				E760EC1A1A2E546200737A89 /* buffertool.cpp */,
 				E760EC1D1A2E546200737A89 /* hitinfo.hpp */,
 				E760EC1E1A2E546200737A89 /* hitinfo.cpp */,
 				E760EC1F1A2E546200737A89 /* intersect.hpp */,
 				E760EC201A2E546200737A89 /* intersect.cpp */,
-				E760EC221A2E546200737A89 /* line.hpp */,
 				E760EC231A2E546200737A89 /* material.hpp */,
 				E760EC241A2E546200737A89 /* material.cpp */,
-				E760EC281A2E546200737A89 /* ray.hpp */,
 				E760EC291A2E546200737A89 /* rayinfo.hpp */,
 				E760EC2A1A2E546200737A89 /* rayinfo.cpp */,
 				E760EC2B1A2E546200737A89 /* scene */,
@@ -601,6 +598,9 @@
 		E7A35F561A686E5700C9E3EF /* core */ = {
 			isa = PBXGroup;
 			children = (
+				E7A361721A6EFECF00C9E3EF /* action.hpp */,
+				E7A361701A6EFE2B00C9E3EF /* line.hpp */,
+				E7A361711A6EFE2B00C9E3EF /* ray.hpp */,
 				E7A361121A69799000C9E3EF /* cci18n */,
 				E7A35F581A686E5700C9E3EF /* application.hpp */,
 				E7A35F591A686E5700C9E3EF /* config.cpp */,

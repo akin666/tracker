@@ -9,7 +9,7 @@
 #define APP_NODE_HPP_
 
 #include <core.hpp>
-#include "../ray.hpp"
+#include <ray.hpp>
 #include "../material.hpp"
 
 using namespace core;

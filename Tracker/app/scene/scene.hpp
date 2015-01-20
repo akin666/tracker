@@ -27,11 +27,11 @@
 #define	SCENE_HPP
 
 #include <core.hpp>
+#include <ray.hpp>
 #include "../material.hpp"
 #include "../manager.hpp"
 #include <graphics/sampler/sampler.hpp>
 
-class Ray;
 class HitInfo;
 class Node;
 class Camera;
@@ -67,7 +67,7 @@ public:
 	
 	void getLights( const HitInfo& info , std::vector<Node*>& lights ) const;
 	
-	void trace( const Ray& ray , HitInfo& info ) const;
+	void trace( const core::Ray& ray , HitInfo& info ) const;
 	void traceTo( const glm::vec3& origin , const Node *target , HitInfo& info ) const;
 
 	std::vector<Camera*>& getCameras();

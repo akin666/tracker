@@ -3,7 +3,7 @@
 #define APP_PATHSOLVER_HPP_
 
 #include <core.hpp>
-#include "../ray.hpp"
+#include <ray.hpp>
 #include "../scene/scene.hpp"
 
 using namespace core;

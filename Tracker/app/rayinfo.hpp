@@ -9,17 +9,17 @@
 #define APP_RAYINFO_HPP_
 
 #include <core.hpp>
-#include "ray.hpp"
+#include <ray.hpp>
 
-class RayInfo : public Ray
+class RayInfo : public core::Ray
 {
 public:
 	float distance;
 	int bounces;
 public:
-	RayInfo( const Ray& ray , float distance = 0.0f );
-	RayInfo( const Ray& ray , int bounces );
-	RayInfo( const Ray& ray , float distance , int bounces );
+	RayInfo( const core::Ray& ray , float distance = 0.0f );
+	RayInfo( const core::Ray& ray , int bounces );
+	RayInfo( const core::Ray& ray , float distance , int bounces );
 };
 
 #endif // APP_RAYINFO_HPP_
